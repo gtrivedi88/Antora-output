@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Releasing an application :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/cli/proc_release_application.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="stylesheet" href="../_/css/main.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ROOT"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">ROOT</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getting-started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/build_service.html">Pipeline customization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/pipeline_visualization.html">Pipeline visualization</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how-to-guides/index.html">How-to guides</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../how-to-guides/delete_application.html">Deleting an application from UI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../how-to-guides/proc_creating_static_environment.html">Creating a static environment</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">CLI</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="proc_release_application.html">Releasing an application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_managed_services_onboarding.html">Managed services team onboarding</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="delete_application.html">Deleting an application from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_enabled_java_dependencies.html">Configuring Java builds with enabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="proc_disabled_java_dependencies.html">Configuring Java builds with disabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="creating_a_custom_application_test_with_test_pipelines.html">Creating a custom application test with test pipelines</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts/index.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/release-services/con_release-services-overview.html">Release Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/enterprise-contract/con_enterprise-contract-overview.html">Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts/testing_applications/index.html">Testing Applications</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/testing_applications/sanity_tests.html">Sanity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/testing_applications/adding_new_tests.html">Add a New Test</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/testing_applications/configuring_tests.html">Configuring Tests</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts/pipelines/index.html">Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/pipelines/persister.html">Persister component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/pipelines/pipeline_concepts.html">Pipeline concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/environments/index.html">Environments</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/java-build-service/java-build-service.html">Java build service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/java-build-service/java-build-service-components.html">Java build service components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary/index.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/index.html">Contribute to documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../raise-issue/index.html">Raise an issue</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/index.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ROOT</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">ROOT</a></li>
+    <li><a href="index.html">CLI</a></li>
+    <li><a href="proc_release_application.html">Releasing an application</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/gtrivedi/git/HACBS/stonesoup-documentation/modules/ROOT/pages/cli/proc_release_application.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Releasing an application</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_tasks_that_the_development_and_managed_environment_teams_complete">1. Tasks that the Development and Managed environment teams complete</a></li>
+<li><a href="#_creating_a_releaseplan_object">2. Creating a <code>ReleasePlan</code> object</a></li>
+<li><a href="#_creating_a_releasestrategy_object">3. Creating a <code>ReleaseStrategy</code> object</a></li>
+<li><a href="#_creating_a_releaseplanadmission_object">4. Creating a <code>ReleasePlanAdmission</code> object</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Two teams work together to release an application:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Development team</strong> - The team that develops and supports the application in a pre-production environment.</p>
+</li>
+<li>
+<p><strong>Managed environment team</strong> - The team that supports the production instance of that application.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/managed_environment.png" alt="Managed Environment">
+</div>
+</div>
+<div class="paragraph">
+<p>[1] When an application is ready for release, the Development team contacts the Managed Environment team; for example, their organization&#8217;s SRE team, requesting access to the Managed environment for the first production release.</p>
+</div>
+<div class="paragraph">
+<p>[2] The Managed environment team creates the managed environment and responds to the development team with the managed environment&#8217;s configuration details. The Managed environment inherits some details of the development team’s workspace. However, the development team has limited access to the production environment, which is a part of the managed environment.</p>
+</div>
+<div class="paragraph">
+<p>[3] The development team creates a matching configuration in their environment that is same as that of the Managed environment and attempts to release the application to production.</p>
+</div>
+<div class="paragraph">
+<p>[4] The Managed environment team validates the initial release and configures a traffic gateway, which allows external traffic to the application.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tasks_that_the_development_and_managed_environment_teams_complete"><a class="anchor" href="#_tasks_that_the_development_and_managed_environment_teams_complete"></a>1. Tasks that the Development and Managed environment teams complete</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To release an application to a managed environment:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The development team creates a <a href="#_creating_a_releaseplan_object"><code>ReleasePlan</code></a> object in the developer workspace. The <code>ReleasePlan</code> object includes a reference to the application that the development team wants to release, along with the namespace and workspace where the application is suppose to release.</p>
+</li>
+<li>
+<p>The Managed environment team creates a <a href="#_creating_a_releasestrategy_object"><code>ReleaseStrategy</code></a> object to ensure that the release of an application meets <a href="https://red-hat-stone-soup.pages.redhat.com/stonesoup-documentation/ec-policies/index.html">enterprise contract</a>.</p>
+</li>
+<li>
+<p>The Managed environment team creates a <a href="#_creating_a_releaseplanadmission_object"><code>ReleasePlanAdmission</code></a> object in the managed workspace.</p>
+<div class="paragraph">
+<p>The <code>ReleasePlanAdmission</code> indicates that the Managed environment team has approved the <code>ReleasePlan</code> for an application. The <code>ReleasePlanAdmission</code> also refers to the <code>ReleaseStrategy</code>, which ensures that the application&#8217;s release meets security standards.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>ReleasePlan</code> and <code>ReleasePlanAdmission</code> is an agreement between the development and the Managed environment teams. This agreement indicates that the Managed environment team accepts the release of an application into the managed workspace and intends to support it.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_releaseplan_object"><a class="anchor" href="#_creating_a_releaseplan_object"></a>2. Creating a <code>ReleasePlan</code> object</h2>
+<div class="sectionbody">
+<div class="ulist">
+<div class="title"><strong>Prerequisites</strong></div>
+<ul>
+<li>
+<p>You have an existing Development and Managed workspace.</p>
+</li>
+<li>
+<p>Ensure you have installed kustomize, kubectl, and Go.</p>
+</li>
+<li>
+<p>Ensure you have downloaded your docker config json file from Quay and placed it in the &lt;HOME&gt;/docker.config directory.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title"><strong>Procedures</strong></div>
+<ol class="arabic">
+<li>
+<p>In the development workspace, create a release_plan.yaml object by running:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kubernetes hljs" data-lang="kubernetes">oc apply -f releaseplan.yaml -n dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example <code>release_plan.yaml</code> object</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleasePlan <i class="conum" data-value="1"></i><b>(1)</b>
+metadata:
+ labels:
+   release.appstudio.openshift.io/auto-release: 'true'
+ name: sre-production <i class="conum" data-value="2"></i><b>(2)</b>
+ namespace: dev-workspace <i class="conum" data-value="3"></i><b>(3)</b>
+spec:
+ application: demo-app <i class="conum" data-value="4"></i><b>(4)</b>
+ displayName: SRE Production <i class="conum" data-value="5"></i><b>(5)</b>
+ target:
+   namespace: managed-workspace <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the resource that you are creating.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The name of the release plan.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The development team&#8217;s workspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The name of the application that you want to deploy to the managed workspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The &lt;description&gt;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The workspace to which the system deploys the application. This workspace is created by the Managed environment team (for example, your organization&#8217;s SRE team)</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title"><strong>Verification</strong></div>
+<ol class="arabic">
+<li>
+<p>Browse the application you are creating.</p>
+</li>
+<li>
+<p>Select the <strong>Overview</strong> tab to visualize the Application workflow. If you have successfully added a Managed environment, the system displays it at the end of the Application workflow.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_releasestrategy_object"><a class="anchor" href="#_creating_a_releasestrategy_object"></a>3. Creating a <code>ReleaseStrategy</code> object</h2>
+<div class="sectionbody">
+<div class="ulist">
+<div class="title"><strong>Prerequisites</strong></div>
+<ul>
+<li>
+<p>You have an existing Development and Managed workspace.</p>
+</li>
+<li>
+<p>An existing <code>ReleasePlan</code> object.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title"><strong>Procedures</strong></div>
+<ol class="arabic">
+<li>
+<p>Create a release_strategy.yaml object by running:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kubernetes hljs" data-lang="kubernetes">oc apply -f releasestrategy.yaml -n managed</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example <code>release_strategy.yaml</code>  object</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleaseStrategy <i class="conum" data-value="1"></i><b>(1)</b>
+metadata:
+  name: strategy <i class="conum" data-value="2"></i><b>(2)</b>
+  namespace: managed-environment <i class="conum" data-value="3"></i><b>(3)</b>
+spec:
+  pipeline: release <i class="conum" data-value="4"></i><b>(4)</b>
+  bundle: quay.io/hacbs-release/release-pipeline:main <i class="conum" data-value="5"></i><b>(5)</b>
+  policy: policy <i class="conum" data-value="6"></i><b>(6)</b>
+  serviceAccount: service-account <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the resource the Environment team creates.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The name of the release strategy.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The name of the managed environment to which the system deploys an application.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The name of the pipeline that the system uses when releasing an application to a managed environment.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The link to the release pipeline bundle.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The enterprise contract policy against which the system validates an application before releasing it to production.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The name of the <a href="https://github.com/scoheb/hacbs-demos/blob/main/m7/release/managed-workspace/service_account.yaml"><code>serviceAccount</code></a> resource in the Managed workspace. This <code>serviceAccount</code> resource has <a href="https://kubernetes.io/docs/concepts/configuration/secret/#secret-types">secrets</a> that <a href="https://tekton.dev/vault/pipelines-v0.15.2/auth/">Tekton</a> uses to provide authentication to different tasks in the pipeline.</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_releaseplanadmission_object"><a class="anchor" href="#_creating_a_releaseplanadmission_object"></a>4. Creating a <code>ReleasePlanAdmission</code> object</h2>
+<div class="sectionbody">
+<div class="ulist">
+<div class="title"><strong>Prerequisites</strong></div>
+<ul>
+<li>
+<p>You have an existing Development and Managed workspace.</p>
+</li>
+<li>
+<p>An existing <code>ReleasePlan</code> object.</p>
+</li>
+<li>
+<p>An existing <code>ReleaseStrategy</code> object.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title"><strong>Procedures</strong></div>
+<ol class="arabic">
+<li>
+<p>Create a release_plan_admission.yaml object by running:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kubernetes hljs" data-lang="kubernetes">oc apply -f releaseplanadmission.yaml -n managed</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The  release_plan_admission.yaml represents the reciprocal link to the release_plan.yaml objects created by the development team.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Example <code>release_plan_admission.yaml</code> object</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: appstudio.redhat.com/v1alpha1
+kind: ReleasePlanAdmission <i class="conum" data-value="1"></i><b>(1)</b>
+metadata:
+ name: sre-production <i class="conum" data-value="2"></i><b>(2)</b>
+ namespace: -n managed <i class="conum" data-value="3"></i><b>(3)</b>
+spec:
+ application: demo-app <i class="conum" data-value="4"></i><b>(4)</b>
+ environment: sre-production <i class="conum" data-value="5"></i><b>(5)</b>
+ origin:
+   workspace: &lt;user-workspace&gt; <i class="conum" data-value="6"></i><b>(6)</b>
+   namespace: &lt;dev-workspace&gt; <i class="conum" data-value="7"></i><b>(7)</b>
+ releaseStrategy: &lt;release-strategy&gt; <i class="conum" data-value="8"></i><b>(8)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The name of the resource created by the Environment team.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The name of the release plan.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The Managed environment team&#8217;s workspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The name of the application that you want to deploy to the managed workspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The &lt;description&gt;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The workspace from which the application updates are allowed to be received in the Managed workspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>The workspace on which the application updates are received. This workspace is created by the Development team.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The release strategy.</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

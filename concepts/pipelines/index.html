@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Introduction to Pipelines service :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/concepts/pipelines/index.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="stylesheet" href="../../_/css/main.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ROOT"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">ROOT</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getting-started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/build_service.html">Pipeline customization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/pipeline_visualization.html">Pipeline visualization</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../how-to-guides/index.html">How-to guides</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/delete_application.html">Deleting an application from UI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/proc_creating_static_environment.html">Creating a static environment</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../cli/index.html">CLI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_release_application.html">Releasing an application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_managed_services_onboarding.html">Managed services team onboarding</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/delete_application.html">Deleting an application from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_enabled_java_dependencies.html">Configuring Java builds with enabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_disabled_java_dependencies.html">Configuring Java builds with disabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/creating_a_custom_application_test_with_test_pipelines.html">Creating a custom application test with test pipelines</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../release-services/con_release-services-overview.html">Release Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../enterprise-contract/con_enterprise-contract-overview.html">Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../testing_applications/index.html">Testing Applications</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/sanity_tests.html">Sanity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/adding_new_tests.html">Add a New Test</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/configuring_tests.html">Configuring Tests</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="persister.html">Persister component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="pipeline_concepts.html">Pipeline concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../environments/index.html">Environments</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service.html">Java build service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service-components.html">Java build service components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../glossary/index.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../contribute/index.html">Contribute to documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../raise-issue/index.html">Raise an issue</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../support/index.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ROOT</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">ROOT</a></li>
+    <li><a href="../index.html">Concepts</a></li>
+    <li><a href="index.html">Pipelines</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/gtrivedi/git/HACBS/stonesoup-documentation/modules/ROOT/pages/concepts/pipelines/index.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Introduction to Pipelines service</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_key_features">1. Key features</a></li>
+<li><a href="#_architecture">2. Architecture</a></li>
+<li><a href="#_components">3. Components</a>
+<ul class="sectlevel2">
+<li><a href="#_pipeline_as_code">3.1. Pipeline as Code</a></li>
+<li><a href="#_pipelines">3.2. Pipelines</a></li>
+<li><a href="#_signature_and_provenance">3.3. Signature and Provenance</a></li>
+<li><a href="#_pruner">3.4. Pruner</a></li>
+<li><a href="#_persister">3.5. Persister</a></li>
+</ul>
+</li>
+<li><a href="#_how_to_use_the_pipelines_service">4. How to use the Pipelines service</a></li>
+<li><a href="#_additional_resources">5. Additional resources</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipelines service is a managed service that allows users or services to securely run Tekton Pipelines on Kubernetes Control Plane (KCP). Additionally, it stores the metadata and Pipeline logs related to an executed Pipeline in a separate database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_features"><a class="anchor" href="#_key_features"></a>1. Key features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Exposes a subset of Tekton API by using an integral generic and managed CI service.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Red Hat does not expose <em>TaskRun</em> API.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Provides transparent multi-cluster and multi-tenancy by using KCP.</p>
+</li>
+<li>
+<p>Provides generic constructs, for example, Tasks for building and executing Pipeline.</p>
+</li>
+<li>
+<p>Scalable deployment processes by using standard Tekton constructs.</p>
+</li>
+<li>
+<p>Offers core framework for running builds.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture"><a class="anchor" href="#_architecture"></a>2. Architecture</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/pipeline_service.png" alt="Pipeline service">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_components"><a class="anchor" href="#_components"></a>3. Components</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipelines service has many components responsible for various tasks, for example, pruning or logs. Main components of the Pipelines service are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline as Code</p>
+</li>
+<li>
+<p>Pipelines</p>
+</li>
+<li>
+<p>Signature and Provenance</p>
+</li>
+<li>
+<p>Pruner</p>
+</li>
+<li>
+<p>Persister</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_pipeline_as_code"><a class="anchor" href="#_pipeline_as_code"></a>3.1. Pipeline as Code</h3>
+<div class="paragraph">
+<p>Pipelines service provides Pipeline as Code. Pipeline as code is a practice of defining pipelines through source code, such as Git. You can connect OpenShift Pipelines and a git repository using Pipeline as Code. As a result, the system can generate a PR and run Pipelines on the cluster.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pipelines"><a class="anchor" href="#_pipelines"></a>3.2. Pipelines</h3>
+<div class="paragraph">
+<p>The Pipelines are one of the most critical components of the system. They expose a subset of the tekton-pipeline API, which is responsible for maintaining and running all the Pipelines within the system.</p>
+</div>
+<div class="paragraph">
+<p>HACBS makes use of this ability.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_signature_and_provenance"><a class="anchor" href="#_signature_and_provenance"></a>3.3. Signature and Provenance</h3>
+<div class="paragraph">
+<p>It uses <a href="https://tekton.dev/docs/chains/">Tekton chains</a> to extract metadata of the <em>PipelineRuns</em>, sign that metadata, and then store it in an external database (<a href="https://github.com/sigstore/rekor">Recor</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Signature and Provenance component also stores metadata.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pruner"><a class="anchor" href="#_pruner"></a>3.4. Pruner</h3>
+<div class="paragraph">
+<p>The system assigns resources to every <em>PipelineRun</em>, for example, pods. These resources remain in the cluster indefinitely, even after the system completes the <em>PipelineRun</em>. The Pruner component is in charge of removing resources associated with the completed <em>PipelineRuns</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently the system only prunes the <em>TasksRun</em> and PVC (Persistent Volume Claims).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_persister"><a class="anchor" href="#_persister"></a>3.5. Persister</h3>
+<div class="paragraph">
+<p>When the system completes a <em>PipelineRun</em>, the <a href="persister.html" class="xref page">Persister component</a> moves all the relevant <em>PipelineRun</em> information to an external storage, that is, outside the cluster&#8217;s <strong>etcd</strong> database.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The system only displays the five latest Pipeline runs. You can access the data of the older Pipeline runs from the archive.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_use_the_pipelines_service"><a class="anchor" href="#_how_to_use_the_pipelines_service"></a>4. How to use the Pipelines service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use a Pipelines service in any of the following ways.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Git</strong></dt>
+<dd>
+<p>A Git repository drives the pipeline definition and configuration. The Pipeline service receives Git events from the repository and executes the pipeline based on the definition and configurations in the Git repository.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Run</strong></dt>
+<dd>
+<p>To execute your <em>PipelineRun</em> and <em>TaskRun</em> resources, provide them as embedded specs or bundles to the Pipeline service. The Pipeline service executes these resources, but you maintain control over the pipeline definitions.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>5. Additional resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="persister.html" class="xref page">Persister component</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>

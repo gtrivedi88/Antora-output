@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Persister component :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/concepts/pipelines/persister.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="stylesheet" href="../../_/css/main.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ROOT"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">ROOT</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getting-started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/build_service.html">Pipeline customization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/pipeline_visualization.html">Pipeline visualization</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../how-to-guides/index.html">How-to guides</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/delete_application.html">Deleting an application from UI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/proc_creating_static_environment.html">Creating a static environment</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../cli/index.html">CLI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_release_application.html">Releasing an application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_managed_services_onboarding.html">Managed services team onboarding</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/delete_application.html">Deleting an application from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_enabled_java_dependencies.html">Configuring Java builds with enabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_disabled_java_dependencies.html">Configuring Java builds with disabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/creating_a_custom_application_test_with_test_pipelines.html">Creating a custom application test with test pipelines</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../release-services/con_release-services-overview.html">Release Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../enterprise-contract/con_enterprise-contract-overview.html">Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../testing_applications/index.html">Testing Applications</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/sanity_tests.html">Sanity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/adding_new_tests.html">Add a New Test</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/configuring_tests.html">Configuring Tests</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="persister.html">Persister component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="pipeline_concepts.html">Pipeline concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../environments/index.html">Environments</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service.html">Java build service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service-components.html">Java build service components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../glossary/index.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../contribute/index.html">Contribute to documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../raise-issue/index.html">Raise an issue</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../support/index.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ROOT</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">ROOT</a></li>
+    <li><a href="../index.html">Concepts</a></li>
+    <li><a href="index.html">Pipelines</a></li>
+    <li><a href="persister.html">Persister component</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/gtrivedi/git/HACBS/stonesoup-documentation/modules/ROOT/pages/concepts/pipelines/persister.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Persister component</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_how_does_it_work">1. How does it work?</a></li>
+<li><a href="#_what_all_data_is_stored">2. What all data is stored?</a></li>
+<li><a href="#_how_to_access_the_tekton_results">3. How to access the Tekton Results?</a></li>
+<li><a href="#_additional_resources">4. Additional resources</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Persister component contributes to the system&#8217;s stability and optimal performance by collecting all the necessary <em>PipelineRun</em> information and pushing it to an external storage.</p>
+</div>
+<div class="paragraph">
+<p>The Persister component provides:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A long-term storage for <em>PipelineRun</em> metadata</p>
+</li>
+<li>
+<p>A way to store <em>PipelineRun</em> metadata in that storage</p>
+</li>
+<li>
+<p>An API (Persistence API) to inquire the stored metadata</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_does_it_work"><a class="anchor" href="#_how_does_it_work"></a>1. How does it work?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Persister component continuously monitors the <em>PipelineRun</em>. When it detects that the system has finished running a <em>PipelineRun</em>, it retrieves the metadata and stores it in an external database.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_all_data_is_stored"><a class="anchor" href="#_what_all_data_is_stored"></a>2. What all data is stored?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Persister component preserves the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TaskRuns</p>
+</li>
+<li>
+<p><em>TaskRun</em> logs</p>
+</li>
+<li>
+<p>Inputs, like parameters</p>
+</li>
+<li>
+<p>Outputs, like results</p>
+</li>
+<li>
+<p>Pipeline definition</p>
+</li>
+<li>
+<p><em>PipelineRun</em> execution</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_access_the_tekton_results"><a class="anchor" href="#_how_to_access_the_tekton_results"></a>3. How to access the Tekton Results?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To access the Tekton Results by using CLI, you need to create a configuration file that has all the necessary information, for example, where to connect and how to authenticate.</p>
+</div>
+<div class="paragraph">
+<p><strong>Procedures</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a ~/.config/tkn/results.yaml file with following structure:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ASCIIDOC hljs" data-lang="ASCIIDOC">address: [ADDRESS]:[PORT] <i class="conum" data-value="1"></i><b>(1)</b>
+service_account: [Specified ServiceAccount] <i class="conum" data-value="2"></i><b>(2)</b>
+    - namespace: [Namespace] <i class="conum" data-value="3"></i><b>(3)</b>
+    - name: [Name] <i class="conum" data-value="4"></i><b>(4)</b>
+token: [TOKEN] <i class="conum" data-value="5"></i><b>(5)</b>
+ssl: <i class="conum" data-value="6"></i><b>(6)</b>
+    - roots_file_path: ~/.config/tkn/results.crt <i class="conum" data-value="7"></i><b>(7)</b>
+    - server_name_override: [HOST] <i class="conum" data-value="8"></i><b>(8)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The address where the API is running. It should include the port number as well, for example: localhost:50051.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When specified, the CLI will first fetch a bearer token for the specified ServiceAccount and then attach it to Result API requests.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The ServiceAccount namespace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The ServiceAccount name.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The ServiceAccount token that the system uses to authenticate with the cluster. To get it for current user run the <code>oc whoami --show-token</code> command. This takes priority over service_account.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The SSL connection options.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Path to file where the certificate is available.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Optional: Set this option in case the server name is different from the address. For example, if you use oc port-forward to expose the API locally, you must set this option.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>address: results.dogfooding.tekton.dev:443
+token: abcd1234
+ssl:
+    roots_file_path: path/to/file
+    server_name_override: example.com
+service_account:
+    namespace: default
+    name: result-reader</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run any of the following commands based on your requirement:</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">To</th>
+<th class="tableblock halign-left valign-top">Run the following command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all the records in the default namespace</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>tkn results records list "default/results"</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all the results in the default namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tkn results list default</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all the records of <em>TaskRuns</em> with a particular Task name, for example, "hello"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tkn results records list "default/results/-" --filter "data_type == \"tekton.dev/v1beta1.TaskRun\" &amp;&amp; data.status.taskSpec.steps[0].name == \"hello\""</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all the failed <em>TaskRuns</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tkn results records list "default/results/-" --filter "data_type == \"tekton.dev/v1beta1.TaskRun\" &amp;&amp; data.status.conditions.all(c, c.type==\"Succeeded\" &amp;&amp; c.status==\"False\")"</code></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>4. Additional resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="index.html" class="xref page">Pipeline services</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>

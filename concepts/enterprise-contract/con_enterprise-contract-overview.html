@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Overview of HACBS enterprise contract :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/concepts/enterprise-contract/con_enterprise-contract-overview.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="stylesheet" href="../../_/css/main.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ROOT"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">ROOT</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getting-started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/build_service.html">Pipeline customization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/pipeline_visualization.html">Pipeline visualization</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../how-to-guides/index.html">How-to guides</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/delete_application.html">Deleting an application from UI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/proc_creating_static_environment.html">Creating a static environment</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../cli/index.html">CLI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_release_application.html">Releasing an application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_managed_services_onboarding.html">Managed services team onboarding</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/delete_application.html">Deleting an application from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_enabled_java_dependencies.html">Configuring Java builds with enabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_disabled_java_dependencies.html">Configuring Java builds with disabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/creating_a_custom_application_test_with_test_pipelines.html">Creating a custom application test with test pipelines</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../release-services/con_release-services-overview.html">Release Services</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="con_enterprise-contract-overview.html">Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../testing_applications/index.html">Testing Applications</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/sanity_tests.html">Sanity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/adding_new_tests.html">Add a New Test</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing_applications/configuring_tests.html">Configuring Tests</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pipelines/index.html">Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pipelines/persister.html">Persister component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pipelines/pipeline_concepts.html">Pipeline concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../environments/index.html">Environments</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service.html">Java build service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service-components.html">Java build service components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../glossary/index.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../contribute/index.html">Contribute to documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../raise-issue/index.html">Raise an issue</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../support/index.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ROOT</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">ROOT</a></li>
+    <li><a href="../index.html">Concepts</a></li>
+    <li><a href="con_enterprise-contract-overview.html">Enterprise Contract</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/gtrivedi/git/HACBS/stonesoup-documentation/modules/ROOT/pages/concepts/enterprise-contract/con_enterprise-contract-overview.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Overview of HACBS enterprise contract</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_how_hacbs_enterprise_contract_helps_you">1. How HACBS enterprise contract helps you</a></li>
+<li><a href="#_how_pipelines_and_hacbs_enterprise_contract_works">2. How <code>Pipelines</code> and HACBS enterprise contract works</a></li>
+<li><a href="#_additional_resources">3. Additional resources</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_how_hacbs_enterprise_contract_helps_you"><a class="anchor" href="#_how_hacbs_enterprise_contract_helps_you"></a>1. How HACBS enterprise contract helps you</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main goal of the enterprise contract (EC) is to prevent the release of SLSA non-compliant artifacts. Organizations can implement their policies by expressing them as criteria for valid artifacts within the EC. Developers then access the EC as an object inside the KCP workspace. As a developer, reference the EC to verify what must be true about your build and how to make your artifacts compliant with your organization&#8217;s needs and policies. The EC evaluates the policy definitions against the collected provenance data, ensuring that the build process complies with the enterprise policy. Some examples of the EC policy rules include the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify a set of Tekton Tasks were executed. For example, the EC can assert that a Tekton Task which performs anti-virus checks was successfully executed.</p>
+</li>
+<li>
+<p>Verify all used Tekton Tasks match an expected version and origin.</p>
+</li>
+<li>
+<p>Verify built artifacts have been properly signed by an expected signature key.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_pipelines_and_hacbs_enterprise_contract_works"><a class="anchor" href="#_how_pipelines_and_hacbs_enterprise_contract_works"></a>2. How <code>Pipelines</code> and HACBS enterprise contract works</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The EC establishes a valid set of <code>Tekton Tasks</code> and <code>Tekton Pipelines</code> based on the customer, enterprise, and security needs and standards. Given that a <code>Tekton Pipeline</code> is composed of various <code>Tekton Tasks</code>, the EC leverages <code>Tekton Chains</code> to capture the details of a <code>Tekton Pipeline</code> execution in a signed SLSA Provenance attestation. Users simply run a <code>Tekton Pipeline</code> to build artifacts, like a container image, while <code>Tekton Chains</code> automatically generates the corresponding signed SLSA Provenance attestation. When applied, the EC verifies that the SLSA provenance attestation conforms to the configured EC policy.</p>
+</div>
+<div class="paragraph">
+<p>When the artifact produced is a container image, the signed SLSA Provenance attestation is stored alongside the container image in the same repository. In addition to the attestation, the container image  is also signed by <code>Tekton Chains</code>. This signature is also stored in the same location. The EC is responsible for ensuring the image signature and the signed SLSA Provenance attestation exist and are accurate.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>3. Additional resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To learn more about HACBS EC, see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../ec-policies/index.html" class="xref page">Enterprise Contract</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To learn about other HACBS streams that help you with your containerized development needs, see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Application testing</p>
+</li>
+<li>
+<p>Release strategy</p>
+</li>
+<li>
+<p>Pipelines</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>

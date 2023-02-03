@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Release Policy :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/ec-policies/release_policy.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="stylesheet" href="../_/css/main.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ec-policies"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ec-policies" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Enterprise Contract Policies</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">About Enterprise Contract</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="release_policy.html">Release Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipeline_policy.html">Pipeline Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acceptable_bundles.html">Acceptable Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_bundles.html">Policy Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_configuration.html">Policy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="authoring.html">Policy Authoring</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="raw_data.html">Raw Data</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enterprise Contract Policies</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enterprise Contract Policies</a></li>
+    <li><a href="release_policy.html">Release Policy</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Release Policy</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#attestation_type_package">1. Attestation type</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_attestation_type_deny_unknown_att_type">1.1. Unknown attestation type found</a></li>
+<li><a href="#policy_release_attestation_type_deny_missing_pipelinerun_attestation">1.2. Missing pipelinerun attestation</a></li>
+</ul>
+</li>
+<li><a href="#authorization_package">2. Authorization</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_authorization_deny_disallowed_no_authorization">2.1. Authorization does not exist</a></li>
+<li><a href="#policy_release_authorization_deny_disallowed_commit_does_not_match">2.2. Authorized commit does not match</a></li>
+<li><a href="#policy_release_authorization_deny_disallowed_repo_url_does_not_match">2.3. Authorized repo url does not match</a></li>
+</ul>
+</li>
+<li><a href="#base_image_registries_package">3. Base image checks</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_base_image_registries_deny_disallowed_base_image">3.1. Restrict registry of base images</a></li>
+<li><a href="#policy_release_base_image_registries_deny_base_images_missing">3.2. Base images must be provided</a></li>
+<li><a href="#policy_release_base_image_registries_deny_missing_rule_data">3.3. Missing rule data</a></li>
+</ul>
+</li>
+<li><a href="#buildah_build_task_package">4. Buildah build task</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_buildah_build_task_deny_dockerfile_param_not_included">4.1. Dockerfile param not included</a></li>
+<li><a href="#policy_release_buildah_build_task_deny_dockerfile_param_external_source">4.2. Dockerfile param external source</a></li>
+</ul>
+</li>
+<li><a href="#hermetic_build_task_package">5. Hermetic build task</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_hermetic_build_task_deny_build_task_not_hermetic">5.1. hermetic_build_task</a></li>
+</ul>
+</li>
+<li><a href="#java_package">6. Java dependency checks</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_java_deny_java_foreign_dependencies">6.1. Prevent Java builds from depending on foreign dependencies</a></li>
+<li><a href="#policy_release_java_deny_missing_rule_data">6.2. Missing rule data</a></li>
+</ul>
+</li>
+<li><a href="#slsa_build_build_service_package">7. SLSA - Build - Build Service</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_slsa_build_build_service_deny_missing_builder_id">7.1. Builder ID exists</a></li>
+<li><a href="#policy_release_slsa_build_build_service_deny_unexpected_builder_id">7.2. Build service used</a></li>
+</ul>
+</li>
+<li><a href="#slsa_build_scripted_build_package">8. SLSA - Build - Scripted Build</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_slsa_build_scripted_build_deny_empty_build_task">8.1. Build task contains steps</a></li>
+<li><a href="#policy_release_slsa_build_scripted_build_deny_missing_build_task">8.2. Build task missing</a></li>
+<li><a href="#policy_release_slsa_build_scripted_build_deny_subject_build_task_mismatch">8.3. Mismatch subject</a></li>
+</ul>
+</li>
+<li><a href="#slsa_provenance_available_package">9. SLSA - Provenance - Available</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_slsa_provenance_available_deny_unexpected_predicate_type">9.1. Attestation predicate type</a></li>
+</ul>
+</li>
+<li><a href="#slsa_source_version_controlled_package">10. SLSA - Source - Version Controlled</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_slsa_source_version_controlled_deny_missing_materials">10.1. Material format</a></li>
+<li><a href="#policy_release_slsa_source_version_controlled_deny_material_non_git_uri">10.2. Material from a git repository</a></li>
+<li><a href="#policy_release_slsa_source_version_controlled_deny_material_without_git_commit">10.3. Material with git commit digest</a></li>
+</ul>
+</li>
+<li><a href="#step_image_registries_package">11. Step image registries</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_step_image_registries_deny_disallowed_task_step_image">11.1. Task steps ran on container images that are disallowed</a></li>
+<li><a href="#policy_release_step_image_registries_deny_missing_rule_data">11.2. Missing rule data</a></li>
+</ul>
+</li>
+<li><a href="#attestation_task_bundle_package">12. Task bundle checks</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_attestation_task_bundle_deny_disallowed_task_reference">12.1. Task bundle was not used or is not defined</a></li>
+<li><a href="#policy_release_attestation_task_bundle_deny_empty_task_bundle_reference">12.2. Task bundle reference is empty</a></li>
+<li><a href="#policy_release_attestation_task_bundle_warn_unpinned_task_bundle">12.3. Unpinned task bundle reference</a></li>
+<li><a href="#policy_release_attestation_task_bundle_warn_out_of_date_task_bundle">12.4. Task bundle is out of date</a></li>
+<li><a href="#policy_release_attestation_task_bundle_deny_unacceptable_task_bundle">12.5. Task bundle is not acceptable</a></li>
+<li><a href="#policy_release_attestation_task_bundle_deny_missing_required_data">12.6. Missing required data</a></li>
+</ul>
+</li>
+<li><a href="#tasks_package">13. Tasks</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_tasks_deny_tasks_missing">13.1. No tasks run</a></li>
+<li><a href="#policy_release_tasks_deny_missing_required_task">13.2. Missing required task</a></li>
+<li><a href="#policy_release_tasks_warn_missing_future_required_task">13.3. Missing future required task</a></li>
+<li><a href="#policy_release_tasks_deny_missing_required_data">13.4. Missing required tasks data</a></li>
+</ul>
+</li>
+<li><a href="#test_package">14. Test</a>
+<ul class="sectlevel2">
+<li><a href="#policy_release_test_deny_test_data_missing">14.1. No test data found</a></li>
+<li><a href="#policy_release_test_deny_test_results_missing">14.2. Test data is missing the results key</a></li>
+<li><a href="#policy_release_test_deny_test_result_unsupported">14.3. Unsupported result in test data</a></li>
+<li><a href="#policy_release_test_deny_test_result_failures">14.4. Test result is FAILURE or ERROR</a></li>
+<li><a href="#policy_release_test_warn_test_result_skipped">14.5. Some tests were skipped</a></li>
+<li><a href="#policy_release_test_warn_test_result_warning">14.6. Some tests returned a warning</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>These rules are applied to pipeline run attestations associated with container images built by HACBS</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="attestation_type_package"><a class="anchor" href="#attestation_type_package"></a>1. <a href="#attestation_type_package">Attestation type</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sanity checks related to the format of the image build&#8217;s attestation.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>attestation_type</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.attestation_type</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_type_deny_unknown_att_type"><a class="anchor" href="#policy_release_attestation_type_deny_unknown_att_type"></a>1.1. <a href="#policy_release_attestation_type_deny_unknown_att_type">Unknown attestation type found</a></h3>
+<div class="paragraph">
+<p>A sanity check to confirm the attestation found for the image has a known
+attestation type.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Unknown attestation type &#x27;%s&#x27;</code></p>
+</li>
+<li>
+<p>Code: <code>unknown_att_type</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_type.rego#L23" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_type_deny_missing_pipelinerun_attestation"><a class="anchor" href="#policy_release_attestation_type_deny_missing_pipelinerun_attestation"></a>1.2. <a href="#policy_release_attestation_type_deny_missing_pipelinerun_attestation">Missing pipelinerun attestation</a></h3>
+<div class="paragraph">
+<p>At least one PipelineRun attestation must be present.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Missing pipelinerun attestation</code></p>
+</li>
+<li>
+<p>Code: <code>missing_pipelinerun_attestation</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_type.rego#L38" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authorization_package"><a class="anchor" href="#authorization_package"></a>2. <a href="#authorization_package">Authorization</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This package contains rules to check that the image is signed-off
+for release. There are different ways of providing that sign-off
+authorization.</p>
+</div>
+<div class="paragraph">
+<p>TODO: Document the ways that release authorization can be provided.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>authorization</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.authorization</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_authorization_deny_disallowed_no_authorization"><a class="anchor" href="#policy_release_authorization_deny_disallowed_no_authorization"></a>2.1. <a href="#policy_release_authorization_deny_disallowed_no_authorization">Authorization does not exist</a></h3>
+<div class="paragraph">
+<p>Enterprise Contract verifies if the build was authorized</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>No authorization data found</code></p>
+</li>
+<li>
+<p>Code: <code>disallowed_no_authorization</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/authorization.rego#L25" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_authorization_deny_disallowed_commit_does_not_match"><a class="anchor" href="#policy_release_authorization_deny_disallowed_commit_does_not_match"></a>2.2. <a href="#policy_release_authorization_deny_disallowed_commit_does_not_match">Authorized commit does not match</a></h3>
+<div class="paragraph">
+<p>Enterprise Contract verifies if an authorized commit was used as the source of a build</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Commit %s does not match authorized commit %s</code></p>
+</li>
+<li>
+<p>Code: <code>disallowed_commit_does_not_match</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/authorization.rego#L37" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_authorization_deny_disallowed_repo_url_does_not_match"><a class="anchor" href="#policy_release_authorization_deny_disallowed_repo_url_does_not_match"></a>2.3. <a href="#policy_release_authorization_deny_disallowed_repo_url_does_not_match">Authorized repo url does not match</a></h3>
+<div class="paragraph">
+<p>Enterprise Contract verifies if an authorized repo url was used to build an image</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Repo url %s does not match authorized repo url %s</code></p>
+</li>
+<li>
+<p>Code: <code>disallowed_repo_url_does_not_match</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/authorization.rego#L51" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="base_image_registries_package"><a class="anchor" href="#base_image_registries_package"></a>3. <a href="#base_image_registries_package">Base image checks</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This package is responsible for verifying the base (parent) images
+reported in the attestation are acceptable.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>base_image_registries</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.base_image_registries</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_base_image_registries_deny_disallowed_base_image"><a class="anchor" href="#policy_release_base_image_registries_deny_disallowed_base_image"></a>3.1. <a href="#policy_release_base_image_registries_deny_disallowed_base_image">Restrict registry of base images</a></h3>
+<div class="paragraph">
+<p>The base images used when building a container image must come from a known set
+of trusted registries to reduce potential supply chain attacks. This policy
+defines trusted registries as registries that are fully maintained by Red Hat
+and only contain content produced by Red Hat.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Base image %q is from a disallowed registry</code></p>
+</li>
+<li>
+<p>Code: <code>disallowed_base_image</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/base_image_registries.rego#L27" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_base_image_registries_deny_base_images_missing"><a class="anchor" href="#policy_release_base_image_registries_deny_base_images_missing"></a>3.2. <a href="#policy_release_base_image_registries_deny_base_images_missing">Base images must be provided</a></h3>
+<div class="paragraph">
+<p>The attestation must provide the expected information about which base images
+were used during the build process.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Base images result is missing</code></p>
+</li>
+<li>
+<p>Code: <code>base_images_missing</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/base_image_registries.rego#L42" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_base_image_registries_deny_missing_rule_data"><a class="anchor" href="#policy_release_base_image_registries_deny_missing_rule_data"></a>3.3. <a href="#policy_release_base_image_registries_deny_missing_rule_data">Missing rule data</a></h3>
+<div class="paragraph">
+<p>The policy rules in this package require the allowed_registry_prefixes
+rule data to be provided.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Missing required allowed_registry_prefixes rule data</code></p>
+</li>
+<li>
+<p>Code: <code>missing_rule_data</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/base_image_registries.rego#L60" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="buildah_build_task_package"><a class="anchor" href="#buildah_build_task_package"></a>4. <a href="#buildah_build_task_package">Buildah build task</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This package is responsible for verifying the buildah build task</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>buildah_build_task</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.buildah_build_task</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_buildah_build_task_deny_dockerfile_param_not_included"><a class="anchor" href="#policy_release_buildah_build_task_deny_dockerfile_param_not_included"></a>4.1. <a href="#policy_release_buildah_build_task_deny_dockerfile_param_not_included">Dockerfile param not included</a></h3>
+<div class="paragraph">
+<p>This policy verifies that there is a dockerfile parameter</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>DOCKERFILE param is not included in the task</code></p>
+</li>
+<li>
+<p>Code: <code>dockerfile_param_not_included</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/buildah_build_task.rego#L22" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_buildah_build_task_deny_dockerfile_param_external_source"><a class="anchor" href="#policy_release_buildah_build_task_deny_dockerfile_param_external_source"></a>4.2. <a href="#policy_release_buildah_build_task_deny_dockerfile_param_external_source">Dockerfile param external source</a></h3>
+<div class="paragraph">
+<p>This policy verifies that the dockerfile is not an external source</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>DOCKERFILE param value (%s) is an external source</code></p>
+</li>
+<li>
+<p>Code: <code>dockerfile_param_external_source</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/buildah_build_task.rego#L36" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hermetic_build_task_package"><a class="anchor" href="#hermetic_build_task_package"></a>5. <a href="#hermetic_build_task_package">Hermetic build task</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This package verifies the build task in the attestation was invoked
+with the expected parameters to perform a hermetic build.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>hermetic_build_task</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.hermetic_build_task</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_hermetic_build_task_deny_build_task_not_hermetic"><a class="anchor" href="#policy_release_hermetic_build_task_deny_build_task_not_hermetic"></a>5.1. <a href="#policy_release_hermetic_build_task_deny_build_task_not_hermetic">hermetic_build_task</a></h3>
+<div class="paragraph">
+<p>This policy verifies the build task in the PipelineRun attestation
+was invoked with the proper parameters to make the build process
+hermetic.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Build task was not invoked with hermetic parameter</code></p>
+</li>
+<li>
+<p>Code: <code>build_task_not_hermetic</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/hermetic_build_task.rego#L25" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="java_package"><a class="anchor" href="#java_package"></a>6. <a href="#java_package">Java dependency checks</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This package contains a rule to confirm that all Java dependencies
+were rebuilt in house rather than imported directly from potentially
+untrusted respositories.
+The result must be reported by a Task that has been loaded from an
+acceptable Tekton Bundle.
+See <a href="#attestation_task_bundle_package">Task bundle checks</a>.
+If the result is missing or provided via a task loaded from unacceptable no
+issue is reported.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>java</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.java</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_java_deny_java_foreign_dependencies"><a class="anchor" href="#policy_release_java_deny_java_foreign_dependencies"></a>6.1. <a href="#policy_release_java_deny_java_foreign_dependencies">Prevent Java builds from depending on foreign dependencies</a></h3>
+<div class="paragraph">
+<p>The SBOM_JAVA_COMPONENTS_COUNT TaskResult finds dependencies that have
+originated from foreign repositories, i.e. ones that are not rebuilt or
+redhat.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Found Java dependencies from &#x27;%s&#x27;, expecting to find only from &#x27;%s&#x27;</code></p>
+</li>
+<li>
+<p>Code: <code>java_foreign_dependencies</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/java.rego#L31" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_java_deny_missing_rule_data"><a class="anchor" href="#policy_release_java_deny_missing_rule_data"></a>6.2. <a href="#policy_release_java_deny_missing_rule_data">Missing rule data</a></h3>
+<div class="paragraph">
+<p>The policy rules in this package require the allowed_java_component_sources
+rule data to be provided.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Missing required allowed_java_component_sources rule data</code></p>
+</li>
+<li>
+<p>Code: <code>missing_rule_data</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/java.rego#L46" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="slsa_build_build_service_package"><a class="anchor" href="#slsa_build_build_service_package"></a>7. <a href="#slsa_build_build_service_package">SLSA - Build - Build Service</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The SLSA requirement states the following:</p>
+</div>
+<div class="paragraph">
+<p>"All build steps ran using some build service, not on a
+developer’s workstation."</p>
+</div>
+<div class="paragraph">
+<p>This package verifies the requirement by asserting the image was
+built by Tekton Pipelines.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>slsa_build_build_service</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.slsa_build_build_service</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_build_build_service_deny_missing_builder_id"><a class="anchor" href="#policy_release_slsa_build_build_service_deny_missing_builder_id"></a>7.1. <a href="#policy_release_slsa_build_build_service_deny_missing_builder_id">Builder ID exists</a></h3>
+<div class="paragraph">
+<p>The attestation attribute predicate.builder.id is set.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Builder ID not set in attestation</code></p>
+</li>
+<li>
+<p>Code: <code>missing_builder_id</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_build_build_service.rego#L32" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_build_build_service_deny_unexpected_builder_id"><a class="anchor" href="#policy_release_slsa_build_build_service_deny_unexpected_builder_id"></a>7.2. <a href="#policy_release_slsa_build_build_service_deny_unexpected_builder_id">Build service used</a></h3>
+<div class="paragraph">
+<p>The attestation attribute predicate.builder.id is set to one
+of the values in data.rule_data.allowed_builder_ids, e.g.
+"https://tekton.dev/chains/v2".</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Builder ID %q is unexpected</code></p>
+</li>
+<li>
+<p>Code: <code>unexpected_builder_id</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_build_build_service.rego#L51" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="slsa_build_scripted_build_package"><a class="anchor" href="#slsa_build_scripted_build_package"></a>8. <a href="#slsa_build_scripted_build_package">SLSA - Build - Scripted Build</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The SLSA requirement states the following:</p>
+</div>
+<div class="paragraph">
+<p>"All build steps were fully defined in some sort of “build script”.
+The only manual command, if any, was to invoke the build script."</p>
+</div>
+<div class="paragraph">
+<p>This package verifies the requirement by asserting the image was
+built by Tekton Pipelines.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>slsa_build_scripted_build</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.slsa_build_scripted_build</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_build_scripted_build_deny_empty_build_task"><a class="anchor" href="#policy_release_slsa_build_scripted_build_deny_empty_build_task"></a>8.1. <a href="#policy_release_slsa_build_scripted_build_deny_empty_build_task">Build task contains steps</a></h3>
+<div class="paragraph">
+<p>The attestation attribute predicate.buildConfig.tasks.steps is not
+empty of the pipeline task responsible for building the image.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Build task %q does not contain any steps</code></p>
+</li>
+<li>
+<p>Code: <code>empty_build_task</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_build_scripted_build.rego#L36" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_build_scripted_build_deny_missing_build_task"><a class="anchor" href="#policy_release_slsa_build_scripted_build_deny_missing_build_task"></a>8.2. <a href="#policy_release_slsa_build_scripted_build_deny_missing_build_task">Build task missing</a></h3>
+<div class="paragraph">
+<p>The attestations must contain a build task with the expected
+IMAGE_DIGEST and IMAGE_URL results.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Build task not found</code></p>
+</li>
+<li>
+<p>Code: <code>missing_build_task</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_build_scripted_build.rego#L56" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_build_scripted_build_deny_subject_build_task_mismatch"><a class="anchor" href="#policy_release_slsa_build_scripted_build_deny_subject_build_task_mismatch"></a>8.3. <a href="#policy_release_slsa_build_scripted_build_deny_subject_build_task_mismatch">Mismatch subject</a></h3>
+<div class="paragraph">
+<p>The subject of the attestations must match the IMAGE_DIGEST and
+IMAGE_URL values from the build task.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>The attestation subject, %q, does not match the build task image, %q</code></p>
+</li>
+<li>
+<p>Code: <code>subject_build_task_mismatch</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_build_scripted_build.rego#L75" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="slsa_provenance_available_package"><a class="anchor" href="#slsa_provenance_available_package"></a>9. <a href="#slsa_provenance_available_package">SLSA - Provenance - Available</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The SLSA Provenance Available requirement states the following:</p>
+</div>
+<div class="paragraph">
+<p>"The provenance is available to the consumer in a format that the consumer accepts. The
+format SHOULD be in-toto SLSA Provenance, but another format MAY be used if both producer
+and consumer agree and it meets all the other requirements."</p>
+</div>
+<div class="paragraph">
+<p>This package only accepts the in-toto SLSA Provenance format.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>slsa_provenance_available</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.slsa_provenance_available</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_provenance_available_deny_unexpected_predicate_type"><a class="anchor" href="#policy_release_slsa_provenance_available_deny_unexpected_predicate_type"></a>9.1. <a href="#policy_release_slsa_provenance_available_deny_unexpected_predicate_type">Attestation predicate type</a></h3>
+<div class="paragraph">
+<p>The predicateType field of the attestation must indicate the in-toto SLSA Provenance format
+was used to attest the PipelineRun.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Attestation predicate type %q is not an expected type (%s)</code></p>
+</li>
+<li>
+<p>Code: <code>unexpected_predicate_type</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_provenance_available.rego#L33" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="slsa_source_version_controlled_package"><a class="anchor" href="#slsa_source_version_controlled_package"></a>10. <a href="#slsa_source_version_controlled_package">SLSA - Source - Version Controlled</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The SLSA requirement states the following:</p>
+</div>
+<div class="paragraph">
+<p>"Every change to the source is tracked in a version control system
+that meets the following requirements:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[Change history] There exists a record of the history of changes
+that went into the revision. Each change must contain: the
+identities of the uploader and reviewers (if any), timestamps of
+the reviews (if any) and submission, the change
+description/justification, the content of the change, and the
+parent revisions.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[Immutable reference] There exists a way to indefinitely reference
+this particular, immutable revision. In git, this is the {repo URL +
+branch/tag/ref + commit ID}.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Most popular version control system meet this requirement, such as git,
+Mercurial, Subversion, or Perforce."</p>
+</div>
+<div class="paragraph">
+<p>This package verifies the requirement by asserting the image was built
+from a git repository.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>slsa_source_version_controlled</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.slsa_source_version_controlled</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_source_version_controlled_deny_missing_materials"><a class="anchor" href="#policy_release_slsa_source_version_controlled_deny_missing_materials"></a>10.1. <a href="#policy_release_slsa_source_version_controlled_deny_missing_materials">Material format</a></h3>
+<div class="paragraph">
+<p>At least one entry in the predicate.materials array of the attestation contains
+the expected attributes: uri and digest.sha1.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>No materials match expected format</code></p>
+</li>
+<li>
+<p>Code: <code>missing_materials</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_source_version_controlled.rego#L47" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_source_version_controlled_deny_material_non_git_uri"><a class="anchor" href="#policy_release_slsa_source_version_controlled_deny_material_non_git_uri"></a>10.2. <a href="#policy_release_slsa_source_version_controlled_deny_material_non_git_uri">Material from a git repository</a></h3>
+<div class="paragraph">
+<p>Each entry in the predicate.materials array of the attestation uses
+a git URI.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Material URI %q is not a git URI</code></p>
+</li>
+<li>
+<p>Code: <code>material_non_git_uri</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_source_version_controlled.rego#L65" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_slsa_source_version_controlled_deny_material_without_git_commit"><a class="anchor" href="#policy_release_slsa_source_version_controlled_deny_material_without_git_commit"></a>10.3. <a href="#policy_release_slsa_source_version_controlled_deny_material_without_git_commit">Material with git commit digest</a></h3>
+<div class="paragraph">
+<p>Each entry in the predicate.materials array of the attestation includes
+a SHA1 digest which corresponds to a git commit.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Material digest %q is not a git commit</code></p>
+</li>
+<li>
+<p>Code: <code>material_without_git_commit</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/slsa_source_version_controlled.rego#L83" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="step_image_registries_package"><a class="anchor" href="#step_image_registries_package"></a>11. <a href="#step_image_registries_package">Step image registries</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This package contains a rule to ensure that each task in the image&#8217;s
+build pipeline ran using a container image from a known and presumably
+trusted source.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>step_image_registries</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.step_image_registries</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_step_image_registries_deny_disallowed_task_step_image"><a class="anchor" href="#policy_release_step_image_registries_deny_disallowed_task_step_image"></a>11.1. <a href="#policy_release_step_image_registries_deny_disallowed_task_step_image">Task steps ran on container images that are disallowed</a></h3>
+<div class="paragraph">
+<p>Enterprise Contract has a list of allowed registry prefixes. Each step in each
+each TaskRun must run on a container image with a url that matches one of the
+prefixes in the list.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Step %d in task &#x27;%s&#x27; has disallowed image ref &#x27;%s&#x27;</code></p>
+</li>
+<li>
+<p>Code: <code>disallowed_task_step_image</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/step_image_registries.rego#L26" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_step_image_registries_deny_missing_rule_data"><a class="anchor" href="#policy_release_step_image_registries_deny_missing_rule_data"></a>11.2. <a href="#policy_release_step_image_registries_deny_missing_rule_data">Missing rule data</a></h3>
+<div class="paragraph">
+<p>The policy rules in this package require the allowed_step_image_registry_prefixes
+rule data to be provided.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Missing required allowed_step_image_registry_prefixes rule data</code></p>
+</li>
+<li>
+<p>Code: <code>missing_rule_data</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/step_image_registries.rego#L43" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="attestation_task_bundle_package"><a class="anchor" href="#attestation_task_bundle_package"></a>12. <a href="#attestation_task_bundle_package">Task bundle checks</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To be able to reproduce and audit builds accurately it&#8217;s important
+to know exactly what happened during the build. To do this
+Enterprise Contract requires that all tasks are defined in a set of
+known and trusted task bundles. This package includes rules to
+confirm that the tasks that built the image were defined in task
+bundles, and that the task bundles used are from the list of known
+and trusted bundles.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>attestation_task_bundle</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.attestation_task_bundle</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_task_bundle_deny_disallowed_task_reference"><a class="anchor" href="#policy_release_attestation_task_bundle_deny_disallowed_task_reference"></a>12.1. <a href="#policy_release_attestation_task_bundle_deny_disallowed_task_reference">Task bundle was not used or is not defined</a></h3>
+<div class="paragraph">
+<p>Check for existence of a task bundle. Enforcing this rule will
+fail the contract if the task is not called from a bundle.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Pipeline task &#x27;%s&#x27; does not contain a bundle reference</code></p>
+</li>
+<li>
+<p>Code: <code>disallowed_task_reference</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_task_bundle.rego#L27" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_task_bundle_deny_empty_task_bundle_reference"><a class="anchor" href="#policy_release_attestation_task_bundle_deny_empty_task_bundle_reference"></a>12.2. <a href="#policy_release_attestation_task_bundle_deny_empty_task_bundle_reference">Task bundle reference is empty</a></h3>
+<div class="paragraph">
+<p>Check for a valid task bundle reference being used.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Pipeline task &#x27;%s&#x27; uses an empty bundle image reference</code></p>
+</li>
+<li>
+<p>Code: <code>empty_task_bundle_reference</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_task_bundle.rego#L40" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_task_bundle_warn_unpinned_task_bundle"><a class="anchor" href="#policy_release_attestation_task_bundle_warn_unpinned_task_bundle"></a>12.3. <a href="#policy_release_attestation_task_bundle_warn_unpinned_task_bundle">Unpinned task bundle reference</a></h3>
+<div class="paragraph">
+<p>Check if the Tekton Bundle used for the Tasks in the Pipeline definition
+is pinned to a digest.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator warning">WARNING</span></p>
+</li>
+<li>
+<p>Warning message: <code>Pipeline task &#x27;%s&#x27; uses an unpinned task bundle reference &#x27;%s&#x27;</code></p>
+</li>
+<li>
+<p>Code: <code>unpinned_task_bundle</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_task_bundle.rego#L54" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_task_bundle_warn_out_of_date_task_bundle"><a class="anchor" href="#policy_release_attestation_task_bundle_warn_out_of_date_task_bundle"></a>12.4. <a href="#policy_release_attestation_task_bundle_warn_out_of_date_task_bundle">Task bundle is out of date</a></h3>
+<div class="paragraph">
+<p>Check if the Tekton Bundle used for the Tasks in the attestation
+is the most recent acceptable one. See the list of acceptable
+task bundles at <a href="acceptable_bundles.html#_task_bundles" class="xref page">Acceptable Bundles</a> or look at
+<a href="_attachments/acceptable_tekton_bundles.yml" class="xref attachment">data/acceptable_tekton_bundles.yml</a>
+in this git repository. The meaning of an acceptable bundle is explained in
+<a href="acceptable_bundles.html#_task_bundles" class="xref page">Acceptable Bundles</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator warning">WARNING</span></p>
+</li>
+<li>
+<p>Warning message: <code>Pipeline task &#x27;%s&#x27; uses an out of date task bundle &#x27;%s&#x27;</code></p>
+</li>
+<li>
+<p>Code: <code>out_of_date_task_bundle</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_task_bundle.rego#L72" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_task_bundle_deny_unacceptable_task_bundle"><a class="anchor" href="#policy_release_attestation_task_bundle_deny_unacceptable_task_bundle"></a>12.5. <a href="#policy_release_attestation_task_bundle_deny_unacceptable_task_bundle">Task bundle is not acceptable</a></h3>
+<div class="paragraph">
+<p>Check if the Tekton Bundle used for the Tasks in the attestation
+are acceptable given the tracked effective_on date. See the list of acceptable
+task bundles at <a href="acceptable_bundles.html#_task_bundles" class="xref page">Acceptable Bundles</a> or look at
+<a href="_attachments/acceptable_tekton_bundles.yml" class="xref attachment">data/acceptable_tekton_bundles.yml</a>
+in this git repository. The meaning of an acceptable bundle is explained in
+<a href="acceptable_bundles.html#_task_bundles" class="xref page">Acceptable Bundles</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Pipeline task &#x27;%s&#x27; uses an unacceptable task bundle &#x27;%s&#x27;</code></p>
+</li>
+<li>
+<p>Code: <code>unacceptable_task_bundle</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_task_bundle.rego#L90" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_attestation_task_bundle_deny_missing_required_data"><a class="anchor" href="#policy_release_attestation_task_bundle_deny_missing_required_data"></a>12.6. <a href="#policy_release_attestation_task_bundle_deny_missing_required_data">Missing required data</a></h3>
+<div class="paragraph">
+<p>The policy rules in this package require the task-bundles data to be provided.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Missing required task-bundles data</code></p>
+</li>
+<li>
+<p>Code: <code>missing_required_data</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/attestation_task_bundle.rego#L102" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tasks_package"><a class="anchor" href="#tasks_package"></a>13. <a href="#tasks_package">Tasks</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Enterprise Contract expects that a set of tasks were included
+in the pipeline build for each image to be released.
+This package includes a set of rules to verify that the expected
+tasks ran in the pipeline when the image was built.
+Required tasks are listed by the names given to them within the Tekton
+Bundle image. Optionally invocation parameter of a Task can be also
+mandated by including the name and the value in square brackets following
+the name of the task. For example: <code>name[PARAM=val]</code>. Only single parameter
+is supported, to assert multiple parameters repeat the required task
+definition for each parameter seperately.
+The Tasks must be loaded from an acceptable Tekton Bundle.
+See <a href="#attestation_task_bundle_package">Task bundle checks</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>tasks</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.tasks</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_tasks_deny_tasks_missing"><a class="anchor" href="#policy_release_tasks_deny_tasks_missing"></a>13.1. <a href="#policy_release_tasks_deny_tasks_missing">No tasks run</a></h3>
+<div class="paragraph">
+<p>This policy enforces that at least one Task is present in the PipelineRun
+attestation.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>No tasks found in PipelineRun attestation</code></p>
+</li>
+<li>
+<p>Code: <code>tasks_missing</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/tasks.rego#L34" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_tasks_deny_missing_required_task"><a class="anchor" href="#policy_release_tasks_deny_missing_required_task"></a>13.2. <a href="#policy_release_tasks_deny_missing_required_task">Missing required task</a></h3>
+<div class="paragraph">
+<p>This policy enforces that the required set of tasks are included
+in the PipelineRun attestation.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Required task %q is missing</code></p>
+</li>
+<li>
+<p>Code: <code>missing_required_task</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/tasks.rego#L48" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_tasks_warn_missing_future_required_task"><a class="anchor" href="#policy_release_tasks_warn_missing_future_required_task"></a>13.3. <a href="#policy_release_tasks_warn_missing_future_required_task">Missing future required task</a></h3>
+<div class="paragraph">
+<p>This policy warns when a task that will be required in the future
+was not included in the PipelineRun attestation.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator warning">WARNING</span></p>
+</li>
+<li>
+<p>Warning message: <code>Task %q is missing and will be required in the future</code></p>
+</li>
+<li>
+<p>Code: <code>missing_future_required_task</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/tasks.rego#L64" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_tasks_deny_missing_required_data"><a class="anchor" href="#policy_release_tasks_deny_missing_required_data"></a>13.4. <a href="#policy_release_tasks_deny_missing_required_data">Missing required tasks data</a></h3>
+<div class="paragraph">
+<p>The policy rules in this package require the required-tasks data to be provided.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Missing required task-bundles data</code></p>
+</li>
+<li>
+<p>Code: <code>missing_required_data</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/tasks.rego#L80" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="test_package"><a class="anchor" href="#test_package"></a>14. <a href="#test_package">Test</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Enterprise Contract requires that each build was subjected
+to a set of tests and that those tests all passed. This package
+includes a set of rules to verify that.</p>
+</div>
+<div class="paragraph">
+<p>The rest result data must be reported by a Tekton Task that has been loaded
+from an acceptable Tekton Bundle.
+See <a href="#attestation_task_bundle_package">Task bundle checks</a>.</p>
+</div>
+<div class="paragraph">
+<p>TODO: Document how you can skip the requirement for individual
+tests if needed using the <code>non_blocking_rule</code> configuration.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package name: <code>test</code></p>
+</li>
+<li>
+<p>Package full path: <code>policy.release.test</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="policy_release_test_deny_test_data_missing"><a class="anchor" href="#policy_release_test_deny_test_data_missing"></a>14.1. <a href="#policy_release_test_deny_test_data_missing">No test data found</a></h3>
+<div class="paragraph">
+<p>None of the tasks in the pipeline included a HACBS_TEST_OUTPUT
+task result, which is where Enterprise Contract expects to find
+test result data.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>No test data found</code></p>
+</li>
+<li>
+<p>Code: <code>test_data_missing</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/test.rego#L30" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_test_deny_test_results_missing"><a class="anchor" href="#policy_release_test_deny_test_results_missing"></a>14.2. <a href="#policy_release_test_deny_test_results_missing">Test data is missing the results key</a></h3>
+<div class="paragraph">
+<p>Each test result is expected to have a 'results' key. In at least
+one of the HACBS_TEST_OUTPUT task results this key was not present.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Found tests without results</code></p>
+</li>
+<li>
+<p>Code: <code>test_results_missing</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/test.rego#L47" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_test_deny_test_result_unsupported"><a class="anchor" href="#policy_release_test_deny_test_result_unsupported"></a>14.3. <a href="#policy_release_test_deny_test_result_unsupported">Unsupported result in test data</a></h3>
+<div class="paragraph">
+<p>This policy expects a set of known/supported results in the test data
+It is a failure if we encounter a result that is not supported.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>Test &#x27;%s&#x27; has unsupported result &#x27;%s&#x27;</code></p>
+</li>
+<li>
+<p>Code: <code>test_result_unsupported</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/test.rego#L62" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_test_deny_test_result_failures"><a class="anchor" href="#policy_release_test_deny_test_result_failures"></a>14.4. <a href="#policy_release_test_deny_test_result_failures">Test result is FAILURE or ERROR</a></h3>
+<div class="paragraph">
+<p>Enterprise Contract requires that all the tests in the test results
+have a successful result. A successful result is one that isn&#8217;t a
+"FAILURE" or "ERROR". This will fail if any of the tests failed and
+the failure message will list the names of the failing tests.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator failure">FAILURE</span></p>
+</li>
+<li>
+<p>Failure message: <code>The following tests did not complete successfully: %s</code></p>
+</li>
+<li>
+<p>Code: <code>test_result_failures</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/test.rego#L86" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_test_warn_test_result_skipped"><a class="anchor" href="#policy_release_test_warn_test_result_skipped"></a>14.5. <a href="#policy_release_test_warn_test_result_skipped">Some tests were skipped</a></h3>
+<div class="paragraph">
+<p>Collects all tests that have their result set to "SKIPPED".</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator warning">WARNING</span></p>
+</li>
+<li>
+<p>Warning message: <code>The following tests were skipped: %s</code></p>
+</li>
+<li>
+<p>Code: <code>test_result_skipped</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/test.rego#L111" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="policy_release_test_warn_test_result_warning"><a class="anchor" href="#policy_release_test_warn_test_result_warning"></a>14.6. <a href="#policy_release_test_warn_test_result_warning">Some tests returned a warning</a></h3>
+<div class="paragraph">
+<p>Collects all tests that have their result set to "WARNING".</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rule type: <span class="rule-type-indicator warning">WARNING</span></p>
+</li>
+<li>
+<p>Warning message: <code>The following tests returned a warning: %s</code></p>
+</li>
+<li>
+<p>Code: <code>test_result_warning</code></p>
+</li>
+<li>
+<p><a href="https://github.com/hacbs-contract/ec-policies/blob/main/policy/release/test.rego#L132" target="_blank" rel="noopener">Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

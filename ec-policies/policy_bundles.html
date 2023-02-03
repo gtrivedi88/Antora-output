@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Policy Bundles :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/ec-policies/policy_bundles.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="stylesheet" href="../_/css/main.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ec-policies"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ec-policies" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Enterprise Contract Policies</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">About Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_policy.html">Release Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipeline_policy.html">Pipeline Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acceptable_bundles.html">Acceptable Bundles</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="policy_bundles.html">Policy Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_configuration.html">Policy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="authoring.html">Policy Authoring</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="raw_data.html">Raw Data</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enterprise Contract Policies</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enterprise Contract Policies</a></li>
+    <li><a href="policy_bundles.html">Policy Bundles</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/hacbs-contract/ec-policies/edit/main/antora/docs/modules/ROOT/pages/policy_bundles.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Policy Bundles</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_location">1. Location</a></li>
+<li><a href="#_artifact_hub_entries">2. Artifact Hub entries</a></li>
+<li><a href="#_example_usage">3. Example usage</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The policies and the data used by the policies are available as OCI artifacts
+compatible with the <code>conftest pull</code> command.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_location"><a class="anchor" href="#_location"></a>1. Location</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The latest versions of the bundles can be found in the following repos:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://quay.io/repository/hacbs-contract/ec-release-policy?tab=tags"><code>quay.io/hacbs-contract/ec-release-policy</code></a></dt>
+<dd>
+<p>Used for validating attestations created by Tekton Chains. Contains the
+contents of <a href="https://github.com/hacbs-contract/ec-policies/tree/main/policy/release"><code>policy/release</code></a>
+and <a href="https://github.com/hacbs-contract/ec-policies/tree/main/policy/lib"><code>policy/lib</code></a>
+in this repo.</p>
+</dd>
+<dt class="hdlist1"><a href="https://quay.io/repository/hacbs-contract/ec-pipeline-policy?tab=tags"><code>quay.io/hacbs-contract/ec-pipeline-policy</code></a></dt>
+<dd>
+<p>Used for validating Tekton Pipeline definitions. Contains the contents of
+<a href="https://github.com/hacbs-contract/ec-policies/tree/main/policy/pipeline"><code>policy/pipeline</code></a>
+and <a href="https://github.com/hacbs-contract/ec-policies/tree/main/policy/lib"><code>policy/lib</code></a>.</p>
+</dd>
+<dt class="hdlist1"><a href="https://quay.io/repository/hacbs-contract/ec-policy-data?tab=tags"><code>quay.io/hacbs-contract/ec-policy-data</code></a></dt>
+<dd>
+<p>Contains the contents of <a href="https://github.com/hacbs-contract/ec-policies/tree/main/data"><code>data</code></a> which is needed by both the policy bundles listed above.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_artifact_hub_entries"><a class="anchor" href="#_artifact_hub_entries"></a>2. Artifact Hub entries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The bundles mentioned above are also listed in <a href="https://artifacthub.io/packages/search?org=stonesoup-enterprise-contract">Artifact Hub</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_usage"><a class="anchor" href="#_example_usage"></a>3. Example usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The bundles are designed to be used with the <a href="https://hacbs-contract.github.io/ec-cli/main/reference.html">ec-cli</a>, but you
+can also use them with conftest directly. The input should include a top level key called <code>attestations</code> which contains a list of
+attestations for the image being validated. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cosign download attestation quay.io/redhat-appstudio/ec-golden-image:latest | jq --slurp '{"attestations":[.[].payload|@base64d|fromjson]}' &gt; input.json
+conftest pull -p . quay.io/hacbs-contract/ec-release-policy quay.io/hacbs-contract/ec-policy-data
+conftest test input.json -d data -p policy --all-namespaces -o json | yq -P</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

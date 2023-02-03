@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ec fetch commit :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/ec-cli/main/ec_fetch_commit.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="stylesheet" href="../../_/css/main.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ec-cli"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ec-cli" data-version="main">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Enterprise Contract CLI</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec.html">ec</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_create-pr.html">ec create-pr</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_fetch.html">ec fetch</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="ec_fetch_commit.html">ec fetch commit</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_fetch_k8s-resource.html">ec fetch k8s-resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_fetch_policy.html">ec fetch policy</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_replace.html">ec replace</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_track.html">ec track</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_track_bundle.html">ec track bundle</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_validate.html">ec validate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_validate_image.html">ec validate image</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_validate_pipeline.html">ec validate pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_version.html">ec version</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="verify-enterprise-contract.html">verify-enterprise-contract</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enterprise Contract CLI</span>
+    <span class="version">main</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enterprise Contract CLI</a></li>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="reference.html">Reference</a></li>
+    <li><a href="ec_fetch_commit.html">ec fetch commit</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">ec fetch commit</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_synopsis">1. Synopsis</a></li>
+<li><a href="#_examples">2. Examples</a></li>
+<li><a href="#_options">3. Options</a></li>
+<li><a href="#_options_inherited_from_parent_commands">4. Options inherited from parent commands</a></li>
+<li><a href="#_see_also">5. See also</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Fetch authorizations from a git repository</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>1. Synopsis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Fetch authorizations from a git repository</p>
+</div>
+<div class="paragraph">
+<p>An authorization, within the context of this command, is loosely
+defined as the person who appears in the &quot;Signed-off-by:&quot; line
+in the git commit message.</p>
+</div>
+<div class="paragraph">
+<p>This command also verifies the provided images have been attested
+with the provided public key.</p>
+</div>
+<div class="paragraph">
+<p>The git commit and git repository are extracted from the field
+&quot;.predicate.materials&quot; of the image attestation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ec fetch commit [flags]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>2. Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Process git commit from a single image:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec fetch commit --image-ref &lt;image url&gt; --public-key &lt;path/to/public/key&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Process git commit from an ApplicationSnapshot Spec file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec fetch commit --file-path &lt;path/to/ApplicationSnapshot/file&gt; --public-key &lt;path/to/public/key&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Process git commit from an inline ApplicationSnapshot Spec:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec fetch commit --json-input '{"components":[{"containerImage":"&lt;image url&gt;"}]}' --public-key &lt;path/to/public/key&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use public key from a kubernetes secret:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec fetch commit --image-ref &lt;image url&gt; --public-key k8s://&lt;namespace&gt;/&lt;secret-name&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options"><a class="anchor" href="#_options"></a>3. Options</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--f,  --file-path</dt>
+<dd>
+<p>path to ApplicationSnapshot Spec JSON file</p>
+</dd>
+<dt class="hdlist1">--h,  --help</dt>
+<dd>
+<p>help for commit (Default: false)</p>
+</dd>
+<dt class="hdlist1">--image-ref</dt>
+<dd>
+<p>OCI reference to the attested image</p>
+</dd>
+<dt class="hdlist1">--j,  --json-input</dt>
+<dd>
+<p>JSON representation of an ApplicationSnapshot Spec</p>
+</dd>
+<dt class="hdlist1">--public-key</dt>
+<dd>
+<p>path to the public key associated with the image attestation(s)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options_inherited_from_parent_commands"><a class="anchor" href="#_options_inherited_from_parent_commands"></a>4. Options inherited from parent commands</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--debug</dt>
+<dd>
+<p>same as verbose but also show function names and line numbers
+(Default: false)</p>
+</dd>
+<dt class="hdlist1">--kubeconfig</dt>
+<dd>
+<p>path to the Kubernetes config file to use</p>
+</dd>
+<dt class="hdlist1">--quiet</dt>
+<dd>
+<p>less verbose output (Default: false)</p>
+</dd>
+<dt class="hdlist1">--verbose</dt>
+<dd>
+<p>more verbose output (Default: false)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also"><a class="anchor" href="#_see_also"></a>5. See also</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ec_fetch.html" class="xref page">ec fetch</a> - Fetch data for policy evaluation</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>

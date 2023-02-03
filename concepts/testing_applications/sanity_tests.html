@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sanity Tests :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/concepts/testing_applications/sanity_tests.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="stylesheet" href="../../_/css/main.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ROOT"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">ROOT</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../getting-started/index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/build_service.html">Pipeline customization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/pipeline_visualization.html">Pipeline visualization</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../how-to-guides/index.html">How-to guides</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/delete_application.html">Deleting an application from UI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../how-to-guides/proc_creating_static_environment.html">Creating a static environment</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../cli/index.html">CLI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_release_application.html">Releasing an application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_managed_services_onboarding.html">Managed services team onboarding</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/delete_application.html">Deleting an application from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_enabled_java_dependencies.html">Configuring Java builds with enabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/proc_disabled_java_dependencies.html">Configuring Java builds with disabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../cli/creating_a_custom_application_test_with_test_pipelines.html">Creating a custom application test with test pipelines</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../index.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../release-services/con_release-services-overview.html">Release Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../enterprise-contract/con_enterprise-contract-overview.html">Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Testing Applications</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="sanity_tests.html">Sanity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="adding_new_tests.html">Add a New Test</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="configuring_tests.html">Configuring Tests</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../pipelines/index.html">Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pipelines/persister.html">Persister component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pipelines/pipeline_concepts.html">Pipeline concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../environments/index.html">Environments</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service.html">Java build service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../java-build-service/java-build-service-components.html">Java build service components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../glossary/index.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../contribute/index.html">Contribute to documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../raise-issue/index.html">Raise an issue</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../support/index.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ROOT</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">ROOT</a></li>
+    <li><a href="../index.html">Concepts</a></li>
+    <li><a href="index.html">Testing Applications</a></li>
+    <li><a href="sanity_tests.html">Sanity Tests</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/gtrivedi/git/HACBS/stonesoup-documentation/modules/ROOT/pages/concepts/testing_applications/sanity_tests.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Sanity Tests</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_scope">1. Scope</a></li>
+<li><a href="#_sanity_tests">2. Sanity Tests</a>
+<ul class="sectlevel2">
+<li><a href="#_label_checks">2.1. Label Checks</a></li>
+<li><a href="#_deprecated_image_checks">2.2. Deprecated Image Checks</a></li>
+<li><a href="#_unsigned_rpm_check">2.3. Unsigned RPM Check</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_scope"><a class="anchor" href="#_scope"></a>1. Scope</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document covers the sanity tests contained in HACBS that are executed as part of the HACBS component build pipeline. The sanity tests for HACBS automatically test all application images to ensure they are up to date, correctly formatted, and protect them from security vulnerabilities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sanity_tests"><a class="anchor" href="#_sanity_tests"></a>2. Sanity Tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The HACBS component build pipeline supports several types of tests, including sanity tests. The sanity tests used in HACBS are executed in the form of <a href="https://tekton.dev/docs/pipelines/tasks/#overview">Tekton tasks</a>. The utility used for validating container information is <a href="https://www.conftest.dev/">conftest</a>. Currently implemented sanity tests are listed below. Only sanity tests which are currently implemented are listed in this section.</p>
+</div>
+<div class="sect2">
+<h3 id="_label_checks"><a class="anchor" href="#_label_checks"></a>2.1. Label Checks</h3>
+<div class="sect3">
+<h4 id="_required_label_checks"><a class="anchor" href="#_required_label_checks"></a>2.1.1. Required Label Checks</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Test Name</th>
+<th class="tableblock halign-left valign-top">Label Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Failure Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">com_redhat_component_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">com.redhat.component</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bugzilla component name where bugs against this container should be reported by users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Required 'com.redhat.component' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the image or container</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'name' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of the image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'version' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Detailed description of the image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'description' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io_k8s_description_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io.k8s.description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of the container in Kubernetes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'io.k8s.description' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vcs_ref_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vcs-ref</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A reference within the version control used by the container source. Generally one of git, hg, svn, bzr, cvs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'vcs-ref' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">architecture_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">architecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Architecture the software in the image should target. Default is Fedora OS architecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'architecture' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">com_redhat_build_host_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">com.redhat.build-host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The build host used to create an image for internal use and auditability, similar to the use in RPM</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vendor_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vendor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the vendor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'vendor' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">release_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">release</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release number for this version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'release' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A URL where the user can find more information about the image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'url' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build_date_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build-date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date/Time image was built as RFC 3339 date-time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'build-date' label is missing!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">distribution_scope_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">distribution_scope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scope of the intended distribution of the image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The required 'distribution-scope' label is missing!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_deprecated_label_checks"><a class="anchor" href="#_deprecated_label_checks"></a>2.1.2. Deprecated Label Checks</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Test Name</th>
+<th class="tableblock halign-left valign-top">Label Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Failure Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">install_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">INSTALL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'INSTALL' label is deprecated, replace with 'install'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The INSTALL label is deprecated!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">architecture_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Architecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'Architecture' label is deprecated, replace with 'architecture'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Architecture label is deprecated!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bzcomponent_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BZComponent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the BZComponent label is deprecated, prelace with 'com.redhat.component'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The BZComponent label is deprecated!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'Name' label is deprecated, replace with 'name'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Name label is deprecated!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">release_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'Release' label is deprecated, replace with 'release'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Release label is deprecated!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uninstall_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNINSTALL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'UNINSTALL' label is deprecated, replace with 'uninstall'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The UNINSTALL label is deprecated!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'Version' label is deprecated, replace with 'version'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Version label is deprecated!</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">run_label_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RUN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'RUN' label is deprecated, replace with 'run'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The RUN label is deprecated!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_inherited_label_checks"><a class="anchor" href="#_inherited_label_checks"></a>2.1.3. Inherited Label Checks</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Test Name</th>
+<th class="tableblock halign-left valign-top">Label Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Failure Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">summary_label_inherited</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the label is inherited from the base image but not specified in the Dockerfile, it will contain an incorrect value for the built image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'summary' label should not be inherited from the base image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description_label_inherited</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the label is inherited from the base image but not specified in the Dockerfile, it will contain an incorrect value for the built image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'description' label should not be inherited from the base image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io_description_label_inherited</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io.k8s.description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the label is inherited from the base image but not specified in the Dockerfile, it will contain an incorrect value for the built image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'io.k8s.description' label should not be inherited from the base image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io_k8s_display_name_label_inherited</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io.k8s.diplay-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the label is inherited from the base image but not specified in the Dockerfile, it will contain an incorrect value for the built image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'io.k8s.display-name' label should not be inherited from the base image</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io_openshift_tags_label_inherited</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io.openshift.tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the label is inherited from the base image but not specified in the Dockerfile, it will contain an incorrect value for the built image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'io.openshift.tags' should not be inherited from the base image</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_optional_label_checks"><a class="anchor" href="#_optional_label_checks"></a>2.1.4. Optional Label Checks</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Test Name</th>
+<th class="tableblock halign-left valign-top">Label Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Failure Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maintainer_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maintainer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name and email of the maintainer. Should contain 'Red Hat' or '@redhat.com'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'maintainer' label should be defined</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">summary_label_required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A short description of the image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 'summary' label should be defined</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deprecated_image_checks"><a class="anchor" href="#_deprecated_image_checks"></a>2.2. Deprecated Image Checks</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Test Name</th>
+<th class="tableblock halign-left valign-top">Label Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Failure Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">image_repository_deprecated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deprecated images are no longer maintained and will accumulate security issues without releasing a fixed version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The container image should not be built from a repository which is marked as 'Deprecated' in COMET</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_unsigned_rpm_check"><a class="anchor" href="#_unsigned_rpm_check"></a>2.3. Unsigned RPM Check</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Test Name</th>
+<th class="tableblock halign-left valign-top">Label Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Failure Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">image_unsigned_rpms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Providing packages signed with the secure Red Hat signing server indicates that the package was subject to all appropriate policies and procedures</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All RPMs found on the image must be signed. Found following unsigned rpms(nvra):</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>

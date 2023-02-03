@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Policy Configuration :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/ec-policies/policy_configuration.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="stylesheet" href="../_/css/main.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ec-policies"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ec-policies" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Enterprise Contract Policies</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">About Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_policy.html">Release Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipeline_policy.html">Pipeline Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acceptable_bundles.html">Acceptable Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_bundles.html">Policy Bundles</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="policy_configuration.html">Policy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="authoring.html">Policy Authoring</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="raw_data.html">Raw Data</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enterprise Contract Policies</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enterprise Contract Policies</a></li>
+    <li><a href="policy_configuration.html">Policy Configuration</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Policy Configuration</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_configuration_source">1. Configuration Source</a></li>
+<li><a href="#_including_and_excluding_rules">2. Including and excluding rules</a></li>
+<li><a href="#_specifying_that_individual_tests_are_non_blocking">3. Specifying that individual tests are non-blocking</a></li>
+<li><a href="#_examples">4. Examples</a>
+<ul class="sectlevel2">
+<li><a href="#_excluding_rules_from_particular_packages">4.1. Excluding rules from particular packages</a></li>
+<li><a href="#_including_only_rules_from_a_particular_package">4.2. Including only rules from a particular package</a></li>
+<li><a href="#_excluding_just_one_rule">4.3. Excluding just one rule</a></li>
+<li><a href="#_specifying_that_certain_tests_should_be_non_blocking">4.4. Specifying that certain tests should be non-blocking</a></li>
+<li><a href="#_including_only_some_rules_from_a_package">4.5. Including only some rules from a package</a></li>
+</ul>
+</li>
+<li><a href="#_specifying_a_predefined_set_of_rules_with_collections">5. Specifying a predefined set of rules with <code>collections</code></a>
+<ul class="sectlevel2">
+<li><a href="#_available_collections">5.1. Available collections</a></li>
+</ul>
+</li>
+<li><a href="#_the_non_blocking_checks_field">6. The <code>non_blocking_checks</code> field</a></li>
+<li><a href="#_data_sources">7. Data Sources</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>It&#8217;s possible to configure which rules should be included and which should be
+skipped when the Enterprise Contract check runs. The way this is configured
+is using fields in the policy configuration as described here.</p>
+</div>
+<div class="paragraph">
+<p>Note that it&#8217;s expected that the policy configuration will be created
+automatically by the Enterprise Contract Task, based on data from the
+applicable Enterprise Contract Policy CRD, so it&#8217;s likely you won&#8217;t need to
+create or manage this configuration manually.</p>
+</div>
+<div class="paragraph">
+<p>The Enterprise Contract Task and the Enterprise Contract Policy CRD are
+documented elsewhere. <em>TODO: Where?</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_source"><a class="anchor" href="#_configuration_source"></a>1. Configuration Source</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When the Enterprise Contract runs it will look for policy configuration in
+<code>data.config.policy</code>. The easiest way to populate that data is by adding a JSON
+formatted file in the <code>data</code> directory such as <code>data/config.json</code>.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of how that file might look.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "config": {
+    "policy": {
+      "include": ["*"],
+      "exclude": [],
+      "collections": []
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the policy is not defined, sensible defaults will be used. In fact the above
+example shows what the defaults are if the configuration is not specified.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_including_and_excluding_rules"><a class="anchor" href="#_including_and_excluding_rules"></a>2. Including and excluding rules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, all rules are included.</p>
+</div>
+<div class="paragraph">
+<p>You can modify the defaults by setting <code>config.policy.include</code> and
+<code>config.policy.exclude</code>. Each of those values should be a list of
+strings.</p>
+</div>
+<div class="paragraph">
+<p>The strings in the list should be one of the the following:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">A "package name"</dt>
+<dd>
+<p>Package names can be found in the policy documentation, for example the
+<a href="release_policy.html#attestation_type_package" class="xref page">Attestation Type</a> package
+name is <code>attestation_type</code>. Specifing a package name by itself in the include
+or exclude list means every rule from that package should be included or
+excluded.</p>
+</dd>
+<dt class="hdlist1">A "rule name"</dt>
+<dd>
+<p>A rule name consists of the rule&#8217;s package name and the rule&#8217;s "code" separated
+by a dot. Rule codes can be see in the documentation also. For example the
+<a href="release_policy.html#unknown_att_type" class="xref page">Unknown attestation type found</a> rule
+name is <code>attestation_type.unknown_att_type</code>.</p>
+</dd>
+<dt class="hdlist1">"*"</dt>
+<dd>
+<p>The <code>"*"</code> acts as a wildcard to match any package. Note that it does not match
+partial names, so you can&#8217;t specify <code>"s*"</code> to match every package starting with
+"s" for example.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>You can also specify <code>"&lt;packagename&gt;.*"</code> and it works the same as just
+<code>"&lt;packagename&gt;"</code> to represent every rule in a package.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specifying_that_individual_tests_are_non_blocking"><a class="anchor" href="#_specifying_that_individual_tests_are_non_blocking"></a>3. Specifying that individual tests are non-blocking</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Distinct from skipping rules, there is a way to indicate that particular tests
+are not strictly required by the Enterprise Contract.</p>
+</div>
+<div class="paragraph">
+<p>This is handled as a special case for the
+<a href="release_policy.html#test_result_failures" class="xref page">"test.test_result_failures" rule</a>
+only.</p>
+</div>
+<div class="paragraph">
+<p>The syntax for skipping a particular test is <code>"test:&lt;testname&gt;"</code> and it only
+works with the exclude field. You can&#8217;t use it with the <code>include</code>
+option.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>4. Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The examples here are shown as the contents of <code>config.policy</code> formatted as
+YAML for brevity and readability.</p>
+</div>
+<div class="paragraph">
+<p>Note that you can omit fields where the default value is what you need.</p>
+</div>
+<div class="sect2">
+<h3 id="_excluding_rules_from_particular_packages"><a class="anchor" href="#_excluding_rules_from_particular_packages"></a>4.1. Excluding rules from particular packages</h3>
+<div class="paragraph">
+<p>This would include all rules except for rules from the two specified packages.
+All other rules would be included.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">exclude:
+- attestation_task_bundle
+- slsa_build_scripted_build</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_including_only_rules_from_a_particular_package"><a class="anchor" href="#_including_only_rules_from_a_particular_package"></a>4.2. Including only rules from a particular package</h3>
+<div class="paragraph">
+<p>This would include just the rules from the specified packages and exclude all
+other rules.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">include:
+- test
+- java</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_excluding_just_one_rule"><a class="anchor" href="#_excluding_just_one_rule"></a>4.3. Excluding just one rule</h3>
+<div class="paragraph">
+<p>This would include all rules except for the <code>unacceptable_task_bundle</code> rule in
+the <code>attestation_task_bundle</code> package. The other rules in the
+<code>attestation_task_bundle</code> would be included.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">exclude:
+- attestation_task_bundle.unacceptable_task_bundle</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_specifying_that_certain_tests_should_be_non_blocking"><a class="anchor" href="#_specifying_that_certain_tests_should_be_non_blocking"></a>4.4. Specifying that certain tests should be non-blocking</h3>
+<div class="paragraph">
+<p>This example shows how to specify that the Enterprise Contract is allowed to
+pass even if certain tests failed or didn&#8217;t complete.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">exclude:
+- test:get-clair-scan
+- test:clamav-scan</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_including_only_some_rules_from_a_package"><a class="anchor" href="#_including_only_some_rules_from_a_package"></a>4.5. Including only some rules from a package</h3>
+<div class="paragraph">
+<p>You can specify both <code>include</code> and <code>exclude</code> to pick out just the
+rules you want.</p>
+</div>
+<div class="paragraph">
+<p>This example specifies that only the <code>unacceptable_task_bundle</code> rule from the
+<code>attestation_task_bundle</code> package should be included. The other rules in the
+<code>attestation_task_bundle</code> would be excluded.</p>
+</div>
+<div class="paragraph">
+<p>Notice the higher specificity include rule takes precedence over the exclude
+rule in this example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">include:
+- "*"
+- attestation_task_bundle.unacceptable_task_bundle
+exclude:
+- attestation_task_bundle.*</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specifying_a_predefined_set_of_rules_with_collections"><a class="anchor" href="#_specifying_a_predefined_set_of_rules_with_collections"></a>5. Specifying a predefined set of rules with <code>collections</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rather than specifying the values of <code>include</code> and <code>exclude</code>
+explicitly, you can also select from a set of predefined configurations by
+setting <code>"data.config.policy.collections"</code>. For example, in a <code>data/config.json</code>
+file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "config": {
+    "policy": {
+      "collections": ["some_things", "some_other_things"]
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_available_collections"><a class="anchor" href="#_available_collections"></a>5.1. Available collections</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Description</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slsa1</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Includes policy rules required to meet SLSA Level 1.</p>
+</div>
+<div class="paragraph">
+<p>Rules included:</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slsa2</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Includes policy rules required to meet SLSA Level 2. Special attention must
+be given to two requirements which are not covered by the policy rules in this
+collection. The first is "Provenance - Authenticated" which is expected to be
+performed when fetching the attestation via cosign or ec-cli. The second
+requirement is "Provenace - Service Generated" which is a little more complex
+to verify. By meeting both the "Provenance - Authenticated" AND "Build - Build
+Service" requirements, we can have some confidence that this requirement is met
+since Chains is a service that generates signed attestations with data obtained
+from the build service (Tekton Pipelines).</p>
+</div>
+<div class="paragraph">
+<p>Rules included:</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slsa3</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Includes policy rules required to meet SLSA Level 3. This is currently a
+work in progress and functionally the same as the slsa2 collection.</p>
+</div>
+<div class="paragraph">
+<p>Rules included:</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Policy rules may specify a <code>custom.collections</code> metadata attribute as a list of
+strings. Each string represents a collection the policy rule is included in.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_non_blocking_checks_field"><a class="anchor" href="#_the_non_blocking_checks_field"></a>6. The <code>non_blocking_checks</code> field</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>non_blocking_checks</code> configuration option, previously used to skip rules
+is now deprecated. It&#8217;s functionality is replaced with the new <code>exclude</code>
+option as described above. While it&#8217;s deprecated it can still be used
+interchangeably with the <code>exclude</code> field.</p>
+</div>
+<div class="paragraph">
+<p>Please make the required tooling changes soon to prevent breakages when the
+<code>non_blocking_checks</code> field is removed in the future.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_sources"><a class="anchor" href="#_data_sources"></a>7. Data Sources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some of the Enterprise Contract policy rules, defined in the ec-policies git
+repository, rely on certain data values when evaluated. For example, a policy
+rule exists to ensure all the parent container images used during the build
+process have been retrieved from an acceptable registry. The list of acceptable
+registries is a data value. This type of data is called Rule Data.</p>
+</div>
+<div class="paragraph">
+<p>In addition to policy rules, the ec-policies git repository also defines values
+for Rule Data, see
+<a href="_attachments/rule_data.yml" class="xref attachment">rule_data.yml</a>
+. As a user, you can provide a custom data source with modified Rule Data
+allowing the same policy rules to be used to best fit your use cases.</p>
+</div>
+<div class="paragraph">
+<p>There are different ways to create a custom data source. The simplest form is to
+fork the ec-policies git repository and change the values of
+<code>data/rule_data.yml</code> in your fork. Then, simply provide your fork as a data
+source. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "sources": [
+    {
+      "policy": [
+        "git::https://github.com/hacbs-contract/ec-policies.git//policy"
+      ],
+      "data": [
+        "git::https://github.com/lcarva/ec-policies.git//data"
+      ]
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is also possible to provide an <a href="https://www.conftest.dev/sharing/">OPA bundle</a>
+as a data source, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "sources": [
+    {
+      "policy": [
+        "git::https://github.com/hacbs-contract/ec-policies.git//policy"
+      ],
+      "data": [
+        "oci::quay.io/lucarval/policy-data:latest"
+      ]
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the data source contains policy rules, those will be ignored.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you replace the default data source entirely, you must provide the full set of required data values.
+These are all the values defined in
+<a href="_attachments/rule_data.yml" class="xref attachment">data/rule_data.yml</a> and <a href="_attachments/acceptable_tekton_bundles.yml" class="xref attachment">data/acceptable_tekton_bundles.yml</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It&#8217;s also possible to add an additional data source containing rule data
+defined under the <code>rule_data_custom</code> top level key. Data under this key will
+take precedence over data defined under the <code>rule_data</code> top level key. So, for
+example you could use the default data source and still define your own values
+for <code>allowed_registry_prefixes</code> by adding a second data source that includes
+a file such as:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">rule_data_custom:
+  allowed_registry_prefixes:
+    - trusted-registry.io/trusted-images/
+    - docker.io/acme-company/</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

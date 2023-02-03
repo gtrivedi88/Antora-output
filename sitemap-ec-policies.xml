@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:8080/ec-policies/acceptable_bundles.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+<url>
+<loc>http://localhost:8080/ec-policies/authoring.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+<url>
+<loc>http://localhost:8080/ec-policies/index.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+<url>
+<loc>http://localhost:8080/ec-policies/pipeline_policy.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+<url>
+<loc>http://localhost:8080/ec-policies/policy_bundles.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+<url>
+<loc>http://localhost:8080/ec-policies/policy_configuration.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+<url>
+<loc>http://localhost:8080/ec-policies/raw_data.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+<url>
+<loc>http://localhost:8080/ec-policies/release_policy.html</loc>
+<lastmod>2023-02-03T10:16:46.420Z</lastmod>
+</url>
+</urlset>

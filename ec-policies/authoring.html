@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Policy Authoring :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/ec-policies/authoring.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="stylesheet" href="../_/css/main.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ec-policies"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ec-policies" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Enterprise Contract Policies</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">About Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_policy.html">Release Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipeline_policy.html">Pipeline Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acceptable_bundles.html">Acceptable Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_bundles.html">Policy Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_configuration.html">Policy Configuration</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="authoring.html">Policy Authoring</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="raw_data.html">Raw Data</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enterprise Contract Policies</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enterprise Contract Policies</a></li>
+    <li><a href="authoring.html">Policy Authoring</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/hacbs-contract/ec-policies/edit/main/antora/docs/modules/ROOT/pages/authoring.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Policy Authoring</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_annotations">1. Annotations</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document is meant to assist policy authors in creating and maintaining the policy rules
+defined in this repository.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_annotations"><a class="anchor" href="#_annotations"></a>1. Annotations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Policy rules must contain certain <a href="https://www.openpolicyagent.org/docs/latest/annotations">annotations</a> that describe additional information about the
+rule.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>title</code>: (required) short description of the policy rule.</p>
+</li>
+<li>
+<p><code>description</code>: (required) descriptive information about the policy rule, including possible
+remediation steps.</p>
+</li>
+<li>
+<p><code>custom</code>: (required) object holding additional non-default rego annotations. <code>custom.foo</code> means
+the <code>foo</code> annotation nested under this object.</p>
+</li>
+<li>
+<p><code>custom.short_name</code>: (required) unique name of the policy rule. This is used as the value of the
+<code>code</code> attribute when reporting failures and warnings. It is also the value used for skipping
+the policy rule via the <a href="https://github.com/hacbs-contract/enterprise-contract-controller">EnterpriseContractPolicy</a>. It must not contain spaces. Words must be
+joined by <code>_</code>, e.g. <code>snake_case</code>.</p>
+</li>
+<li>
+<p><code>custom.failure_msg</code>: (required) message indicating the exact cause a policy rule did not pass.
+It should be as informative as possible to guide users towards remediation. The message can be
+in the form of a string template, allowing dynamic values to provide a more meaningful message.</p>
+</li>
+<li>
+<p><code>custom.effective_on</code>: (optional) time stamp string in the <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> format. Defaults to
+<code>"2022-01-01T00:00:00Z"</code>. A non-passing policy rule is classified as a warning, instead of a
+failure, if the date represented in the <code>custom.effective_on</code> annotation is in the future. This
+is a helpful mechanism to allow the introduction of a new policy rule while allowing a certain
+period of time for compliance.</p>
+</li>
+<li>
+<p><code>custom.rule_data</code>: (optional) specify additional data for the policy rule. The value must be an
+object where each key maps to an array of strings. This is a convenient mechanism to specify
+information that is used in the policy rule evaluation that may not be obvious to users. For
+example, the policy rule <code>disallowed_task_step_image</code> only allows certain registries to be
+used. The list of registries is defined in the annotations
+<code>custom.rule_data.allowed_registry_prefixes</code>, allowing a single source of truth for policy rule
+evaluation and documentation. For best results, each key in the <code>custom.rule_data</code> object
+should be a noun.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The annotations must be defined at the <code>rule</code> <a href="https://www.openpolicyagent.org/docs/latest/annotations/#scope">scope</a>.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

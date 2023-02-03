@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ec validate image :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/ec-cli/main/ec_validate_image.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="stylesheet" href="../../_/css/main.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ec-cli"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ec-cli" data-version="main">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Enterprise Contract CLI</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec.html">ec</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_create-pr.html">ec create-pr</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_fetch.html">ec fetch</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_fetch_commit.html">ec fetch commit</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_fetch_k8s-resource.html">ec fetch k8s-resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_fetch_policy.html">ec fetch policy</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_replace.html">ec replace</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_track.html">ec track</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_track_bundle.html">ec track bundle</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_validate.html">ec validate</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="ec_validate_image.html">ec validate image</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_validate_pipeline.html">ec validate pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="ec_version.html">ec version</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="verify-enterprise-contract.html">verify-enterprise-contract</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enterprise Contract CLI</span>
+    <span class="version">main</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enterprise Contract CLI</a></li>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="reference.html">Reference</a></li>
+    <li><a href="ec_validate_image.html">ec validate image</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">ec validate image</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_synopsis">1. Synopsis</a></li>
+<li><a href="#_examples">2. Examples</a></li>
+<li><a href="#_options">3. Options</a></li>
+<li><a href="#_options_inherited_from_parent_commands">4. Options inherited from parent commands</a></li>
+<li><a href="#_see_also">5. See also</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Validate conformance of container images with the Enterprise Contract</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>1. Synopsis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Validate conformance of container images with the Enterprise Contract</p>
+</div>
+<div class="paragraph">
+<p>For each image, validation is performed in stages to determine if the image
+conforms to the Enterprise Contract.</p>
+</div>
+<div class="paragraph">
+<p>The first validation stage determines if an image has been signed, and the
+signature matches the provided public key. This is akin to the &quot;cosign verify&quot;
+command.</p>
+</div>
+<div class="paragraph">
+<p>The second validation stage determines if one or more attestations exist, and
+those attestations have been signed matching the provided public key, similarly
+to the &quot;cosign verify-attestation&quot; command. This stage temporarily stores the
+attestations for usage in the next stage.</p>
+</div>
+<div class="paragraph">
+<p>The final stage verifies the attestations conform to rego policies defined in
+the EnterpriseContractPolicy.</p>
+</div>
+<div class="paragraph">
+<p>Validation advances each stage as much as possible for each image in order to
+capture all issues in a single execution.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">ec validate image [flags]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>2. Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Validate single image with the default policy defined in the
+EnterpriseContractPolicy custom resource named "ec-policy" in the current
+Kubernetes namespace:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --image registry/name:tag</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Validate multiple images from an ApplicationSnapshot Spec file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --file-path my-app.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Validate attestation of images from an inline ApplicationSnapshot Spec:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --json-input '{"components":[{"containerImage":"&lt;image url&gt;"}]}'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use a different public key than the one from the EnterpriseContractPolicy resource:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --image registry/name:tag --public-key &lt;path/to/public/key&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use a different Rekor URL than the one from the EnterpriseContractPolicy resource:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --image registry/name:tag --rekor-url https://rekor.example.org</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Return a non-zero status code on validation failure:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --image registry/name:tag --strict</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use an EnterpriseContractPolicy resource from the currently active kubernetes context:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --image registry/name:tag --policy my-policy</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use an EnterpriseContractPolicy resource from a different namespace:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ec validate image --image registry/name:tag --policy my-namespace/my-policy</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use an inline EnterpriseContractPolicy spec
+  ec validate image --image registry/name:tag --policy '{"publicKey": "&lt;path/to/public/key&gt;"}'</p>
+</div>
+<div class="paragraph">
+<p>Write output in JSON format to a file
+  ec validate image --image registry/name:tag --output json=&lt;path&gt;</p>
+</div>
+<div class="paragraph">
+<p>Write output in YAML format to stdout and in HACBS format to a file
+  ec validate image --image registry/name:tag --output yaml --output hacbs=&lt;path&gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options"><a class="anchor" href="#_options"></a>3. Options</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--effective-time</dt>
+<dd>
+<p>Run policy checks as though the current time was this instead of the actual
+current time. Useful for testing rules with effective dates in the future
+The value should be in RFC3339 format, e.g. 2022-11-18T00:00:00Z</p>
+</dd>
+<dt class="hdlist1">--f,  --file-path</dt>
+<dd>
+<p>path to ApplicationSnapshot Spec JSON file</p>
+</dd>
+<dt class="hdlist1">--h,  --help</dt>
+<dd>
+<p>help for image (Default: false)</p>
+</dd>
+<dt class="hdlist1">--i,  --image</dt>
+<dd>
+<p>OCI image reference</p>
+</dd>
+<dt class="hdlist1">--j,  --json-input</dt>
+<dd>
+<p>JSON represenation of an ApplicationSnapshot Spec</p>
+</dd>
+<dt class="hdlist1">--output</dt>
+<dd>
+<p>write output to a file in a specific format. Use empty string path for stdout.
+May be used multiple times. Possible formats are json, yaml, hacbs, and summary
+ (Default: [])</p>
+</dd>
+<dt class="hdlist1">--o,  --output-file</dt>
+<dd>
+<p>[DEPRECATED] write output to a file. Use empty string for stdout, default behavior</p>
+</dd>
+<dt class="hdlist1">--p,  --policy</dt>
+<dd>
+<p>EntepriseContractPolicy reference [&lt;namespace&gt;/]&lt;name&gt; (Default: ec-policy)</p>
+</dd>
+<dt class="hdlist1">--k,  --public-key</dt>
+<dd>
+<p>path to the public key. Overrides publicKey from EnterpriseContractPolicy</p>
+</dd>
+<dt class="hdlist1">--r,  --rekor-url</dt>
+<dd>
+<p>Rekor URL. Overrides rekorURL from EnterpriseContractPolicy</p>
+</dd>
+<dt class="hdlist1">--s,  --strict</dt>
+<dd>
+<p>return non-zero status on non-successful validation (Default: false)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options_inherited_from_parent_commands"><a class="anchor" href="#_options_inherited_from_parent_commands"></a>4. Options inherited from parent commands</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--debug</dt>
+<dd>
+<p>same as verbose but also show function names and line numbers
+(Default: false)</p>
+</dd>
+<dt class="hdlist1">--kubeconfig</dt>
+<dd>
+<p>path to the Kubernetes config file to use</p>
+</dd>
+<dt class="hdlist1">--quiet</dt>
+<dd>
+<p>less verbose output (Default: false)</p>
+</dd>
+<dt class="hdlist1">--verbose</dt>
+<dd>
+<p>more verbose output (Default: false)</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also"><a class="anchor" href="#_see_also"></a>5. See also</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="ec_validate.html" class="xref page">ec validate</a> - Validate conformance with the Enterprise Contract</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1624 @@
+{
+  "pipelineAnnotations": {
+    "policy.pipeline.basic": [
+      {
+        "fullPath": "policy.pipeline.basic.deny",
+        "packagePath": "policy.pipeline.basic",
+        "packageInfo": {
+          "shortName": "basic",
+          "fullName": "policy.pipeline.basic",
+          "title": "Pipeline definition sanity checks",
+          "description": "Currently there is just a check to confirm the input\nappears to be a Pipeline definition. We may add additional\nsanity checks in future."
+        },
+        "shortName": "unexpected_kind",
+        "title": "Input data has unexpected kind",
+        "description": "A sanity check to confirm the input data has the kind \"Pipeline\"",
+        "anchor": "policy_pipeline_basic_deny_unexpected_kind",
+        "warningOrFailure": "failure",
+        "failureMsg": "Unexpected kind '%s'",
+        "file": "policy/pipeline/basic.rego",
+        "row": 30
+      }
+    ],
+    "policy.pipeline.required_tasks": [
+      {
+        "fullPath": "policy.pipeline.required_tasks.deny",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "title": "Required tasks",
+          "description": "HACBS expects that certain Tekton tasks are executed during image builds.\nThis package includes policy rules to confirm that the pipeline definition\nincludes the required Tekton tasks."
+        },
+        "shortName": "tasks_missing",
+        "title": "No tasks in Pipeline",
+        "description": "This policy enforces that at least one Task is present in the Pipeline\ndefinition.",
+        "anchor": "policy_pipeline_required_tasks_deny_tasks_missing",
+        "warningOrFailure": "failure",
+        "failureMsg": "No tasks found in Pipeline definition",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 25
+      },
+      {
+        "fullPath": "policy.pipeline.required_tasks.deny",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "title": "Required tasks",
+          "description": "HACBS expects that certain Tekton tasks are executed during image builds.\nThis package includes policy rules to confirm that the pipeline definition\nincludes the required Tekton tasks."
+        },
+        "shortName": "missing_required_task",
+        "title": "Missing required task",
+        "description": "This policy enforces that the required set of tasks are included\nin the Pipeline definition.",
+        "anchor": "policy_pipeline_required_tasks_deny_missing_required_task",
+        "warningOrFailure": "failure",
+        "failureMsg": "Required task %q is missing",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 39
+      },
+      {
+        "fullPath": "policy.pipeline.required_tasks.warn",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "title": "Required tasks",
+          "description": "HACBS expects that certain Tekton tasks are executed during image builds.\nThis package includes policy rules to confirm that the pipeline definition\nincludes the required Tekton tasks."
+        },
+        "shortName": "missing_future_required_task",
+        "title": "Missing future required task",
+        "description": "This policy warns when a task that will be required in the future\nwas not included in the Pipeline definition.",
+        "anchor": "policy_pipeline_required_tasks_warn_missing_future_required_task",
+        "warningOrFailure": "warning",
+        "failureMsg": "Task %q is missing and will be required in the future",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 56
+      },
+      {
+        "fullPath": "policy.pipeline.required_tasks.deny",
+        "packagePath": "policy.pipeline.required_tasks",
+        "packageInfo": {
+          "shortName": "required_tasks",
+          "fullName": "policy.pipeline.required_tasks",
+          "title": "Required tasks",
+          "description": "HACBS expects that certain Tekton tasks are executed during image builds.\nThis package includes policy rules to confirm that the pipeline definition\nincludes the required Tekton tasks."
+        },
+        "shortName": "missing_required_data",
+        "title": "Missing required tasks data",
+        "description": "The policy rules in this package require the required-tasks data to be provided.",
+        "anchor": "policy_pipeline_required_tasks_deny_missing_required_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required task-bundles data",
+        "file": "policy/pipeline/required_tasks.rego",
+        "row": 73
+      }
+    ],
+    "policy.pipeline.task_bundle": [
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happens during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks in a Pipeline definition are defined in task\nbundles, and that the task bundles are from the list of known\nand trusted bundles."
+        },
+        "shortName": "disallowed_task_reference",
+        "title": "Task bundle was not used or is not defined",
+        "description": "Check for existence of a task bundle. Enforcing this rule will\nfail the contract if the task is not called from a bundle.",
+        "anchor": "policy_pipeline_task_bundle_deny_disallowed_task_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' does not contain a bundle reference",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 30
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happens during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks in a Pipeline definition are defined in task\nbundles, and that the task bundles are from the list of known\nand trusted bundles."
+        },
+        "shortName": "empty_task_bundle_reference",
+        "title": "Task bundle reference is empty",
+        "description": "Check for a valid task bundle reference being used.",
+        "anchor": "policy_pipeline_task_bundle_deny_empty_task_bundle_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an empty bundle image reference",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 43
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.warn",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happens during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks in a Pipeline definition are defined in task\nbundles, and that the task bundles are from the list of known\nand trusted bundles."
+        },
+        "shortName": "unpinned_task_bundle",
+        "title": "Unpinned task bundle reference",
+        "description": "Check if the Tekton Bundle used for the Tasks in the Pipeline definition\nis pinned to a digest.",
+        "anchor": "policy_pipeline_task_bundle_warn_unpinned_task_bundle",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an unpinned task bundle reference '%s'",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 57
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.warn",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happens during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks in a Pipeline definition are defined in task\nbundles, and that the task bundles are from the list of known\nand trusted bundles."
+        },
+        "shortName": "out_of_date_task_bundle",
+        "title": "Task bundle is out of date",
+        "description": "Check if the Tekton Bundle used for the Tasks in the Pipeline definition\nis the most recent acceptable one. See the list of acceptable\ntask bundles at xref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles] or look at\nxref:attachment$acceptable_tekton_bundles.yml[data/acceptable_tekton_bundles.yml]\nin this git repository. The meaning of an acceptable bundle is explained in\nxref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles]",
+        "anchor": "policy_pipeline_task_bundle_warn_out_of_date_task_bundle",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an out of date task bundle '%s'",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 75
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happens during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks in a Pipeline definition are defined in task\nbundles, and that the task bundles are from the list of known\nand trusted bundles."
+        },
+        "shortName": "unacceptable_task_bundle",
+        "title": "Task bundle is not acceptable",
+        "description": "Check if the Tekton Bundle used for the Tasks in the Pipeline definition\nare acceptable given the tracked effective_on date. See the list of acceptable\ntask bundles at xref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles] or look at\nxref:attachment$acceptable_tekton_bundles.yml[data/acceptable_tekton_bundles.yml]\nin this git repository. The meaning of an acceptable bundle is explained in\nxref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles]",
+        "anchor": "policy_pipeline_task_bundle_deny_unacceptable_task_bundle",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an unacceptable task bundle '%s'",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 93
+      },
+      {
+        "fullPath": "policy.pipeline.task_bundle.deny",
+        "packagePath": "policy.pipeline.task_bundle",
+        "packageInfo": {
+          "shortName": "task_bundle",
+          "fullName": "policy.pipeline.task_bundle",
+          "title": "Task bundle",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happens during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks in a Pipeline definition are defined in task\nbundles, and that the task bundles are from the list of known\nand trusted bundles."
+        },
+        "shortName": "missing_required_data",
+        "title": "Missing required data",
+        "description": "The policy rules in this package require the task-bundles data to be provided.",
+        "anchor": "policy_pipeline_task_bundle_deny_missing_required_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required task-bundles data",
+        "file": "policy/pipeline/task_bundle.rego",
+        "row": 105
+      }
+    ]
+  },
+  "releaseAnnotations": {
+    "policy.release.attestation_type": [
+      {
+        "fullPath": "policy.release.attestation_type.deny",
+        "packagePath": "policy.release.attestation_type",
+        "packageInfo": {
+          "shortName": "attestation_type",
+          "fullName": "policy.release.attestation_type",
+          "title": "Attestation type",
+          "description": "Sanity checks related to the format of the image build's attestation."
+        },
+        "shortName": "unknown_att_type",
+        "title": "Unknown attestation type found",
+        "description": "A sanity check to confirm the attestation found for the image has a known\nattestation type.",
+        "anchor": "policy_release_attestation_type_deny_unknown_att_type",
+        "warningOrFailure": "failure",
+        "failureMsg": "Unknown attestation type '%s'",
+        "file": "policy/release/attestation_type.rego",
+        "row": 23
+      },
+      {
+        "fullPath": "policy.release.attestation_type.deny",
+        "packagePath": "policy.release.attestation_type",
+        "packageInfo": {
+          "shortName": "attestation_type",
+          "fullName": "policy.release.attestation_type",
+          "title": "Attestation type",
+          "description": "Sanity checks related to the format of the image build's attestation."
+        },
+        "shortName": "missing_pipelinerun_attestation",
+        "title": "Missing pipelinerun attestation",
+        "description": "At least one PipelineRun attestation must be present.\n",
+        "anchor": "policy_release_attestation_type_deny_missing_pipelinerun_attestation",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing pipelinerun attestation",
+        "file": "policy/release/attestation_type.rego",
+        "row": 38
+      }
+    ],
+    "policy.release.authorization": [
+      {
+        "fullPath": "policy.release.authorization.deny",
+        "packagePath": "policy.release.authorization",
+        "packageInfo": {
+          "shortName": "authorization",
+          "fullName": "policy.release.authorization",
+          "title": "Authorization",
+          "description": "This package contains rules to check that the image is signed-off\nfor release. There are different ways of providing that sign-off\nauthorization.\n\nTODO: Document the ways that release authorization can be provided."
+        },
+        "shortName": "disallowed_no_authorization",
+        "title": "Authorization does not exist",
+        "description": "Enterprise Contract verifies if the build was authorized",
+        "anchor": "policy_release_authorization_deny_disallowed_no_authorization",
+        "warningOrFailure": "failure",
+        "failureMsg": "No authorization data found",
+        "file": "policy/release/authorization.rego",
+        "row": 25
+      },
+      {
+        "fullPath": "policy.release.authorization.deny",
+        "packagePath": "policy.release.authorization",
+        "packageInfo": {
+          "shortName": "authorization",
+          "fullName": "policy.release.authorization",
+          "title": "Authorization",
+          "description": "This package contains rules to check that the image is signed-off\nfor release. There are different ways of providing that sign-off\nauthorization.\n\nTODO: Document the ways that release authorization can be provided."
+        },
+        "shortName": "disallowed_commit_does_not_match",
+        "title": "Authorized commit does not match",
+        "description": "Enterprise Contract verifies if an authorized commit was used as the source of a build",
+        "anchor": "policy_release_authorization_deny_disallowed_commit_does_not_match",
+        "warningOrFailure": "failure",
+        "failureMsg": "Commit %s does not match authorized commit %s",
+        "file": "policy/release/authorization.rego",
+        "row": 37
+      },
+      {
+        "fullPath": "policy.release.authorization.deny",
+        "packagePath": "policy.release.authorization",
+        "packageInfo": {
+          "shortName": "authorization",
+          "fullName": "policy.release.authorization",
+          "title": "Authorization",
+          "description": "This package contains rules to check that the image is signed-off\nfor release. There are different ways of providing that sign-off\nauthorization.\n\nTODO: Document the ways that release authorization can be provided."
+        },
+        "shortName": "disallowed_repo_url_does_not_match",
+        "title": "Authorized repo url does not match",
+        "description": "Enterprise Contract verifies if an authorized repo url was used to build an image",
+        "anchor": "policy_release_authorization_deny_disallowed_repo_url_does_not_match",
+        "warningOrFailure": "failure",
+        "failureMsg": "Repo url %s does not match authorized repo url %s",
+        "file": "policy/release/authorization.rego",
+        "row": 51
+      }
+    ],
+    "policy.release.base_image_registries": [
+      {
+        "fullPath": "policy.release.base_image_registries.deny",
+        "packagePath": "policy.release.base_image_registries",
+        "packageInfo": {
+          "shortName": "base_image_registries",
+          "fullName": "policy.release.base_image_registries",
+          "title": "Base image checks",
+          "description": "This package is responsible for verifying the base (parent) images\nreported in the attestation are acceptable."
+        },
+        "shortName": "disallowed_base_image",
+        "title": "Restrict registry of base images",
+        "description": "The base images used when building a container image must come from a known set\nof trusted registries to reduce potential supply chain attacks. This policy\ndefines trusted registries as registries that are fully maintained by Red Hat\nand only contain content produced by Red Hat.",
+        "anchor": "policy_release_base_image_registries_deny_disallowed_base_image",
+        "warningOrFailure": "failure",
+        "failureMsg": "Base image %q is from a disallowed registry",
+        "file": "policy/release/base_image_registries.rego",
+        "row": 27
+      },
+      {
+        "fullPath": "policy.release.base_image_registries.deny",
+        "packagePath": "policy.release.base_image_registries",
+        "packageInfo": {
+          "shortName": "base_image_registries",
+          "fullName": "policy.release.base_image_registries",
+          "title": "Base image checks",
+          "description": "This package is responsible for verifying the base (parent) images\nreported in the attestation are acceptable."
+        },
+        "shortName": "base_images_missing",
+        "title": "Base images must be provided",
+        "description": "The attestation must provide the expected information about which base images\nwere used during the build process.",
+        "anchor": "policy_release_base_image_registries_deny_base_images_missing",
+        "warningOrFailure": "failure",
+        "failureMsg": "Base images result is missing",
+        "file": "policy/release/base_image_registries.rego",
+        "row": 42
+      },
+      {
+        "fullPath": "policy.release.base_image_registries.deny",
+        "packagePath": "policy.release.base_image_registries",
+        "packageInfo": {
+          "shortName": "base_image_registries",
+          "fullName": "policy.release.base_image_registries",
+          "title": "Base image checks",
+          "description": "This package is responsible for verifying the base (parent) images\nreported in the attestation are acceptable."
+        },
+        "shortName": "missing_rule_data",
+        "title": "Missing rule data",
+        "description": "The policy rules in this package require the allowed_registry_prefixes\nrule data to be provided.",
+        "anchor": "policy_release_base_image_registries_deny_missing_rule_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required allowed_registry_prefixes rule data",
+        "file": "policy/release/base_image_registries.rego",
+        "row": 60
+      }
+    ],
+    "policy.release.buildah_build_task": [
+      {
+        "fullPath": "policy.release.buildah_build_task.deny",
+        "packagePath": "policy.release.buildah_build_task",
+        "packageInfo": {
+          "shortName": "buildah_build_task",
+          "fullName": "policy.release.buildah_build_task",
+          "title": "Buildah build task",
+          "description": "This package is responsible for verifying the buildah build task"
+        },
+        "shortName": "dockerfile_param_not_included",
+        "title": "Dockerfile param not included",
+        "description": "This policy verifies that there is a dockerfile parameter",
+        "anchor": "policy_release_buildah_build_task_deny_dockerfile_param_not_included",
+        "warningOrFailure": "failure",
+        "failureMsg": "DOCKERFILE param is not included in the task",
+        "file": "policy/release/buildah_build_task.rego",
+        "row": 22
+      },
+      {
+        "fullPath": "policy.release.buildah_build_task.deny",
+        "packagePath": "policy.release.buildah_build_task",
+        "packageInfo": {
+          "shortName": "buildah_build_task",
+          "fullName": "policy.release.buildah_build_task",
+          "title": "Buildah build task",
+          "description": "This package is responsible for verifying the buildah build task"
+        },
+        "shortName": "dockerfile_param_external_source",
+        "title": "Dockerfile param external source",
+        "description": "This policy verifies that the dockerfile is not an external source",
+        "anchor": "policy_release_buildah_build_task_deny_dockerfile_param_external_source",
+        "warningOrFailure": "failure",
+        "failureMsg": "DOCKERFILE param value (%s) is an external source",
+        "file": "policy/release/buildah_build_task.rego",
+        "row": 36
+      }
+    ],
+    "policy.release.hermetic_build_task": [
+      {
+        "fullPath": "policy.release.hermetic_build_task.deny",
+        "packagePath": "policy.release.hermetic_build_task",
+        "packageInfo": {
+          "shortName": "hermetic_build_task",
+          "fullName": "policy.release.hermetic_build_task",
+          "title": "Hermetic build task",
+          "description": "This package verifies the build task in the attestation was invoked\nwith the expected parameters to perform a hermetic build."
+        },
+        "shortName": "build_task_not_hermetic",
+        "title": "hermetic_build_task",
+        "description": "This policy verifies the build task in the PipelineRun attestation\nwas invoked with the proper parameters to make the build process\nhermetic.",
+        "anchor": "policy_release_hermetic_build_task_deny_build_task_not_hermetic",
+        "warningOrFailure": "failure",
+        "failureMsg": "Build task was not invoked with hermetic parameter",
+        "file": "policy/release/hermetic_build_task.rego",
+        "row": 25
+      }
+    ],
+    "policy.release.java": [
+      {
+        "fullPath": "policy.release.java.deny",
+        "packagePath": "policy.release.java",
+        "packageInfo": {
+          "shortName": "java",
+          "fullName": "policy.release.java",
+          "title": "Java dependency checks",
+          "description": "This package contains a rule to confirm that all Java dependencies\nwere rebuilt in house rather than imported directly from potentially\nuntrusted respositories.\nThe result must be reported by a Task that has been loaded from an\nacceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\nIf the result is missing or provided via a task loaded from unacceptable no\nissue is reported."
+        },
+        "shortName": "java_foreign_dependencies",
+        "title": "Prevent Java builds from depending on foreign dependencies",
+        "description": "The SBOM_JAVA_COMPONENTS_COUNT TaskResult finds dependencies that have\noriginated from foreign repositories, i.e. ones that are not rebuilt or\nredhat.",
+        "anchor": "policy_release_java_deny_java_foreign_dependencies",
+        "warningOrFailure": "failure",
+        "failureMsg": "Found Java dependencies from '%s', expecting to find only from '%s'",
+        "file": "policy/release/java.rego",
+        "row": 31
+      },
+      {
+        "fullPath": "policy.release.java.deny",
+        "packagePath": "policy.release.java",
+        "packageInfo": {
+          "shortName": "java",
+          "fullName": "policy.release.java",
+          "title": "Java dependency checks",
+          "description": "This package contains a rule to confirm that all Java dependencies\nwere rebuilt in house rather than imported directly from potentially\nuntrusted respositories.\nThe result must be reported by a Task that has been loaded from an\nacceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\nIf the result is missing or provided via a task loaded from unacceptable no\nissue is reported."
+        },
+        "shortName": "missing_rule_data",
+        "title": "Missing rule data",
+        "description": "The policy rules in this package require the allowed_java_component_sources\nrule data to be provided.",
+        "anchor": "policy_release_java_deny_missing_rule_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required allowed_java_component_sources rule data",
+        "file": "policy/release/java.rego",
+        "row": 46
+      }
+    ],
+    "policy.release.slsa_build_build_service": [
+      {
+        "fullPath": "policy.release.slsa_build_build_service.deny",
+        "packagePath": "policy.release.slsa_build_build_service",
+        "packageInfo": {
+          "shortName": "slsa_build_build_service",
+          "fullName": "policy.release.slsa_build_build_service",
+          "title": "SLSA - Build - Build Service",
+          "description": "The SLSA requirement states the following:\n\n\"All build steps ran using some build service, not on a\ndeveloper’s workstation.\"\n\nThis package verifies the requirement by asserting the image was\nbuilt by Tekton Pipelines."
+        },
+        "shortName": "missing_builder_id",
+        "title": "Builder ID exists",
+        "description": "The attestation attribute predicate.builder.id is set.",
+        "anchor": "policy_release_slsa_build_build_service_deny_missing_builder_id",
+        "warningOrFailure": "failure",
+        "failureMsg": "Builder ID not set in attestation",
+        "file": "policy/release/slsa_build_build_service.rego",
+        "row": 32
+      },
+      {
+        "fullPath": "policy.release.slsa_build_build_service.deny",
+        "packagePath": "policy.release.slsa_build_build_service",
+        "packageInfo": {
+          "shortName": "slsa_build_build_service",
+          "fullName": "policy.release.slsa_build_build_service",
+          "title": "SLSA - Build - Build Service",
+          "description": "The SLSA requirement states the following:\n\n\"All build steps ran using some build service, not on a\ndeveloper’s workstation.\"\n\nThis package verifies the requirement by asserting the image was\nbuilt by Tekton Pipelines."
+        },
+        "shortName": "unexpected_builder_id",
+        "title": "Build service used",
+        "description": "The attestation attribute predicate.builder.id is set to one\nof the values in data.rule_data.allowed_builder_ids, e.g.\n\"https://tekton.dev/chains/v2\".",
+        "anchor": "policy_release_slsa_build_build_service_deny_unexpected_builder_id",
+        "warningOrFailure": "failure",
+        "failureMsg": "Builder ID %q is unexpected",
+        "file": "policy/release/slsa_build_build_service.rego",
+        "row": 51
+      }
+    ],
+    "policy.release.slsa_build_scripted_build": [
+      {
+        "fullPath": "policy.release.slsa_build_scripted_build.deny",
+        "packagePath": "policy.release.slsa_build_scripted_build",
+        "packageInfo": {
+          "shortName": "slsa_build_scripted_build",
+          "fullName": "policy.release.slsa_build_scripted_build",
+          "title": "SLSA - Build - Scripted Build",
+          "description": "The SLSA requirement states the following:\n\n\"All build steps were fully defined in some sort of “build script”.\nThe only manual command, if any, was to invoke the build script.\"\n\nThis package verifies the requirement by asserting the image was\nbuilt by Tekton Pipelines."
+        },
+        "shortName": "empty_build_task",
+        "title": "Build task contains steps",
+        "description": "The attestation attribute predicate.buildConfig.tasks.steps is not\nempty of the pipeline task responsible for building the image.",
+        "anchor": "policy_release_slsa_build_scripted_build_deny_empty_build_task",
+        "warningOrFailure": "failure",
+        "failureMsg": "Build task %q does not contain any steps",
+        "file": "policy/release/slsa_build_scripted_build.rego",
+        "row": 36
+      },
+      {
+        "fullPath": "policy.release.slsa_build_scripted_build.deny",
+        "packagePath": "policy.release.slsa_build_scripted_build",
+        "packageInfo": {
+          "shortName": "slsa_build_scripted_build",
+          "fullName": "policy.release.slsa_build_scripted_build",
+          "title": "SLSA - Build - Scripted Build",
+          "description": "The SLSA requirement states the following:\n\n\"All build steps were fully defined in some sort of “build script”.\nThe only manual command, if any, was to invoke the build script.\"\n\nThis package verifies the requirement by asserting the image was\nbuilt by Tekton Pipelines."
+        },
+        "shortName": "missing_build_task",
+        "title": "Build task missing",
+        "description": "The attestations must contain a build task with the expected\nIMAGE_DIGEST and IMAGE_URL results.",
+        "anchor": "policy_release_slsa_build_scripted_build_deny_missing_build_task",
+        "warningOrFailure": "failure",
+        "failureMsg": "Build task not found",
+        "file": "policy/release/slsa_build_scripted_build.rego",
+        "row": 56
+      },
+      {
+        "fullPath": "policy.release.slsa_build_scripted_build.deny",
+        "packagePath": "policy.release.slsa_build_scripted_build",
+        "packageInfo": {
+          "shortName": "slsa_build_scripted_build",
+          "fullName": "policy.release.slsa_build_scripted_build",
+          "title": "SLSA - Build - Scripted Build",
+          "description": "The SLSA requirement states the following:\n\n\"All build steps were fully defined in some sort of “build script”.\nThe only manual command, if any, was to invoke the build script.\"\n\nThis package verifies the requirement by asserting the image was\nbuilt by Tekton Pipelines."
+        },
+        "shortName": "subject_build_task_mismatch",
+        "title": "Mismatch subject",
+        "description": "The subject of the attestations must match the IMAGE_DIGEST and\nIMAGE_URL values from the build task.",
+        "anchor": "policy_release_slsa_build_scripted_build_deny_subject_build_task_mismatch",
+        "warningOrFailure": "failure",
+        "failureMsg": "The attestation subject, %q, does not match the build task image, %q",
+        "file": "policy/release/slsa_build_scripted_build.rego",
+        "row": 75
+      }
+    ],
+    "policy.release.slsa_provenance_available": [
+      {
+        "fullPath": "policy.release.slsa_provenance_available.deny",
+        "packagePath": "policy.release.slsa_provenance_available",
+        "packageInfo": {
+          "shortName": "slsa_provenance_available",
+          "fullName": "policy.release.slsa_provenance_available",
+          "title": "SLSA - Provenance - Available",
+          "description": "The SLSA Provenance Available requirement states the following:\n\n\"The provenance is available to the consumer in a format that the consumer accepts. The\nformat SHOULD be in-toto SLSA Provenance, but another format MAY be used if both producer\nand consumer agree and it meets all the other requirements.\"\n\nThis package only accepts the in-toto SLSA Provenance format."
+        },
+        "shortName": "unexpected_predicate_type",
+        "title": "Attestation predicate type",
+        "description": "The predicateType field of the attestation must indicate the in-toto SLSA Provenance format\nwas used to attest the PipelineRun.",
+        "anchor": "policy_release_slsa_provenance_available_deny_unexpected_predicate_type",
+        "warningOrFailure": "failure",
+        "failureMsg": "Attestation predicate type %q is not an expected type (%s)",
+        "file": "policy/release/slsa_provenance_available.rego",
+        "row": 33
+      }
+    ],
+    "policy.release.slsa_source_version_controlled": [
+      {
+        "fullPath": "policy.release.slsa_source_version_controlled.deny",
+        "packagePath": "policy.release.slsa_source_version_controlled",
+        "packageInfo": {
+          "shortName": "slsa_source_version_controlled",
+          "fullName": "policy.release.slsa_source_version_controlled",
+          "title": "SLSA - Source - Version Controlled",
+          "description": "The SLSA requirement states the following:\n\n\"Every change to the source is tracked in a version control system\nthat meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git,\nMercurial, Subversion, or Perforce.\"\n\nThis package verifies the requirement by asserting the image was built\nfrom a git repository."
+        },
+        "shortName": "missing_materials",
+        "title": "Material format",
+        "description": "At least one entry in the predicate.materials array of the attestation contains\nthe expected attributes: uri and digest.sha1.",
+        "anchor": "policy_release_slsa_source_version_controlled_deny_missing_materials",
+        "warningOrFailure": "failure",
+        "failureMsg": "No materials match expected format",
+        "file": "policy/release/slsa_source_version_controlled.rego",
+        "row": 47
+      },
+      {
+        "fullPath": "policy.release.slsa_source_version_controlled.deny",
+        "packagePath": "policy.release.slsa_source_version_controlled",
+        "packageInfo": {
+          "shortName": "slsa_source_version_controlled",
+          "fullName": "policy.release.slsa_source_version_controlled",
+          "title": "SLSA - Source - Version Controlled",
+          "description": "The SLSA requirement states the following:\n\n\"Every change to the source is tracked in a version control system\nthat meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git,\nMercurial, Subversion, or Perforce.\"\n\nThis package verifies the requirement by asserting the image was built\nfrom a git repository."
+        },
+        "shortName": "material_non_git_uri",
+        "title": "Material from a git repository",
+        "description": "Each entry in the predicate.materials array of the attestation uses\na git URI.",
+        "anchor": "policy_release_slsa_source_version_controlled_deny_material_non_git_uri",
+        "warningOrFailure": "failure",
+        "failureMsg": "Material URI %q is not a git URI",
+        "file": "policy/release/slsa_source_version_controlled.rego",
+        "row": 65
+      },
+      {
+        "fullPath": "policy.release.slsa_source_version_controlled.deny",
+        "packagePath": "policy.release.slsa_source_version_controlled",
+        "packageInfo": {
+          "shortName": "slsa_source_version_controlled",
+          "fullName": "policy.release.slsa_source_version_controlled",
+          "title": "SLSA - Source - Version Controlled",
+          "description": "The SLSA requirement states the following:\n\n\"Every change to the source is tracked in a version control system\nthat meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git,\nMercurial, Subversion, or Perforce.\"\n\nThis package verifies the requirement by asserting the image was built\nfrom a git repository."
+        },
+        "shortName": "material_without_git_commit",
+        "title": "Material with git commit digest",
+        "description": "Each entry in the predicate.materials array of the attestation includes\na SHA1 digest which corresponds to a git commit.",
+        "anchor": "policy_release_slsa_source_version_controlled_deny_material_without_git_commit",
+        "warningOrFailure": "failure",
+        "failureMsg": "Material digest %q is not a git commit",
+        "file": "policy/release/slsa_source_version_controlled.rego",
+        "row": 83
+      }
+    ],
+    "policy.release.step_image_registries": [
+      {
+        "fullPath": "policy.release.step_image_registries.deny",
+        "packagePath": "policy.release.step_image_registries",
+        "packageInfo": {
+          "shortName": "step_image_registries",
+          "fullName": "policy.release.step_image_registries",
+          "title": "Step image registries",
+          "description": "This package contains a rule to ensure that each task in the image's\nbuild pipeline ran using a container image from a known and presumably\ntrusted source."
+        },
+        "shortName": "disallowed_task_step_image",
+        "title": "Task steps ran on container images that are disallowed",
+        "description": "Enterprise Contract has a list of allowed registry prefixes. Each step in each\neach TaskRun must run on a container image with a url that matches one of the\nprefixes in the list.",
+        "anchor": "policy_release_step_image_registries_deny_disallowed_task_step_image",
+        "warningOrFailure": "failure",
+        "failureMsg": "Step %d in task '%s' has disallowed image ref '%s'",
+        "file": "policy/release/step_image_registries.rego",
+        "row": 26
+      },
+      {
+        "fullPath": "policy.release.step_image_registries.deny",
+        "packagePath": "policy.release.step_image_registries",
+        "packageInfo": {
+          "shortName": "step_image_registries",
+          "fullName": "policy.release.step_image_registries",
+          "title": "Step image registries",
+          "description": "This package contains a rule to ensure that each task in the image's\nbuild pipeline ran using a container image from a known and presumably\ntrusted source."
+        },
+        "shortName": "missing_rule_data",
+        "title": "Missing rule data",
+        "description": "The policy rules in this package require the allowed_step_image_registry_prefixes\nrule data to be provided.",
+        "anchor": "policy_release_step_image_registries_deny_missing_rule_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required allowed_step_image_registry_prefixes rule data",
+        "file": "policy/release/step_image_registries.rego",
+        "row": 43
+      }
+    ],
+    "policy.release.attestation_task_bundle": [
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happened during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks that built the image were defined in task\nbundles, and that the task bundles used are from the list of known\nand trusted bundles."
+        },
+        "shortName": "disallowed_task_reference",
+        "title": "Task bundle was not used or is not defined",
+        "description": "Check for existence of a task bundle. Enforcing this rule will\nfail the contract if the task is not called from a bundle.",
+        "anchor": "policy_release_attestation_task_bundle_deny_disallowed_task_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' does not contain a bundle reference",
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 27
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happened during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks that built the image were defined in task\nbundles, and that the task bundles used are from the list of known\nand trusted bundles."
+        },
+        "shortName": "empty_task_bundle_reference",
+        "title": "Task bundle reference is empty",
+        "description": "Check for a valid task bundle reference being used.",
+        "anchor": "policy_release_attestation_task_bundle_deny_empty_task_bundle_reference",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an empty bundle image reference",
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 40
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.warn",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happened during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks that built the image were defined in task\nbundles, and that the task bundles used are from the list of known\nand trusted bundles."
+        },
+        "shortName": "unpinned_task_bundle",
+        "title": "Unpinned task bundle reference",
+        "description": "Check if the Tekton Bundle used for the Tasks in the Pipeline definition\nis pinned to a digest.",
+        "anchor": "policy_release_attestation_task_bundle_warn_unpinned_task_bundle",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an unpinned task bundle reference '%s'",
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 54
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.warn",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happened during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks that built the image were defined in task\nbundles, and that the task bundles used are from the list of known\nand trusted bundles."
+        },
+        "shortName": "out_of_date_task_bundle",
+        "title": "Task bundle is out of date",
+        "description": "Check if the Tekton Bundle used for the Tasks in the attestation\nis the most recent acceptable one. See the list of acceptable\ntask bundles at xref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles] or look at\nxref:attachment$acceptable_tekton_bundles.yml[data/acceptable_tekton_bundles.yml]\nin this git repository. The meaning of an acceptable bundle is explained in\nxref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles]",
+        "anchor": "policy_release_attestation_task_bundle_warn_out_of_date_task_bundle",
+        "warningOrFailure": "warning",
+        "failureMsg": "Pipeline task '%s' uses an out of date task bundle '%s'",
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 72
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happened during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks that built the image were defined in task\nbundles, and that the task bundles used are from the list of known\nand trusted bundles."
+        },
+        "shortName": "unacceptable_task_bundle",
+        "title": "Task bundle is not acceptable",
+        "description": "Check if the Tekton Bundle used for the Tasks in the attestation\nare acceptable given the tracked effective_on date. See the list of acceptable\ntask bundles at xref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles] or look at\nxref:attachment$acceptable_tekton_bundles.yml[data/acceptable_tekton_bundles.yml]\nin this git repository. The meaning of an acceptable bundle is explained in\nxref:acceptable_bundles.adoc#_task_bundles[Acceptable Bundles]",
+        "anchor": "policy_release_attestation_task_bundle_deny_unacceptable_task_bundle",
+        "warningOrFailure": "failure",
+        "failureMsg": "Pipeline task '%s' uses an unacceptable task bundle '%s'",
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 90
+      },
+      {
+        "fullPath": "policy.release.attestation_task_bundle.deny",
+        "packagePath": "policy.release.attestation_task_bundle",
+        "packageInfo": {
+          "shortName": "attestation_task_bundle",
+          "fullName": "policy.release.attestation_task_bundle",
+          "title": "Task bundle checks",
+          "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happened during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks that built the image were defined in task\nbundles, and that the task bundles used are from the list of known\nand trusted bundles."
+        },
+        "shortName": "missing_required_data",
+        "title": "Missing required data",
+        "description": "The policy rules in this package require the task-bundles data to be provided.",
+        "anchor": "policy_release_attestation_task_bundle_deny_missing_required_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required task-bundles data",
+        "file": "policy/release/attestation_task_bundle.rego",
+        "row": 102
+      }
+    ],
+    "policy.release.tasks": [
+      {
+        "fullPath": "policy.release.tasks.deny",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included\nin the pipeline build for each image to be released.\nThis package includes a set of rules to verify that the expected\ntasks ran in the pipeline when the image was built.\nRequired tasks are listed by the names given to them within the Tekton\nBundle image. Optionally invocation parameter of a Task can be also\nmandated by including the name and the value in square brackets following\nthe name of the task. For example: ``name[PARAM=val]``. Only single parameter\nis supported, to assert multiple parameters repeat the required task\ndefinition for each parameter seperately.\nThe Tasks must be loaded from an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks]."
+        },
+        "shortName": "tasks_missing",
+        "title": "No tasks run",
+        "description": "This policy enforces that at least one Task is present in the PipelineRun\nattestation.",
+        "anchor": "policy_release_tasks_deny_tasks_missing",
+        "warningOrFailure": "failure",
+        "failureMsg": "No tasks found in PipelineRun attestation",
+        "file": "policy/release/tasks.rego",
+        "row": 34
+      },
+      {
+        "fullPath": "policy.release.tasks.deny",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included\nin the pipeline build for each image to be released.\nThis package includes a set of rules to verify that the expected\ntasks ran in the pipeline when the image was built.\nRequired tasks are listed by the names given to them within the Tekton\nBundle image. Optionally invocation parameter of a Task can be also\nmandated by including the name and the value in square brackets following\nthe name of the task. For example: ``name[PARAM=val]``. Only single parameter\nis supported, to assert multiple parameters repeat the required task\ndefinition for each parameter seperately.\nThe Tasks must be loaded from an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks]."
+        },
+        "shortName": "missing_required_task",
+        "title": "Missing required task",
+        "description": "This policy enforces that the required set of tasks are included\nin the PipelineRun attestation.",
+        "anchor": "policy_release_tasks_deny_missing_required_task",
+        "warningOrFailure": "failure",
+        "failureMsg": "Required task %q is missing",
+        "file": "policy/release/tasks.rego",
+        "row": 48
+      },
+      {
+        "fullPath": "policy.release.tasks.warn",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included\nin the pipeline build for each image to be released.\nThis package includes a set of rules to verify that the expected\ntasks ran in the pipeline when the image was built.\nRequired tasks are listed by the names given to them within the Tekton\nBundle image. Optionally invocation parameter of a Task can be also\nmandated by including the name and the value in square brackets following\nthe name of the task. For example: ``name[PARAM=val]``. Only single parameter\nis supported, to assert multiple parameters repeat the required task\ndefinition for each parameter seperately.\nThe Tasks must be loaded from an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks]."
+        },
+        "shortName": "missing_future_required_task",
+        "title": "Missing future required task",
+        "description": "This policy warns when a task that will be required in the future\nwas not included in the PipelineRun attestation.",
+        "anchor": "policy_release_tasks_warn_missing_future_required_task",
+        "warningOrFailure": "warning",
+        "failureMsg": "Task %q is missing and will be required in the future",
+        "file": "policy/release/tasks.rego",
+        "row": 64
+      },
+      {
+        "fullPath": "policy.release.tasks.deny",
+        "packagePath": "policy.release.tasks",
+        "packageInfo": {
+          "shortName": "tasks",
+          "fullName": "policy.release.tasks",
+          "title": "Tasks",
+          "description": "Enterprise Contract expects that a set of tasks were included\nin the pipeline build for each image to be released.\nThis package includes a set of rules to verify that the expected\ntasks ran in the pipeline when the image was built.\nRequired tasks are listed by the names given to them within the Tekton\nBundle image. Optionally invocation parameter of a Task can be also\nmandated by including the name and the value in square brackets following\nthe name of the task. For example: ``name[PARAM=val]``. Only single parameter\nis supported, to assert multiple parameters repeat the required task\ndefinition for each parameter seperately.\nThe Tasks must be loaded from an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks]."
+        },
+        "shortName": "missing_required_data",
+        "title": "Missing required tasks data",
+        "description": "The policy rules in this package require the required-tasks data to be provided.",
+        "anchor": "policy_release_tasks_deny_missing_required_data",
+        "warningOrFailure": "failure",
+        "failureMsg": "Missing required task-bundles data",
+        "file": "policy/release/tasks.rego",
+        "row": 80
+      }
+    ],
+    "policy.release.test": [
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected\nto a set of tests and that those tests all passed. This package\nincludes a set of rules to verify that.\n\nThe rest result data must be reported by a Tekton Task that has been loaded\nfrom an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\n\nTODO: Document how you can skip the requirement for individual\ntests if needed using the `non_blocking_rule` configuration."
+        },
+        "shortName": "test_data_missing",
+        "title": "No test data found",
+        "description": "None of the tasks in the pipeline included a HACBS_TEST_OUTPUT\ntask result, which is where Enterprise Contract expects to find\ntest result data.",
+        "anchor": "policy_release_test_deny_test_data_missing",
+        "warningOrFailure": "failure",
+        "failureMsg": "No test data found",
+        "file": "policy/release/test.rego",
+        "row": 30
+      },
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected\nto a set of tests and that those tests all passed. This package\nincludes a set of rules to verify that.\n\nThe rest result data must be reported by a Tekton Task that has been loaded\nfrom an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\n\nTODO: Document how you can skip the requirement for individual\ntests if needed using the `non_blocking_rule` configuration."
+        },
+        "shortName": "test_results_missing",
+        "title": "Test data is missing the results key",
+        "description": "Each test result is expected to have a 'results' key. In at least\none of the HACBS_TEST_OUTPUT task results this key was not present.",
+        "anchor": "policy_release_test_deny_test_results_missing",
+        "warningOrFailure": "failure",
+        "failureMsg": "Found tests without results",
+        "file": "policy/release/test.rego",
+        "row": 47
+      },
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected\nto a set of tests and that those tests all passed. This package\nincludes a set of rules to verify that.\n\nThe rest result data must be reported by a Tekton Task that has been loaded\nfrom an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\n\nTODO: Document how you can skip the requirement for individual\ntests if needed using the `non_blocking_rule` configuration."
+        },
+        "shortName": "test_result_unsupported",
+        "title": "Unsupported result in test data",
+        "description": "This policy expects a set of known/supported results in the test data\nIt is a failure if we encounter a result that is not supported.",
+        "anchor": "policy_release_test_deny_test_result_unsupported",
+        "warningOrFailure": "failure",
+        "failureMsg": "Test '%s' has unsupported result '%s'",
+        "file": "policy/release/test.rego",
+        "row": 62
+      },
+      {
+        "fullPath": "policy.release.test.deny",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected\nto a set of tests and that those tests all passed. This package\nincludes a set of rules to verify that.\n\nThe rest result data must be reported by a Tekton Task that has been loaded\nfrom an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\n\nTODO: Document how you can skip the requirement for individual\ntests if needed using the `non_blocking_rule` configuration."
+        },
+        "shortName": "test_result_failures",
+        "title": "Test result is FAILURE or ERROR",
+        "description": "Enterprise Contract requires that all the tests in the test results\nhave a successful result. A successful result is one that isn't a\n\"FAILURE\" or \"ERROR\". This will fail if any of the tests failed and\nthe failure message will list the names of the failing tests.",
+        "anchor": "policy_release_test_deny_test_result_failures",
+        "warningOrFailure": "failure",
+        "failureMsg": "The following tests did not complete successfully: %s",
+        "file": "policy/release/test.rego",
+        "row": 86
+      },
+      {
+        "fullPath": "policy.release.test.warn",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected\nto a set of tests and that those tests all passed. This package\nincludes a set of rules to verify that.\n\nThe rest result data must be reported by a Tekton Task that has been loaded\nfrom an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\n\nTODO: Document how you can skip the requirement for individual\ntests if needed using the `non_blocking_rule` configuration."
+        },
+        "shortName": "test_result_skipped",
+        "title": "Some tests were skipped",
+        "description": "Collects all tests that have their result set to \"SKIPPED\".",
+        "anchor": "policy_release_test_warn_test_result_skipped",
+        "warningOrFailure": "warning",
+        "failureMsg": "The following tests were skipped: %s",
+        "file": "policy/release/test.rego",
+        "row": 111
+      },
+      {
+        "fullPath": "policy.release.test.warn",
+        "packagePath": "policy.release.test",
+        "packageInfo": {
+          "shortName": "test",
+          "fullName": "policy.release.test",
+          "title": "Test",
+          "description": "Enterprise Contract requires that each build was subjected\nto a set of tests and that those tests all passed. This package\nincludes a set of rules to verify that.\n\nThe rest result data must be reported by a Tekton Task that has been loaded\nfrom an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\n\nTODO: Document how you can skip the requirement for individual\ntests if needed using the `non_blocking_rule` configuration."
+        },
+        "shortName": "test_result_warning",
+        "title": "Some tests returned a warning",
+        "description": "Collects all tests that have their result set to \"WARNING\".",
+        "anchor": "policy_release_test_warn_test_result_warning",
+        "warningOrFailure": "warning",
+        "failureMsg": "The following tests returned a warning: %s",
+        "file": "policy/release/test.rego",
+        "row": 132
+      }
+    ]
+  },
+  "acceptableBundles": {
+    "quay.io/redhat-appstudio-tekton-catalog/task-buildah": [
+      {
+        "digest": "sha256:b80a1051ce11b27907d1785a2ea0cf788e59e96ea7585bf02867d83d78e985a5",
+        "effective_on": "2023-03-05T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:b80a1051ce11b27907d1785a2ea0cf788e59e96ea7585bf02867d83d78e985a5",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "b80a1051ce11"
+      },
+      {
+        "digest": "sha256:b4a1cf097be6b9c411ad3a1fdb4a48e598f92fce01627c4f5f0d85ee28767784",
+        "effective_on": "2023-02-26T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:b4a1cf097be6b9c411ad3a1fdb4a48e598f92fce01627c4f5f0d85ee28767784",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "b4a1cf097be6"
+      },
+      {
+        "digest": "sha256:f39a1fb9a04e5a74fe66e5fcda52df854f7d72323178713f8c7b43bdf0ad0309",
+        "effective_on": "2023-02-23T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:f39a1fb9a04e5a74fe66e5fcda52df854f7d72323178713f8c7b43bdf0ad0309",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "f39a1fb9a04e"
+      },
+      {
+        "digest": "sha256:00edff23169c65f04871832f84dd6d37b6949bcd3a8266729cf0b0253726a62d",
+        "effective_on": "2023-02-19T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:00edff23169c65f04871832f84dd6d37b6949bcd3a8266729cf0b0253726a62d",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "00edff23169c"
+      },
+      {
+        "digest": "sha256:4e267cc80599986220dd8c571a8511c7f90682676a33867a27b51af62ee69df4",
+        "effective_on": "2023-02-16T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:4e267cc80599986220dd8c571a8511c7f90682676a33867a27b51af62ee69df4",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "4e267cc80599"
+      },
+      {
+        "digest": "sha256:f648bfa39ede3760adde05996324b21d46a353397e57bfb6946590f04d482386",
+        "effective_on": "2023-02-05T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:f648bfa39ede3760adde05996324b21d46a353397e57bfb6946590f04d482386",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "f648bfa39ede"
+      },
+      {
+        "digest": "sha256:997d7a1c1bcac31726ecfb2fc8b8ff34e73b3b2786d2c519e711fcb0ca151ee0",
+        "effective_on": "2023-01-22T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:997d7a1c1bcac31726ecfb2fc8b8ff34e73b3b2786d2c519e711fcb0ca151ee0",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab=tags&tag=0.1",
+        "shortDigest": "997d7a1c1bca"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-clair-scan": [
+      {
+        "digest": "sha256:10b191f72ca767c787f0d7f66f46f5ad3117123ee185e8c57b73667358a7b3a6",
+        "effective_on": "2023-02-25T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:10b191f72ca767c787f0d7f66f46f5ad3117123ee185e8c57b73667358a7b3a6",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "10b191f72ca7"
+      },
+      {
+        "digest": "sha256:ef60d879c4f074d6a0163d95eea758096cb2173e7d17ac99ab358402394999c0",
+        "effective_on": "2023-02-22T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:ef60d879c4f074d6a0163d95eea758096cb2173e7d17ac99ab358402394999c0",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "ef60d879c4f0"
+      },
+      {
+        "digest": "sha256:9b29548873c1ccbd34ece8ccbcf4d4d1fc6747800aeeb69abf2d709cfa8acec3",
+        "effective_on": "2023-02-20T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:9b29548873c1ccbd34ece8ccbcf4d4d1fc6747800aeeb69abf2d709cfa8acec3",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "9b29548873c1"
+      },
+      {
+        "digest": "sha256:4f65b7f26953460d26370d66538c0cdc4b978f35093dc3b38af8b496b563a944",
+        "effective_on": "2023-02-02T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:4f65b7f26953460d26370d66538c0cdc4b978f35093dc3b38af8b496b563a944",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "4f65b7f26953"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-clamav-scan": [
+      {
+        "digest": "sha256:2e19ce2503a8471878fe070364066328e4f2912205ee4aaaf9d66a30037d1cb7",
+        "effective_on": "2023-02-25T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan/manifest/sha256:2e19ce2503a8471878fe070364066328e4f2912205ee4aaaf9d66a30037d1cb7",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan?tab=tags&tag=0.1",
+        "shortDigest": "2e19ce2503a8"
+      },
+      {
+        "digest": "sha256:191e065fdce26e797b14004de7c770553c17c883f9c80e4761c4c8bfbe3b8b86",
+        "effective_on": "2023-02-22T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan/manifest/sha256:191e065fdce26e797b14004de7c770553c17c883f9c80e4761c4c8bfbe3b8b86",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan?tab=tags&tag=0.1",
+        "shortDigest": "191e065fdce2"
+      },
+      {
+        "digest": "sha256:64b52d3e33cdb539f1d3759f432782eaed5c812bea04296f509cfa2d81247c8d",
+        "effective_on": "2023-01-22T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan/manifest/sha256:64b52d3e33cdb539f1d3759f432782eaed5c812bea04296f509cfa2d81247c8d",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan?tab=tags&tag=0.1",
+        "shortDigest": "64b52d3e33cd"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-cleanup-build-directories": [
+      {
+        "digest": "sha256:210a761586251e1db8fb31cb56e1182a7e6e478092efd63e796121b217c01c46",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-cleanup-build-directories/manifest/sha256:210a761586251e1db8fb31cb56e1182a7e6e478092efd63e796121b217c01c46",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-cleanup-build-directories?tab=tags&tag=0.1",
+        "shortDigest": "210a76158625"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-configure-build": [
+      {
+        "digest": "sha256:81ac1aca1901c3385cbc8c500b3a69f4a12485e295cb7003fab1f068632cf9b4",
+        "effective_on": "2023-03-05T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build/manifest/sha256:81ac1aca1901c3385cbc8c500b3a69f4a12485e295cb7003fab1f068632cf9b4",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build?tab=tags&tag=0.1",
+        "shortDigest": "81ac1aca1901"
+      },
+      {
+        "digest": "sha256:787d29329a2ea1b618ddf0ec4cb208d7f3dbc5c969c6e61ea920fb063b09a477",
+        "effective_on": "2023-02-22T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build/manifest/sha256:787d29329a2ea1b618ddf0ec4cb208d7f3dbc5c969c6e61ea920fb063b09a477",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build?tab=tags&tag=0.1",
+        "shortDigest": "787d29329a2e"
+      },
+      {
+        "digest": "sha256:9f8b5438fda511507e51a0372b4d85892d6f695bd4f54ce067e1c1a1fbc70b30",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build/manifest/sha256:9f8b5438fda511507e51a0372b4d85892d6f695bd4f54ce067e1c1a1fbc70b30",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build?tab=tags&tag=0.1",
+        "shortDigest": "9f8b5438fda5"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-configure-build-no-shared": [
+      {
+        "digest": "sha256:bad106ff77a7a932de04006512052ee8e7b31becdd95ad84fded98e6100c2234",
+        "effective_on": "2022-11-25T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build-no-shared/manifest/sha256:bad106ff77a7a932de04006512052ee8e7b31becdd95ad84fded98e6100c2234",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build-no-shared?tab=tags&tag=0.1",
+        "shortDigest": "bad106ff77a7"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-conftest-clair": [
+      {
+        "digest": "sha256:afd12c004c1e4f0a86f117fc1fee85ab19c9f090e281e2e0db0c0c14adecff35",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-conftest-clair/manifest/sha256:afd12c004c1e4f0a86f117fc1fee85ab19c9f090e281e2e0db0c0c14adecff35",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-conftest-clair?tab=tags&tag=0.1",
+        "shortDigest": "afd12c004c1e"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-deprecated-image-check": [
+      {
+        "digest": "sha256:268fd657c069d12b6b24d8e02ce6f0330e2a02e53dce787724445591a90682cd",
+        "effective_on": "2023-03-01T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check/manifest/sha256:268fd657c069d12b6b24d8e02ce6f0330e2a02e53dce787724445591a90682cd",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check?tab=tags&tag=0.1",
+        "shortDigest": "268fd657c069"
+      },
+      {
+        "digest": "sha256:7e7c708d11cf5ca87c69967c6db499139903df33657dbf5ea139077fae7b4a7e",
+        "effective_on": "2023-02-25T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check/manifest/sha256:7e7c708d11cf5ca87c69967c6db499139903df33657dbf5ea139077fae7b4a7e",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check?tab=tags&tag=0.1",
+        "shortDigest": "7e7c708d11cf"
+      },
+      {
+        "digest": "sha256:f95f72700fe06ea9a285687827199944b1d4a44b83757beb4073569c5beaf3cf",
+        "effective_on": "2023-01-15T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check/manifest/sha256:f95f72700fe06ea9a285687827199944b1d4a44b83757beb4073569c5beaf3cf",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check?tab=tags&tag=0.1",
+        "shortDigest": "f95f72700fe0"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-fbc-related-image-check": [
+      {
+        "digest": "sha256:dcb28113631b9f48c900d452594c447a7800713f6a33417e34e70a51e8310611",
+        "effective_on": "2023-03-03T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-related-image-check/manifest/sha256:dcb28113631b9f48c900d452594c447a7800713f6a33417e34e70a51e8310611",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-related-image-check?tab=tags&tag=0.1",
+        "shortDigest": "dcb28113631b"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-fbc-validation": [
+      {
+        "digest": "sha256:e69fcafdcf735597390a0f4e4e0f594e8dcd037c30c50b2e7a8a5d674bcc4f2e",
+        "effective_on": "2023-03-03T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:e69fcafdcf735597390a0f4e4e0f594e8dcd037c30c50b2e7a8a5d674bcc4f2e",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab=tags&tag=0.1",
+        "shortDigest": "e69fcafdcf73"
+      },
+      {
+        "digest": "sha256:8233bac403fa0fc0df14197063e50f5ae3be75078c40253daccd38bbf9e5f833",
+        "effective_on": "2023-03-03T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:8233bac403fa0fc0df14197063e50f5ae3be75078c40253daccd38bbf9e5f833",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab=tags&tag=0.1",
+        "shortDigest": "8233bac403fa"
+      },
+      {
+        "digest": "sha256:dbb010ce35c2e3dac94639fd77491e0be670a18372d4e6459aed49b401156fd4",
+        "effective_on": "2023-02-26T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:dbb010ce35c2e3dac94639fd77491e0be670a18372d4e6459aed49b401156fd4",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab=tags&tag=0.1",
+        "shortDigest": "dbb010ce35c2"
+      },
+      {
+        "digest": "sha256:ad0700f8508a1dbda8e2aa59bf6dcd9d714d14145faf0451f90c41d3cb6c84a5",
+        "effective_on": "2023-02-02T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:ad0700f8508a1dbda8e2aa59bf6dcd9d714d14145faf0451f90c41d3cb6c84a5",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab=tags&tag=0.1",
+        "shortDigest": "ad0700f8508a"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-get-clair-scan": [
+      {
+        "digest": "sha256:f5259b6194f73e43f8f1d8ec8f7cd7466209fbf8aaf8b8ac4cf653fc54fc6b3b",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-get-clair-scan/manifest/sha256:f5259b6194f73e43f8f1d8ec8f7cd7466209fbf8aaf8b8ac4cf653fc54fc6b3b",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-get-clair-scan?tab=tags&tag=0.1",
+        "shortDigest": "f5259b6194f7"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-git-clone": [
+      {
+        "digest": "sha256:f4e37778cba00296606ddfbc1c58181330899cafcaa1ee41c75a7cf8bed312f0",
+        "effective_on": "2023-02-23T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone/manifest/sha256:f4e37778cba00296606ddfbc1c58181330899cafcaa1ee41c75a7cf8bed312f0",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone?tab=tags&tag=0.1",
+        "shortDigest": "f4e37778cba0"
+      },
+      {
+        "digest": "sha256:bc80240b360909d98f65e792f8be646de90664766a1f5674735f3ebdd8a3d8bf",
+        "effective_on": "2023-02-12T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone/manifest/sha256:bc80240b360909d98f65e792f8be646de90664766a1f5674735f3ebdd8a3d8bf",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone?tab=tags&tag=0.1",
+        "shortDigest": "bc80240b3609"
+      },
+      {
+        "digest": "sha256:5e409aeff2f143a0d368dc8c53d1f4d8b9fc5be83f7111a99d0d367487655229",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone/manifest/sha256:5e409aeff2f143a0d368dc8c53d1f4d8b9fc5be83f7111a99d0d367487655229",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone?tab=tags&tag=0.1",
+        "shortDigest": "5e409aeff2f1"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation": [
+      {
+        "digest": "sha256:b80e94aef1440f5e7f002d4d9d928ea6c890d005d2468d9a2bff1ead7606c265",
+        "effective_on": "2022-12-01T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation/manifest/sha256:b80e94aef1440f5e7f002d4d9d928ea6c890d005d2468d9a2bff1ead7606c265",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation?tab=tags&tag=0.1",
+        "shortDigest": "b80e94aef144"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-init": [
+      {
+        "digest": "sha256:f9e8e66798d02afee87ff13c8d5a0d4bb2667c05a7010fbd286a4afa319c7323",
+        "effective_on": "2023-02-22T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:f9e8e66798d02afee87ff13c8d5a0d4bb2667c05a7010fbd286a4afa319c7323",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab=tags&tag=0.1",
+        "shortDigest": "f9e8e66798d0"
+      },
+      {
+        "digest": "sha256:06ff3d62dbeafe3611d0328d245798531a1bb747409ac6c2ea83a2aaa0d0ccb9",
+        "effective_on": "2023-02-16T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:06ff3d62dbeafe3611d0328d245798531a1bb747409ac6c2ea83a2aaa0d0ccb9",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab=tags&tag=0.1",
+        "shortDigest": "06ff3d62dbea"
+      },
+      {
+        "digest": "sha256:757661b8f68595f34b0bf78fe654261d7ac1b08dfca48b54964139db9e38adcf",
+        "effective_on": "2023-02-04T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:757661b8f68595f34b0bf78fe654261d7ac1b08dfca48b54964139db9e38adcf",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab=tags&tag=0.1",
+        "shortDigest": "757661b8f685"
+      },
+      {
+        "digest": "sha256:ed6224bc518182619fc43bdeaedfbb785860190c975922d1124f3762ebc800de",
+        "effective_on": "2023-02-03T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:ed6224bc518182619fc43bdeaedfbb785860190c975922d1124f3762ebc800de",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab=tags&tag=0.1",
+        "shortDigest": "ed6224bc5181"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-prefetch-dependencies": [
+      {
+        "digest": "sha256:d2f044dc2b9646007c6ae7298fac50971a7a2460e933980313fd689c76226233",
+        "effective_on": "2023-02-23T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies/manifest/sha256:d2f044dc2b9646007c6ae7298fac50971a7a2460e933980313fd689c76226233",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies?tab=tags&tag=0.1",
+        "shortDigest": "d2f044dc2b96"
+      },
+      {
+        "digest": "sha256:10d7ac70a9950b655328c4b57c42290afea115e2a0f0d5e0b399f62d2325a22c",
+        "effective_on": "2023-01-16T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies/manifest/sha256:10d7ac70a9950b655328c4b57c42290afea115e2a0f0d5e0b399f62d2325a22c",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies?tab=tags&tag=0.1",
+        "shortDigest": "10d7ac70a995"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-s2i-java": [
+      {
+        "digest": "sha256:0ebc6195dd3b70c7fa2718bba0b0bca539c067b33585543153927b1da5744c1f",
+        "effective_on": "2023-03-05T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:0ebc6195dd3b70c7fa2718bba0b0bca539c067b33585543153927b1da5744c1f",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab=tags&tag=0.1",
+        "shortDigest": "0ebc6195dd3b"
+      },
+      {
+        "digest": "sha256:ca6a40c6a2aa1bbde6883a41db50c5264b834b10dac6d2cc6e0302e395fcb530",
+        "effective_on": "2023-02-19T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:ca6a40c6a2aa1bbde6883a41db50c5264b834b10dac6d2cc6e0302e395fcb530",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab=tags&tag=0.1",
+        "shortDigest": "ca6a40c6a2aa"
+      },
+      {
+        "digest": "sha256:5eb9b1291f47332c0283ab7e329c9b1beb94d682650519a10c84612ecece60f9",
+        "effective_on": "2023-02-16T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:5eb9b1291f47332c0283ab7e329c9b1beb94d682650519a10c84612ecece60f9",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab=tags&tag=0.1",
+        "shortDigest": "5eb9b1291f47"
+      },
+      {
+        "digest": "sha256:664bb739b68bed59e50494b2d28d0c362fb4c002826215e0c9e3a3dd07e596df",
+        "effective_on": "2023-02-05T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:664bb739b68bed59e50494b2d28d0c362fb4c002826215e0c9e3a3dd07e596df",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab=tags&tag=0.1",
+        "shortDigest": "664bb739b68b"
+      },
+      {
+        "digest": "sha256:74585399c11ffa63965e7200db4ff404c6c68333cf7b0f80d5711091e0ca0a6f",
+        "effective_on": "2023-01-22T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:74585399c11ffa63965e7200db4ff404c6c68333cf7b0f80d5711091e0ca0a6f",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab=tags&tag=0.1",
+        "shortDigest": "74585399c11f"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-s2i-nodejs": [
+      {
+        "digest": "sha256:d093a3fc7f9384d65e083fd8ad2d6018da4e1fc0f68a46ef66f31528b815bd51",
+        "effective_on": "2023-03-05T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs/manifest/sha256:d093a3fc7f9384d65e083fd8ad2d6018da4e1fc0f68a46ef66f31528b815bd51",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs?tab=tags&tag=0.1",
+        "shortDigest": "d093a3fc7f93"
+      },
+      {
+        "digest": "sha256:de985eaf9c57a39ebc44b0a1fdfc4f351fb2d62628cf6d483998737e4cb011ec",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs/manifest/sha256:de985eaf9c57a39ebc44b0a1fdfc4f351fb2d62628cf6d483998737e4cb011ec",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs?tab=tags&tag=0.1",
+        "shortDigest": "de985eaf9c57"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-sanity-inspect-image": [
+      {
+        "digest": "sha256:1ff8cea8259a415a7ca6de7d47ade692813721653f89166f549e732cecaf2dcf",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-inspect-image/manifest/sha256:1ff8cea8259a415a7ca6de7d47ade692813721653f89166f549e732cecaf2dcf",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-inspect-image?tab=tags&tag=0.1",
+        "shortDigest": "1ff8cea8259a"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-sanity-label-check": [
+      {
+        "digest": "sha256:710e07f1e38d93ac740b056c4bd7a962df5ad1b09cece5923fae0fde47f9fa76",
+        "effective_on": "2023-02-25T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check/manifest/sha256:710e07f1e38d93ac740b056c4bd7a962df5ad1b09cece5923fae0fde47f9fa76",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check?tab=tags&tag=0.1",
+        "shortDigest": "710e07f1e38d"
+      },
+      {
+        "digest": "sha256:1f0fe138843308648f11132749e6ec08a3ffdf1d60bee63c7df53bf5927bff0e",
+        "effective_on": "2023-02-02T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check/manifest/sha256:1f0fe138843308648f11132749e6ec08a3ffdf1d60bee63c7df53bf5927bff0e",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check?tab=tags&tag=0.1",
+        "shortDigest": "1f0fe1388433"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-sast-go": [
+      {
+        "digest": "sha256:59dfcb7d3b020b3e0f97afbe3ee601fcf1e7218dff3c38314f8be7b6c215fba1",
+        "effective_on": "2023-02-02T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-go/manifest/sha256:59dfcb7d3b020b3e0f97afbe3ee601fcf1e7218dff3c38314f8be7b6c215fba1",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-go?tab=tags&tag=0.1",
+        "shortDigest": "59dfcb7d3b02"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-sast-java-sec-check": [
+      {
+        "digest": "sha256:c0a126695dc629c7b1d04eef07a1fd7db5b01efad86861ec3886bcf60d518740",
+        "effective_on": "2023-02-02T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-java-sec-check/manifest/sha256:c0a126695dc629c7b1d04eef07a1fd7db5b01efad86861ec3886bcf60d518740",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-java-sec-check?tab=tags&tag=0.1",
+        "shortDigest": "c0a126695dc6"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-sast-snyk-check": [
+      {
+        "digest": "sha256:e4986a1fdf0a7dbb96514fcbe68267d82ee42676c246fd33af19740f966aed00",
+        "effective_on": "2023-03-03T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:e4986a1fdf0a7dbb96514fcbe68267d82ee42676c246fd33af19740f966aed00",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab=tags&tag=0.1",
+        "shortDigest": "e4986a1fdf0a"
+      },
+      {
+        "digest": "sha256:c97f5267e12a4f4da51ed950e4f57dbe63812e89253d0b85c37b3e0d3c024bdb",
+        "effective_on": "2023-02-26T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:c97f5267e12a4f4da51ed950e4f57dbe63812e89253d0b85c37b3e0d3c024bdb",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab=tags&tag=0.1",
+        "shortDigest": "c97f5267e12a"
+      },
+      {
+        "digest": "sha256:6686a9f8c89c2be134871cccece868c62bc1187a9d906f063f4c79a8865c98d1",
+        "effective_on": "2023-02-16T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:6686a9f8c89c2be134871cccece868c62bc1187a9d906f063f4c79a8865c98d1",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab=tags&tag=0.1",
+        "shortDigest": "6686a9f8c89c"
+      },
+      {
+        "digest": "sha256:29aa45fef5d67f0be2a89dc954ce8fa406236901d4dfcebfba88338221c4627e",
+        "effective_on": "2023-02-02T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:29aa45fef5d67f0be2a89dc954ce8fa406236901d4dfcebfba88338221c4627e",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab=tags&tag=0.1",
+        "shortDigest": "29aa45fef5d6"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-sbom-json-check": [
+      {
+        "digest": "sha256:631b875a9e265d48a1f00d21e51560c175bc7aafb4358b6525785d4ecc685d69",
+        "effective_on": "2023-02-25T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check/manifest/sha256:631b875a9e265d48a1f00d21e51560c175bc7aafb4358b6525785d4ecc685d69",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check?tab=tags&tag=0.1",
+        "shortDigest": "631b875a9e26"
+      },
+      {
+        "digest": "sha256:9d228fedb0429e4ae6f383e9355615823e0684a36ab3c2453a3f3cd56f518944",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check/manifest/sha256:9d228fedb0429e4ae6f383e9355615823e0684a36ab3c2453a3f3cd56f518944",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check?tab=tags&tag=0.1",
+        "shortDigest": "9d228fedb042"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-summary": [
+      {
+        "digest": "sha256:245f5017f0a58840212cfd2de0a50844f78b2b2c74976289f34b238bdaa700e5",
+        "effective_on": "2023-02-16T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary/manifest/sha256:245f5017f0a58840212cfd2de0a50844f78b2b2c74976289f34b238bdaa700e5",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary?tab=tags&tag=0.1",
+        "shortDigest": "245f5017f0a5"
+      },
+      {
+        "digest": "sha256:7ab4c9af63ec21a68f84c59285a0bd452c1bbde1148aac45cdf0e19e99de42e8",
+        "effective_on": "2023-02-09T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary/manifest/sha256:7ab4c9af63ec21a68f84c59285a0bd452c1bbde1148aac45cdf0e19e99de42e8",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary?tab=tags&tag=0.1",
+        "shortDigest": "7ab4c9af63ec"
+      },
+      {
+        "digest": "sha256:59d49758686c141bd26b3c193e52fd23bb47831c2a5d5872388ad6824684735e",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary/manifest/sha256:59d49758686c141bd26b3c193e52fd23bb47831c2a5d5872388ad6824684735e",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary?tab=tags&tag=0.1",
+        "shortDigest": "59d49758686c"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-tkn-bundle": [
+      {
+        "digest": "sha256:05876b87df2280bec9be4db936df9a44c57768537ed5db4d92cd1da7895219b0",
+        "effective_on": "2023-03-05T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-tkn-bundle/manifest/sha256:05876b87df2280bec9be4db936df9a44c57768537ed5db4d92cd1da7895219b0",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-tkn-bundle?tab=tags&tag=0.1",
+        "shortDigest": "05876b87df22"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-update-infra-deployments": [
+      {
+        "digest": "sha256:9328e5dfbadfa1cab69c1e1e18ec26f45ebf3c9ccc2dce83fdf5cc336cb9d805",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-update-infra-deployments/manifest/sha256:9328e5dfbadfa1cab69c1e1e18ec26f45ebf3c9ccc2dce83fdf5cc336cb9d805",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-update-infra-deployments?tab=tags&tag=0.1",
+        "shortDigest": "9328e5dfbadf"
+      }
+    ],
+    "quay.io/redhat-appstudio-tekton-catalog/task-utils-task": [
+      {
+        "digest": "sha256:ae74f2593d5b8f4366ca6a6753e63a3817810a3fce921e0cfe90b65713f7fd2c",
+        "effective_on": "2022-12-31T00:00:00Z",
+        "tag": "0.1",
+        "digestUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-utils-task/manifest/sha256:ae74f2593d5b8f4366ca6a6753e63a3817810a3fce921e0cfe90b65713f7fd2c",
+        "tagUrl": "https://quay.io/repository/redhat-appstudio-tekton-catalog/task-utils-task?tab=tags&tag=0.1",
+        "shortDigest": "ae74f2593d5b"
+      }
+    ]
+  },
+  "pipelinePackages": {
+    "policy.pipeline.basic": {
+      "shortName": "basic",
+      "fullName": "policy.pipeline.basic",
+      "title": "Pipeline definition sanity checks",
+      "description": "Currently there is just a check to confirm the input\nappears to be a Pipeline definition. We may add additional\nsanity checks in future."
+    },
+    "policy.pipeline.required_tasks": {
+      "shortName": "required_tasks",
+      "fullName": "policy.pipeline.required_tasks",
+      "title": "Required tasks",
+      "description": "HACBS expects that certain Tekton tasks are executed during image builds.\nThis package includes policy rules to confirm that the pipeline definition\nincludes the required Tekton tasks."
+    },
+    "policy.pipeline.task_bundle": {
+      "shortName": "task_bundle",
+      "fullName": "policy.pipeline.task_bundle",
+      "title": "Task bundle",
+      "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happens during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks in a Pipeline definition are defined in task\nbundles, and that the task bundles are from the list of known\nand trusted bundles."
+    }
+  },
+  "releasePackages": {
+    "policy.release.attestation_type": {
+      "shortName": "attestation_type",
+      "fullName": "policy.release.attestation_type",
+      "title": "Attestation type",
+      "description": "Sanity checks related to the format of the image build's attestation."
+    },
+    "policy.release.authorization": {
+      "shortName": "authorization",
+      "fullName": "policy.release.authorization",
+      "title": "Authorization",
+      "description": "This package contains rules to check that the image is signed-off\nfor release. There are different ways of providing that sign-off\nauthorization.\n\nTODO: Document the ways that release authorization can be provided."
+    },
+    "policy.release.base_image_registries": {
+      "shortName": "base_image_registries",
+      "fullName": "policy.release.base_image_registries",
+      "title": "Base image checks",
+      "description": "This package is responsible for verifying the base (parent) images\nreported in the attestation are acceptable."
+    },
+    "policy.release.buildah_build_task": {
+      "shortName": "buildah_build_task",
+      "fullName": "policy.release.buildah_build_task",
+      "title": "Buildah build task",
+      "description": "This package is responsible for verifying the buildah build task"
+    },
+    "policy.release.hermetic_build_task": {
+      "shortName": "hermetic_build_task",
+      "fullName": "policy.release.hermetic_build_task",
+      "title": "Hermetic build task",
+      "description": "This package verifies the build task in the attestation was invoked\nwith the expected parameters to perform a hermetic build."
+    },
+    "policy.release.java": {
+      "shortName": "java",
+      "fullName": "policy.release.java",
+      "title": "Java dependency checks",
+      "description": "This package contains a rule to confirm that all Java dependencies\nwere rebuilt in house rather than imported directly from potentially\nuntrusted respositories.\nThe result must be reported by a Task that has been loaded from an\nacceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\nIf the result is missing or provided via a task loaded from unacceptable no\nissue is reported."
+    },
+    "policy.release.slsa_build_build_service": {
+      "shortName": "slsa_build_build_service",
+      "fullName": "policy.release.slsa_build_build_service",
+      "title": "SLSA - Build - Build Service",
+      "description": "The SLSA requirement states the following:\n\n\"All build steps ran using some build service, not on a\ndeveloper’s workstation.\"\n\nThis package verifies the requirement by asserting the image was\nbuilt by Tekton Pipelines."
+    },
+    "policy.release.slsa_build_scripted_build": {
+      "shortName": "slsa_build_scripted_build",
+      "fullName": "policy.release.slsa_build_scripted_build",
+      "title": "SLSA - Build - Scripted Build",
+      "description": "The SLSA requirement states the following:\n\n\"All build steps were fully defined in some sort of “build script”.\nThe only manual command, if any, was to invoke the build script.\"\n\nThis package verifies the requirement by asserting the image was\nbuilt by Tekton Pipelines."
+    },
+    "policy.release.slsa_provenance_available": {
+      "shortName": "slsa_provenance_available",
+      "fullName": "policy.release.slsa_provenance_available",
+      "title": "SLSA - Provenance - Available",
+      "description": "The SLSA Provenance Available requirement states the following:\n\n\"The provenance is available to the consumer in a format that the consumer accepts. The\nformat SHOULD be in-toto SLSA Provenance, but another format MAY be used if both producer\nand consumer agree and it meets all the other requirements.\"\n\nThis package only accepts the in-toto SLSA Provenance format."
+    },
+    "policy.release.slsa_source_version_controlled": {
+      "shortName": "slsa_source_version_controlled",
+      "fullName": "policy.release.slsa_source_version_controlled",
+      "title": "SLSA - Source - Version Controlled",
+      "description": "The SLSA requirement states the following:\n\n\"Every change to the source is tracked in a version control system\nthat meets the following requirements:\n\n  [Change history] There exists a record of the history of changes\n  that went into the revision. Each change must contain: the\n  identities of the uploader and reviewers (if any), timestamps of\n  the reviews (if any) and submission, the change\n  description/justification, the content of the change, and the\n  parent revisions.\n\n  [Immutable reference] There exists a way to indefinitely reference\n  this particular, immutable revision. In git, this is the {repo URL +\n  branch/tag/ref + commit ID}.\n\nMost popular version control system meet this requirement, such as git,\nMercurial, Subversion, or Perforce.\"\n\nThis package verifies the requirement by asserting the image was built\nfrom a git repository."
+    },
+    "policy.release.step_image_registries": {
+      "shortName": "step_image_registries",
+      "fullName": "policy.release.step_image_registries",
+      "title": "Step image registries",
+      "description": "This package contains a rule to ensure that each task in the image's\nbuild pipeline ran using a container image from a known and presumably\ntrusted source."
+    },
+    "policy.release.attestation_task_bundle": {
+      "shortName": "attestation_task_bundle",
+      "fullName": "policy.release.attestation_task_bundle",
+      "title": "Task bundle checks",
+      "description": "To be able to reproduce and audit builds accurately it's important\nto know exactly what happened during the build. To do this\nEnterprise Contract requires that all tasks are defined in a set of\nknown and trusted task bundles. This package includes rules to\nconfirm that the tasks that built the image were defined in task\nbundles, and that the task bundles used are from the list of known\nand trusted bundles."
+    },
+    "policy.release.tasks": {
+      "shortName": "tasks",
+      "fullName": "policy.release.tasks",
+      "title": "Tasks",
+      "description": "Enterprise Contract expects that a set of tasks were included\nin the pipeline build for each image to be released.\nThis package includes a set of rules to verify that the expected\ntasks ran in the pipeline when the image was built.\nRequired tasks are listed by the names given to them within the Tekton\nBundle image. Optionally invocation parameter of a Task can be also\nmandated by including the name and the value in square brackets following\nthe name of the task. For example: ``name[PARAM=val]``. Only single parameter\nis supported, to assert multiple parameters repeat the required task\ndefinition for each parameter seperately.\nThe Tasks must be loaded from an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks]."
+    },
+    "policy.release.test": {
+      "shortName": "test",
+      "fullName": "policy.release.test",
+      "title": "Test",
+      "description": "Enterprise Contract requires that each build was subjected\nto a set of tests and that those tests all passed. This package\nincludes a set of rules to verify that.\n\nThe rest result data must be reported by a Tekton Task that has been loaded\nfrom an acceptable Tekton Bundle.\nSee xref:release_policy.adoc#attestation_task_bundle_package[Task bundle checks].\n\nTODO: Document how you can skip the requirement for individual\ntests if needed using the `non_blocking_rule` configuration."
+    }
+  }
+}

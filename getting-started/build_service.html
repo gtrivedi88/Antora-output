@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Build Pipeline customization :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/getting-started/build_service.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="stylesheet" href="../_/css/main.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ROOT"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">ROOT</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="build_service.html">Pipeline customization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="pipeline_visualization.html">Pipeline visualization</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how-to-guides/index.html">How-to guides</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../how-to-guides/delete_application.html">Deleting an application from UI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../how-to-guides/proc_creating_static_environment.html">Creating a static environment</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../cli/index.html">CLI</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cli/proc_release_application.html">Releasing an application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cli/proc_managed_services_onboarding.html">Managed services team onboarding</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cli/delete_application.html">Deleting an application from CLI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cli/proc_enabled_java_dependencies.html">Configuring Java builds with enabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cli/proc_disabled_java_dependencies.html">Configuring Java builds with disabled dependencies rebuild</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../cli/creating_a_custom_application_test_with_test_pipelines.html">Creating a custom application test with test pipelines</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts/index.html">Concepts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/release-services/con_release-services-overview.html">Release Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/enterprise-contract/con_enterprise-contract-overview.html">Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts/testing_applications/index.html">Testing Applications</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/testing_applications/sanity_tests.html">Sanity Tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/testing_applications/adding_new_tests.html">Add a New Test</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/testing_applications/configuring_tests.html">Configuring Tests</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../concepts/pipelines/index.html">Pipelines</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/pipelines/persister.html">Persister component</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../concepts/pipelines/pipeline_concepts.html">Pipeline concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/environments/index.html">Environments</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/java-build-service/java-build-service.html">Java build service</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../concepts/java-build-service/java-build-service-components.html">Java build service components</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../glossary/index.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../contribute/index.html">Contribute to documentation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../raise-issue/index.html">Raise an issue</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support/index.html">Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ROOT</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../ec-policies/index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-policies/index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">ROOT</a></li>
+    <li><a href="index.html">Getting Started</a></li>
+    <li><a href="build_service.html">Pipeline customization</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/gtrivedi/git/HACBS/stonesoup-documentation/modules/ROOT/pages/getting-started/build_service.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Build Pipeline customization</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_customizing_the_build_pipeline">1. Customizing the Build Pipeline</a></li>
+<li><a href="#_pipelinerun_template">2. <em>PipelineRun</em> template</a>
+<ul class="sectlevel2">
+<li><a href="#_params">2.1. params</a></li>
+<li><a href="#_annotations">2.2. Annotations</a></li>
+<li><a href="#_workspaces">2.3. Workspaces</a></li>
+<li><a href="#_supported_build_types">2.4. Supported build types</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can update and manage the Build Pipelines for each component in your application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+StoneSoup leverages the <a href="../concepts/pipelines/index.html" class="xref page">pipeline services</a> to build images.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have access to a Git repository that follows <a href="../concepts/pipelines/index.html#_pipeline_as_code" class="xref page">Pipelines as Code</a>.</p>
+</li>
+<li>
+<p>The Git repository has a build <em>PipelineRun</em> template in the <code>.tekton</code> directory.</p>
+</li>
+<li>
+<p>The build <a href="#_pipelinerun_template"><em>PipelineRun</em> template</a> follows the annotations used by Pipelines as Code.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customizing_the_build_pipeline"><a class="anchor" href="#_customizing_the_build_pipeline"></a>1. Customizing the Build Pipeline</h2>
+<div class="sectionbody">
+<div class="ulist">
+<div class="title">Procedure</div>
+<ul>
+<li>
+<p>Update the <code>.yml</code> files in your <code>{source_repository} &gt; .tekton</code> directory for appropriate <em>PipelineRun</em> definitions. The <code>.tekton</code> directory can have many .yml files, for example, <code>push.yml</code> or <code>pull.yml</code>. The following example displays a <em>PipelineRun</em> to run the <code>build-service-on-push</code> pipeline:</p>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: tekton.dev/v1beta1 <i class="conum" data-value="1"></i><b>(1)</b>
+kind: PipelineRun <i class="conum" data-value="2"></i><b>(2)</b>
+metadata:
+    name: build-service-on-push <i class="conum" data-value="3"></i><b>(3)</b>
+    Annotations: <i class="conum" data-value="4"></i><b>(4)</b>
+        pipelinesascode.tekton.dev/on-event: "[push]"
+        pipelinesascode.tekton.dev/on-target-branch: "[main]"
+spec:
+    Params: <i class="conum" data-value="5"></i><b>(5)</b>
+        - name: git-url
+          value: "{{repo_url}}"
+        - name: revision
+          value: "{{revision}}"
+        - name: output-image
+          value: 'quay.io/redhat-appstudio/build-service:{{revision}}'
+        - name: infra-deployment-update-script
+          value: "quay.io/redhat-appstudio/pull-request-builds:has-{{revision}}"
+    pipelineRef:
+          name: docker-build <i class="conum" data-value="6"></i><b>(6)</b>
+          bundle: quay.io/redhat-appstudio/hacbs-core-service-templates-bundle:latest
+Workspaces: <i class="conum" data-value="7"></i><b>(7)</b>
+        - name: workspace
+          persistentVolumeClaim:
+            claimName: app-studio-default-workspace
+          subPath: build-service-push-{{ revision }}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>PipelineRun API version v1beta1.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Specifies the type of Kubernetes object. In this example, <em>PipelineRun</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Unique name to identify this PipelineRun.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Pipelines as Code adds Annotations automatically when it creates the PipelineRun object on OpenShift.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Specifies the list of parameters required to run the Pipeline.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Name of the Pipeline that the system runs. In this example, build-and-deploy.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Workspace used by the PipelineRun.</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pipelinerun_template"><a class="anchor" href="#_pipelinerun_template"></a>2. <em>PipelineRun</em> template</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create a build PR, the <code>{<em>PipelineRun</em> template}.yml</code> file in the <code>{source_repository} &gt; .tekton</code> directory must include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>params</p>
+</li>
+<li>
+<p>workspace</p>
+</li>
+<li>
+<p>annotation</p>
+</li>
+<li>
+<p>pipelineRef</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_params"><a class="anchor" href="#_params"></a>2.1. params</h3>
+<div class="paragraph">
+<p>Every supported Tekton Pipeline resource should populate any of the following user-defined params as part of their build execution in a <em>PipelineRun</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>git-url</p>
+</li>
+<li>
+<p>git-revision</p>
+</li>
+<li>
+<p>output-image</p>
+</li>
+<li>
+<p>dockerfile-path</p>
+</li>
+<li>
+<p>path-context</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_annotations"><a class="anchor" href="#_annotations"></a>2.2. Annotations</h3>
+<div class="paragraph">
+<p>Annotations are additional, informative tags. A tag allows you to classify or group various objects to ensure that you can easily watch them after an execution. The values of annotations do not change during runtime because they are static.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Pipelines as Code adds Annotations automatically when it creates the PipelineRun object on OpenShift.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_workspaces"><a class="anchor" href="#_workspaces"></a>2.3. Workspaces</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_supported_build_types"><a class="anchor" href="#_supported_build_types"></a>2.4. Supported build types</h3>
+<div class="paragraph">
+<p>You must include any of the following <code>pipelineRef</code> as part of their build execution in a <em>PipelineRun</em>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>docker-build</strong></dt>
+<dd>
+<p>Builds Docker images from a Dockerfile and a "context”
+<strong>devfile-build</strong>: Extracts the build from the contents of the outerloop spec in devfiles</p>
+</dd>
+<dt class="hdlist1"><strong>java-builder (maven via pom.xml)</strong></dt>
+<dd>
+<p>Provides a default container suitable for java applications</p>
+</dd>
+<dt class="hdlist1"><strong>nodejs-builder</strong></dt>
+<dd>
+<p>Provides a default container suitable for node.js applications.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

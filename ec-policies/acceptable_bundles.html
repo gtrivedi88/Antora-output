@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Acceptable Bundles :: HACBS Documentation</title>
+    <link rel="canonical" href="http://localhost:8080/ec-policies/acceptable_bundles.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="stylesheet" href="../_/css/main.css">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:8080">HACBS Documentation</a>
+
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+              <div class="button"><a href="https://gitlab.cee.redhat.com/red-hat-hybrid-application-cloud-build-services-documentation/hacbs-documentation/-/issues/new" target="_blank">Raise an issue</a></div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs">
+            <label class="filter checkbox">
+              <input type="checkbox" data-facet-filter="component:ec-policies"> In this project
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ec-policies" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Enterprise Contract Policies</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">About Enterprise Contract</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release_policy.html">Release Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pipeline_policy.html">Pipeline Policy</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="acceptable_bundles.html">Acceptable Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_bundles.html">Policy Bundles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="policy_configuration.html">Policy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="authoring.html">Policy Authoring</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="raw_data.html">Raw Data</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enterprise Contract Policies</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../ec-cli/main/index.html">Enterprise Contract CLI</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../ec-cli/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Enterprise Contract Policies</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../index.html">ROOT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enterprise Contract Policies</a></li>
+    <li><a href="acceptable_bundles.html">Acceptable Bundles</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Acceptable Bundles</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_task_bundles">1. Task Bundles</a>
+<ul class="sectlevel2">
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_buildah">1.1. quay.io/redhat-appstudio-tekton-catalog/task-buildah</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_clair_scan">1.2. quay.io/redhat-appstudio-tekton-catalog/task-clair-scan</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_clamav_scan">1.3. quay.io/redhat-appstudio-tekton-catalog/task-clamav-scan</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_cleanup_build_directories">1.4. quay.io/redhat-appstudio-tekton-catalog/task-cleanup-build-directories</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_configure_build">1.5. quay.io/redhat-appstudio-tekton-catalog/task-configure-build</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_configure_build_no_shared">1.6. quay.io/redhat-appstudio-tekton-catalog/task-configure-build-no-shared</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_conftest_clair">1.7. quay.io/redhat-appstudio-tekton-catalog/task-conftest-clair</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_deprecated_image_check">1.8. quay.io/redhat-appstudio-tekton-catalog/task-deprecated-image-check</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_fbc_related_image_check">1.9. quay.io/redhat-appstudio-tekton-catalog/task-fbc-related-image-check</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_fbc_validation">1.10. quay.io/redhat-appstudio-tekton-catalog/task-fbc-validation</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_get_clair_scan">1.11. quay.io/redhat-appstudio-tekton-catalog/task-get-clair-scan</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_git_clone">1.12. quay.io/redhat-appstudio-tekton-catalog/task-git-clone</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_hacbs_test_evaluation">1.13. quay.io/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_init">1.14. quay.io/redhat-appstudio-tekton-catalog/task-init</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_prefetch_dependencies">1.15. quay.io/redhat-appstudio-tekton-catalog/task-prefetch-dependencies</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_s2i_java">1.16. quay.io/redhat-appstudio-tekton-catalog/task-s2i-java</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_s2i_nodejs">1.17. quay.io/redhat-appstudio-tekton-catalog/task-s2i-nodejs</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_sanity_inspect_image">1.18. quay.io/redhat-appstudio-tekton-catalog/task-sanity-inspect-image</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_sanity_label_check">1.19. quay.io/redhat-appstudio-tekton-catalog/task-sanity-label-check</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_sast_go">1.20. quay.io/redhat-appstudio-tekton-catalog/task-sast-go</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_sast_java_sec_check">1.21. quay.io/redhat-appstudio-tekton-catalog/task-sast-java-sec-check</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_sast_snyk_check">1.22. quay.io/redhat-appstudio-tekton-catalog/task-sast-snyk-check</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_sbom_json_check">1.23. quay.io/redhat-appstudio-tekton-catalog/task-sbom-json-check</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_summary">1.24. quay.io/redhat-appstudio-tekton-catalog/task-summary</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_tkn_bundle">1.25. quay.io/redhat-appstudio-tekton-catalog/task-tkn-bundle</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_update_infra_deployments">1.26. quay.io/redhat-appstudio-tekton-catalog/task-update-infra-deployments</a></li>
+<li><a href="#_quay_ioredhat_appstudio_tekton_catalogtask_utils_task">1.27. quay.io/redhat-appstudio-tekton-catalog/task-utils-task</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_task_bundles"><a class="anchor" href="#_task_bundles"></a>1. Task Bundles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Enterprise Contract requires that all HACBS pipelines use only tasks defined in these
+specific task bundles. See also the "Task bundle is not acceptable"
+<a href="release_policy.html#unacceptable_task_bundle" class="xref page">release</a> and
+<a href="pipeline_policy.html#unacceptable_task_bundle" class="xref page">policy</a> rules where this list is used.</p>
+</div>
+<div class="paragraph">
+<p>The list of acceptable bundles is time based. A bundle that is acceptable today is not
+necessarily acceptable tommorrow. The list below may contain bundles that are "too old"
+and no longer acceptable. The reason for this behavior is to allow users a certain
+period of time to upgrade to a newer bundle.</p>
+</div>
+<div class="paragraph">
+<p>Any bundle with an effective date in the future, and the bundle with the most recent
+effective date <strong>not</strong> in the future are acceptable. For example, consider a list that
+includes the following acceptable bundles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a, effective on 2022-10-23</p>
+</li>
+<li>
+<p>b, effective on 2022-10-22</p>
+</li>
+<li>
+<p>c, effective on 2022-10-20</p>
+</li>
+<li>
+<p>d, effective on 2022-10-19</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If today is 2022-10-21, then the bundles a, b, and c are acceptable, while d is not.</p>
+</div>
+<div class="paragraph">
+<p>Even when using an acceptable bundle, some policy rules may emit a warning if the bundle
+is not the latest one on the list. This is an attempt to notify users that although
+there are no violations today, an update is required for continued compliance. In the
+example above, using b or c would result in such a warning.</p>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_buildah"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_buildah"></a>1.1. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-buildah</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:b80a1051ce11b27907d1785a2ea0cf788e59e96ea7585bf02867d83d78e985a5" target="_blank" rel="noopener">b80a1051ce11</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-05T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:b4a1cf097be6b9c411ad3a1fdb4a48e598f92fce01627c4f5f0d85ee28767784" target="_blank" rel="noopener">b4a1cf097be6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-26T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:f39a1fb9a04e5a74fe66e5fcda52df854f7d72323178713f8c7b43bdf0ad0309" target="_blank" rel="noopener">f39a1fb9a04e</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-23T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:00edff23169c65f04871832f84dd6d37b6949bcd3a8266729cf0b0253726a62d" target="_blank" rel="noopener">00edff23169c</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-19T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:4e267cc80599986220dd8c571a8511c7f90682676a33867a27b51af62ee69df4" target="_blank" rel="noopener">4e267cc80599</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-16T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:f648bfa39ede3760adde05996324b21d46a353397e57bfb6946590f04d482386" target="_blank" rel="noopener">f648bfa39ede</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-05T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah/manifest/sha256:997d7a1c1bcac31726ecfb2fc8b8ff34e73b3b2786d2c519e711fcb0ca151ee0" target="_blank" rel="noopener">997d7a1c1bca</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-buildah?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-01-22T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_clair_scan"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_clair_scan"></a>1.2. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-clair-scan</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:10b191f72ca767c787f0d7f66f46f5ad3117123ee185e8c57b73667358a7b3a6" target="_blank" rel="noopener">10b191f72ca7</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-25T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:ef60d879c4f074d6a0163d95eea758096cb2173e7d17ac99ab358402394999c0" target="_blank" rel="noopener">ef60d879c4f0</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-22T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:9b29548873c1ccbd34ece8ccbcf4d4d1fc6747800aeeb69abf2d709cfa8acec3" target="_blank" rel="noopener">9b29548873c1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-20T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan/manifest/sha256:4f65b7f26953460d26370d66538c0cdc4b978f35093dc3b38af8b496b563a944" target="_blank" rel="noopener">4f65b7f26953</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clair-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-02T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_clamav_scan"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_clamav_scan"></a>1.3. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-clamav-scan</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan/manifest/sha256:2e19ce2503a8471878fe070364066328e4f2912205ee4aaaf9d66a30037d1cb7" target="_blank" rel="noopener">2e19ce2503a8</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-25T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan/manifest/sha256:191e065fdce26e797b14004de7c770553c17c883f9c80e4761c4c8bfbe3b8b86" target="_blank" rel="noopener">191e065fdce2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-22T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan/manifest/sha256:64b52d3e33cdb539f1d3759f432782eaed5c812bea04296f509cfa2d81247c8d" target="_blank" rel="noopener">64b52d3e33cd</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-clamav-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-01-22T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_cleanup_build_directories"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_cleanup_build_directories"></a>1.4. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-cleanup-build-directories" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-cleanup-build-directories</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-cleanup-build-directories/manifest/sha256:210a761586251e1db8fb31cb56e1182a7e6e478092efd63e796121b217c01c46" target="_blank" rel="noopener">210a76158625</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-cleanup-build-directories?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_configure_build"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_configure_build"></a>1.5. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-configure-build</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build/manifest/sha256:81ac1aca1901c3385cbc8c500b3a69f4a12485e295cb7003fab1f068632cf9b4" target="_blank" rel="noopener">81ac1aca1901</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-05T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build/manifest/sha256:787d29329a2ea1b618ddf0ec4cb208d7f3dbc5c969c6e61ea920fb063b09a477" target="_blank" rel="noopener">787d29329a2e</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-22T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build/manifest/sha256:9f8b5438fda511507e51a0372b4d85892d6f695bd4f54ce067e1c1a1fbc70b30" target="_blank" rel="noopener">9f8b5438fda5</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_configure_build_no_shared"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_configure_build_no_shared"></a>1.6. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build-no-shared" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-configure-build-no-shared</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build-no-shared/manifest/sha256:bad106ff77a7a932de04006512052ee8e7b31becdd95ad84fded98e6100c2234" target="_blank" rel="noopener">bad106ff77a7</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-configure-build-no-shared?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-11-25T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_conftest_clair"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_conftest_clair"></a>1.7. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-conftest-clair" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-conftest-clair</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-conftest-clair/manifest/sha256:afd12c004c1e4f0a86f117fc1fee85ab19c9f090e281e2e0db0c0c14adecff35" target="_blank" rel="noopener">afd12c004c1e</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-conftest-clair?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_deprecated_image_check"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_deprecated_image_check"></a>1.8. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-deprecated-image-check</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check/manifest/sha256:268fd657c069d12b6b24d8e02ce6f0330e2a02e53dce787724445591a90682cd" target="_blank" rel="noopener">268fd657c069</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-01T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check/manifest/sha256:7e7c708d11cf5ca87c69967c6db499139903df33657dbf5ea139077fae7b4a7e" target="_blank" rel="noopener">7e7c708d11cf</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-25T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check/manifest/sha256:f95f72700fe06ea9a285687827199944b1d4a44b83757beb4073569c5beaf3cf" target="_blank" rel="noopener">f95f72700fe0</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-deprecated-image-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-01-15T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_fbc_related_image_check"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_fbc_related_image_check"></a>1.9. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-related-image-check" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-fbc-related-image-check</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-related-image-check/manifest/sha256:dcb28113631b9f48c900d452594c447a7800713f6a33417e34e70a51e8310611" target="_blank" rel="noopener">dcb28113631b</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-related-image-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-03T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_fbc_validation"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_fbc_validation"></a>1.10. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-fbc-validation</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:e69fcafdcf735597390a0f4e4e0f594e8dcd037c30c50b2e7a8a5d674bcc4f2e" target="_blank" rel="noopener">e69fcafdcf73</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-03T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:8233bac403fa0fc0df14197063e50f5ae3be75078c40253daccd38bbf9e5f833" target="_blank" rel="noopener">8233bac403fa</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-03T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:dbb010ce35c2e3dac94639fd77491e0be670a18372d4e6459aed49b401156fd4" target="_blank" rel="noopener">dbb010ce35c2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-26T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation/manifest/sha256:ad0700f8508a1dbda8e2aa59bf6dcd9d714d14145faf0451f90c41d3cb6c84a5" target="_blank" rel="noopener">ad0700f8508a</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-fbc-validation?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-02T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_get_clair_scan"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_get_clair_scan"></a>1.11. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-get-clair-scan" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-get-clair-scan</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-get-clair-scan/manifest/sha256:f5259b6194f73e43f8f1d8ec8f7cd7466209fbf8aaf8b8ac4cf653fc54fc6b3b" target="_blank" rel="noopener">f5259b6194f7</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-get-clair-scan?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_git_clone"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_git_clone"></a>1.12. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-git-clone</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone/manifest/sha256:f4e37778cba00296606ddfbc1c58181330899cafcaa1ee41c75a7cf8bed312f0" target="_blank" rel="noopener">f4e37778cba0</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-23T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone/manifest/sha256:bc80240b360909d98f65e792f8be646de90664766a1f5674735f3ebdd8a3d8bf" target="_blank" rel="noopener">bc80240b3609</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-12T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone/manifest/sha256:5e409aeff2f143a0d368dc8c53d1f4d8b9fc5be83f7111a99d0d367487655229" target="_blank" rel="noopener">5e409aeff2f1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-git-clone?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_hacbs_test_evaluation"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_hacbs_test_evaluation"></a>1.13. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation/manifest/sha256:b80e94aef1440f5e7f002d4d9d928ea6c890d005d2468d9a2bff1ead7606c265" target="_blank" rel="noopener">b80e94aef144</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-hacbs-test-evaluation?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-01T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_init"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_init"></a>1.14. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-init</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:f9e8e66798d02afee87ff13c8d5a0d4bb2667c05a7010fbd286a4afa319c7323" target="_blank" rel="noopener">f9e8e66798d0</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-22T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:06ff3d62dbeafe3611d0328d245798531a1bb747409ac6c2ea83a2aaa0d0ccb9" target="_blank" rel="noopener">06ff3d62dbea</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-16T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:757661b8f68595f34b0bf78fe654261d7ac1b08dfca48b54964139db9e38adcf" target="_blank" rel="noopener">757661b8f685</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-04T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init/manifest/sha256:ed6224bc518182619fc43bdeaedfbb785860190c975922d1124f3762ebc800de" target="_blank" rel="noopener">ed6224bc5181</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-init?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-03T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_prefetch_dependencies"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_prefetch_dependencies"></a>1.15. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-prefetch-dependencies</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies/manifest/sha256:d2f044dc2b9646007c6ae7298fac50971a7a2460e933980313fd689c76226233" target="_blank" rel="noopener">d2f044dc2b96</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-23T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies/manifest/sha256:10d7ac70a9950b655328c4b57c42290afea115e2a0f0d5e0b399f62d2325a22c" target="_blank" rel="noopener">10d7ac70a995</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-prefetch-dependencies?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-01-16T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_s2i_java"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_s2i_java"></a>1.16. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-s2i-java</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:0ebc6195dd3b70c7fa2718bba0b0bca539c067b33585543153927b1da5744c1f" target="_blank" rel="noopener">0ebc6195dd3b</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-05T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:ca6a40c6a2aa1bbde6883a41db50c5264b834b10dac6d2cc6e0302e395fcb530" target="_blank" rel="noopener">ca6a40c6a2aa</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-19T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:5eb9b1291f47332c0283ab7e329c9b1beb94d682650519a10c84612ecece60f9" target="_blank" rel="noopener">5eb9b1291f47</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-16T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:664bb739b68bed59e50494b2d28d0c362fb4c002826215e0c9e3a3dd07e596df" target="_blank" rel="noopener">664bb739b68b</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-05T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java/manifest/sha256:74585399c11ffa63965e7200db4ff404c6c68333cf7b0f80d5711091e0ca0a6f" target="_blank" rel="noopener">74585399c11f</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-java?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-01-22T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_s2i_nodejs"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_s2i_nodejs"></a>1.17. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-s2i-nodejs</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs/manifest/sha256:d093a3fc7f9384d65e083fd8ad2d6018da4e1fc0f68a46ef66f31528b815bd51" target="_blank" rel="noopener">d093a3fc7f93</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-05T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs/manifest/sha256:de985eaf9c57a39ebc44b0a1fdfc4f351fb2d62628cf6d483998737e4cb011ec" target="_blank" rel="noopener">de985eaf9c57</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-s2i-nodejs?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_sanity_inspect_image"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_sanity_inspect_image"></a>1.18. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-inspect-image" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-sanity-inspect-image</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-inspect-image/manifest/sha256:1ff8cea8259a415a7ca6de7d47ade692813721653f89166f549e732cecaf2dcf" target="_blank" rel="noopener">1ff8cea8259a</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-inspect-image?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_sanity_label_check"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_sanity_label_check"></a>1.19. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-sanity-label-check</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check/manifest/sha256:710e07f1e38d93ac740b056c4bd7a962df5ad1b09cece5923fae0fde47f9fa76" target="_blank" rel="noopener">710e07f1e38d</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-25T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check/manifest/sha256:1f0fe138843308648f11132749e6ec08a3ffdf1d60bee63c7df53bf5927bff0e" target="_blank" rel="noopener">1f0fe1388433</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sanity-label-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-02T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_sast_go"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_sast_go"></a>1.20. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-go" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-sast-go</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-go/manifest/sha256:59dfcb7d3b020b3e0f97afbe3ee601fcf1e7218dff3c38314f8be7b6c215fba1" target="_blank" rel="noopener">59dfcb7d3b02</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-go?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-02T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_sast_java_sec_check"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_sast_java_sec_check"></a>1.21. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-java-sec-check" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-sast-java-sec-check</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-java-sec-check/manifest/sha256:c0a126695dc629c7b1d04eef07a1fd7db5b01efad86861ec3886bcf60d518740" target="_blank" rel="noopener">c0a126695dc6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-java-sec-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-02T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_sast_snyk_check"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_sast_snyk_check"></a>1.22. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-sast-snyk-check</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:e4986a1fdf0a7dbb96514fcbe68267d82ee42676c246fd33af19740f966aed00" target="_blank" rel="noopener">e4986a1fdf0a</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-03T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:c97f5267e12a4f4da51ed950e4f57dbe63812e89253d0b85c37b3e0d3c024bdb" target="_blank" rel="noopener">c97f5267e12a</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-26T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:6686a9f8c89c2be134871cccece868c62bc1187a9d906f063f4c79a8865c98d1" target="_blank" rel="noopener">6686a9f8c89c</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-16T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check/manifest/sha256:29aa45fef5d67f0be2a89dc954ce8fa406236901d4dfcebfba88338221c4627e" target="_blank" rel="noopener">29aa45fef5d6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sast-snyk-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-02T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_sbom_json_check"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_sbom_json_check"></a>1.23. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-sbom-json-check</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check/manifest/sha256:631b875a9e265d48a1f00d21e51560c175bc7aafb4358b6525785d4ecc685d69" target="_blank" rel="noopener">631b875a9e26</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-25T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check/manifest/sha256:9d228fedb0429e4ae6f383e9355615823e0684a36ab3c2453a3f3cd56f518944" target="_blank" rel="noopener">9d228fedb042</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-sbom-json-check?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_summary"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_summary"></a>1.24. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-summary</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary/manifest/sha256:245f5017f0a58840212cfd2de0a50844f78b2b2c74976289f34b238bdaa700e5" target="_blank" rel="noopener">245f5017f0a5</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-16T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary/manifest/sha256:7ab4c9af63ec21a68f84c59285a0bd452c1bbde1148aac45cdf0e19e99de42e8" target="_blank" rel="noopener">7ab4c9af63ec</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-09T00:00:00Z</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary/manifest/sha256:59d49758686c141bd26b3c193e52fd23bb47831c2a5d5872388ad6824684735e" target="_blank" rel="noopener">59d49758686c</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-summary?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_tkn_bundle"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_tkn_bundle"></a>1.25. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-tkn-bundle" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-tkn-bundle</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-tkn-bundle/manifest/sha256:05876b87df2280bec9be4db936df9a44c57768537ed5db4d92cd1da7895219b0" target="_blank" rel="noopener">05876b87df22</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-tkn-bundle?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-05T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_update_infra_deployments"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_update_infra_deployments"></a>1.26. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-update-infra-deployments" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-update-infra-deployments</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-update-infra-deployments/manifest/sha256:9328e5dfbadfa1cab69c1e1e18ec26f45ebf3c9ccc2dce83fdf5cc336cb9d805" target="_blank" rel="noopener">9328e5dfbadf</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-update-infra-deployments?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_quay_ioredhat_appstudio_tekton_catalogtask_utils_task"><a class="anchor" href="#_quay_ioredhat_appstudio_tekton_catalogtask_utils_task"></a>1.27. <a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-utils-task" target="_blank" rel="noopener">quay.io/redhat-appstudio-tekton-catalog/task-utils-task</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 55.5555%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Digest</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Effective</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-utils-task/manifest/sha256:ae74f2593d5b8f4366ca6a6753e63a3817810a3fce921e0cfe90b65713f7fd2c" target="_blank" rel="noopener">ae74f2593d5b</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://quay.io/repository/redhat-appstudio-tekton-catalog/task-utils-task?tab&#x3D;tags&amp;tag&#x3D;0.1" target="_blank" rel="noopener">0.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2022-12-31T00:00:00Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="text-align: center;">
+    <a href="https://gitlab.cee.redhat.com/red-hat-stone-soup/stonesoup-documentation/-/blob/main/modules/ROOT/pages">Source documents on GitLab</a>
+    | <a href="https://docs.engineering.redhat.com/pages/viewpage.action?pageId=256849149">Engage with us!</a>
+    | <a href="link:https://groups.google.com/g/stonesoup">Contact us on Google Chat</a>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>
